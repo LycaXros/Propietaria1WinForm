@@ -143,6 +143,12 @@
     <Compile Include="DB\Model\Territories.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MDIs\MDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIs\MDI.Designer.cs">
+      <DependentUpon>MDI.cs</DependentUpon>
+    </Compile>
     <Compile Include="NorthwindDataSet.cs">
       <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
     </Compile>
@@ -166,6 +172,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="MDIs\MDI.resx">
+      <DependentUpon>MDI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerReporte.resx">
       <DependentUpon>VerReporte.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,6 +244,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>TryhardDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Imgs\logo-unapec_color.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

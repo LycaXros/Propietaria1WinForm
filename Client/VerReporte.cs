@@ -27,10 +27,12 @@ namespace Client
 
             var db = new DB.Model.NorthwindEntities();
             var productos = (from p in db.Products select p).ToList();
+            var cat = (from p in db.Sales_by_Category select p).ToList();
             reportViewer1.ProcessingMode = ProcessingMode.Local;
             reportViewer1.LocalReport.DataSources.Clear();
-            var rds = new ReportDataSource("EmployeeSet", productos);
-          
+            var rds = new ReportDataSource("DataSet1", productos);
+            reportViewer1.LocalReport.DataSources.Add(rds);
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet2", cat));
             reportViewer1.LocalReport.ReportEmbeddedResource = "Reportes/Employees.rdlc";
             reportViewer1.LocalReport.ReportPath = @"Reportes/Employees.rdlc";
             //reportViewer1.LocalReport.Refresh();
