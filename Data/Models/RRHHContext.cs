@@ -21,6 +21,8 @@ namespace Data.Models
         public DbSet<Departamentos> Departamentos { get; set; }
         public DbSet<Candidatos> Candidatos { get; set; }
         public DbSet<ExperienciaLaboral> ExpLaborales { get; set; }
+        public DbSet<Empleados> Empleados { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

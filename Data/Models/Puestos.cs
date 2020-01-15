@@ -17,9 +17,11 @@ namespace Data.Models
         public double SalarioMaximo { get; set; }
 
         public ICollection<Candidatos> Aspirantes { get; set; }
-
+        
         public int DepartamentoID { get; set; }
         public virtual Departamentos Departamento { get; set; }
+
+        public bool IsAvailable { get; set; }
         public EstadoPersistencia Estado { get; set; }
     }
 }

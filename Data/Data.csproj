@@ -56,11 +56,18 @@
     <Compile Include="Migrations\202001141943539_First.designer.cs">
       <DependentUpon>202001141943539_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001151742034_SecondBatchModels.cs" />
+    <Compile Include="Migrations\202001151742034_SecondBatchModels.designer.cs">
+      <DependentUpon>202001151742034_SecondBatchModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Candidatos.cs" />
     <Compile Include="Models\Capacitaciones.cs" />
     <Compile Include="Models\Competencias.cs" />
     <Compile Include="Models\Departamentos.cs" />
+    <Compile Include="Models\Empleados.cs" />
     <Compile Include="Models\EstadoPersistencia.cs" />
+    <Compile Include="Models\ExperienciaLaboral.cs" />
     <Compile Include="Models\Idiomas.cs" />
     <Compile Include="Models\Puestos.cs" />
     <Compile Include="Models\RRHHContext.cs" />
@@ -77,6 +84,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001141943539_First.resx">
       <DependentUpon>202001141943539_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001151742034_SecondBatchModels.resx">
+      <DependentUpon>202001151742034_SecondBatchModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
