@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Models
 {
@@ -21,6 +22,7 @@ namespace Data.Models
         public int DepartamentoID { get; set; }
         public virtual Departamentos Departamento { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public bool IsAvailable { get; set; }
         public EstadoPersistencia Estado { get; set; }
     }

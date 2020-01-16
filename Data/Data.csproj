@@ -60,6 +60,10 @@
     <Compile Include="Migrations\202001151742034_SecondBatchModels.designer.cs">
       <DependentUpon>202001151742034_SecondBatchModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001161234350_addingDefaultValues.cs" />
+    <Compile Include="Migrations\202001161234350_addingDefaultValues.designer.cs">
+      <DependentUpon>202001161234350_addingDefaultValues.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidatos.cs" />
     <Compile Include="Models\Capacitaciones.cs" />
@@ -88,6 +92,13 @@
     <EmbeddedResource Include="Migrations\202001151742034_SecondBatchModels.resx">
       <DependentUpon>202001151742034_SecondBatchModels.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001161234350_addingDefaultValues.resx">
+      <DependentUpon>202001161234350_addingDefaultValues.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlScripts\GenerateMoviesDatabase.sql" />
+    <Content Include="SqlScripts\GenerateUpdatedMoviesDatabase.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

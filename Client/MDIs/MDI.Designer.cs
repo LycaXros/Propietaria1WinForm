@@ -131,6 +131,7 @@
             this.reporteNuevosEmpleadosToolStripMenuItem.Name = "reporteNuevosEmpleadosToolStripMenuItem";
             this.reporteNuevosEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.reporteNuevosEmpleadosToolStripMenuItem.Text = "Reporte Nuevos Empleados";
+            this.reporteNuevosEmpleadosToolStripMenuItem.Click += new System.EventHandler(this.reporteNuevosEmpleadosToolStripMenuItem_Click);
             // 
             // idiomasToolStripMenuItem
             // 

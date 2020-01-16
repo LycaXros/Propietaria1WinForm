@@ -61,6 +61,7 @@ namespace Data.Models
                 .WithMany(c => c.ExperienciaLaborales)
                 .HasForeignKey(e => e.CandidatoId);
 
+
         }
     }
 }

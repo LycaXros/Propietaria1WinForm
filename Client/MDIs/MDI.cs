@@ -30,10 +30,17 @@ namespace Client.MDIs
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var date = DateTime.Now.ToLocalTime().ToString();
+            var date = DateTime.Now;
 
-            timerLabel.Text = date;
+            timerLabel.Text = date.ToString("dd-MMM-yyyy hh:mm:ss tt");
         }
 
+        private void reporteNuevosEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            var verR = new VerReporte();
+            verR.MdiParent = this;
+            verR.Show();
+        }
     }
 }
