@@ -23,7 +23,8 @@ namespace Client
             var d = DateTime.Now;
             fechaDesde.Value = fechaDesde.MinDate.AddDays(1);
             fechaDesde.MaxDate = d.AddDays(-1);
-            fechaHasta.MaxDate = d;
+            fechaHasta.MaxDate = d.AddDays(1).AddTicks(-1);
+            fechaHasta.Value = d;
             //this.reportViewer1.RefreshReport();
         }
         private void button1_Click(object sender, EventArgs e)

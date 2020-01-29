@@ -37,10 +37,10 @@
             this.ProductsTableAdapter = new Client.NorthwindDataSetTableAdapters.ProductsTableAdapter();
             this.salesByCatTableAdapter = new Client.NorthwindDataSetTableAdapters.SalesByCatTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.fechaDesde = new System.Windows.Forms.DateTimePicker();
-            this.fechaHasta = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.fechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.fechaDesde = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NorthwindDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesByCatBindingSource)).BeginInit();
@@ -113,22 +113,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Configuracion";
             // 
-            // fechaDesde
+            // label2
             // 
-            this.fechaDesde.Location = new System.Drawing.Point(6, 50);
-            this.fechaDesde.Name = "fechaDesde";
-            this.fechaDesde.Size = new System.Drawing.Size(125, 20);
-            this.fechaDesde.TabIndex = 2;
-            this.fechaDesde.ValueChanged += new System.EventHandler(this.fechaDesde_ValueChanged);
-            // 
-            // fechaHasta
-            // 
-            this.fechaHasta.Location = new System.Drawing.Point(8, 130);
-            this.fechaHasta.MaxDate = new System.DateTime(2020, 1, 16, 10, 17, 6, 0);
-            this.fechaHasta.Name = "fechaHasta";
-            this.fechaHasta.Size = new System.Drawing.Size(125, 20);
-            this.fechaHasta.TabIndex = 3;
-            this.fechaHasta.Value = new System.DateTime(2020, 1, 16, 0, 0, 0, 0);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Fecha Hasta";
             // 
             // label1
             // 
@@ -139,14 +131,22 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Fecha Desde";
             // 
-            // label2
+            // fechaHasta
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 100);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Fecha Hasta";
+            this.fechaHasta.Location = new System.Drawing.Point(8, 130);
+            this.fechaHasta.MaxDate = new System.DateTime(2020, 1, 23, 0, 0, 0, 0);
+            this.fechaHasta.Name = "fechaHasta";
+            this.fechaHasta.Size = new System.Drawing.Size(125, 20);
+            this.fechaHasta.TabIndex = 3;
+            this.fechaHasta.Value = new System.DateTime(2020, 1, 16, 0, 0, 0, 0);
+            // 
+            // fechaDesde
+            // 
+            this.fechaDesde.Location = new System.Drawing.Point(6, 50);
+            this.fechaDesde.Name = "fechaDesde";
+            this.fechaDesde.Size = new System.Drawing.Size(125, 20);
+            this.fechaDesde.TabIndex = 2;
+            this.fechaDesde.ValueChanged += new System.EventHandler(this.fechaDesde_ValueChanged);
             // 
             // VerReporte
             // 

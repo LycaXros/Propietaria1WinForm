@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202001161234350_addingDefaultValues.designer.cs">
       <DependentUpon>202001161234350_addingDefaultValues.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001281509496_SettingInitializer.cs" />
+    <Compile Include="Migrations\202001281509496_SettingInitializer.designer.cs">
+      <DependentUpon>202001281509496_SettingInitializer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidatos.cs" />
     <Compile Include="Models\Capacitaciones.cs" />
@@ -77,6 +81,7 @@
     <Compile Include="Models\RRHHContext.cs" />
     <Compile Include="Models\RRHHContextInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\EnumUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -94,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001161234350_addingDefaultValues.resx">
       <DependentUpon>202001161234350_addingDefaultValues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001281509496_SettingInitializer.resx">
+      <DependentUpon>202001281509496_SettingInitializer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

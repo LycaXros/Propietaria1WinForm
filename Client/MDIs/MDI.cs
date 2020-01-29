@@ -28,6 +28,12 @@ namespace Client.MDIs
             timer1.Stop();
         }
 
+        private void ShowForm(Form frm)
+        {
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             var date = DateTime.Now;
@@ -37,10 +43,12 @@ namespace Client.MDIs
 
         private void reporteNuevosEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ShowForm(new VerReporte());
+        }
 
-            var verR = new VerReporte();
-            verR.MdiParent = this;
-            verR.Show();
+        private void competenciasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Forms.frmCRUDCompetencias());
         }
     }
 }

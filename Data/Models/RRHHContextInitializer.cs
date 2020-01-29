@@ -9,5 +9,9 @@ namespace Data.Models
 {
     public class RRHHContextInitializer: CreateDatabaseIfNotExists<RRHHContext>
     {
+        protected override void Seed(RRHHContext context)
+        {
+            base.Seed(context);
+        }
     }
 }

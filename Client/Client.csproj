@@ -143,6 +143,12 @@
     <Compile Include="DB\Model\Territories.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCRUDCompetencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCRUDCompetencias.Designer.cs">
+      <DependentUpon>frmCRUDCompetencias.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDIs\MDI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Forms\frmCRUDCompetencias.resx">
+      <DependentUpon>frmCRUDCompetencias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDIs\MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +222,16 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Client.DB.Model.Products.datasource" />
+    <None Include="Properties\DataSources\Data.Models.Candidatos.datasource" />
+    <None Include="Properties\DataSources\Data.Models.Capacitaciones.datasource" />
+    <None Include="Properties\DataSources\Data.Models.Competencias.datasource" />
+    <None Include="Properties\DataSources\Data.Models.Departamentos.datasource" />
+    <None Include="Properties\DataSources\Data.Models.Empleados.datasource" />
+    <None Include="Properties\DataSources\Data.Models.ExperienciaLaboral.datasource" />
+    <None Include="Properties\DataSources\Data.Models.Idiomas.datasource" />
+    <None Include="Properties\DataSources\Data.Models.Puestos.datasource" />
+    <None Include="Properties\DataSources\Data.Models.RRHHContext.datasource" />
+    <None Include="Properties\DataSources\Data.Models.RRHHContextInitializer.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
