@@ -124,6 +124,7 @@
             this.idiomasToolStripMenuItem.Name = "idiomasToolStripMenuItem";
             this.idiomasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.idiomasToolStripMenuItem.Text = "Idiomas";
+            this.idiomasToolStripMenuItem.Click += new System.EventHandler(this.idiomasToolStripMenuItem_Click);
             // 
             // capacitacionesToolStripMenuItem
             // 

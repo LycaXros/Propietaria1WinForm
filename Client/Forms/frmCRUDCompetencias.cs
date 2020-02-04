@@ -20,15 +20,21 @@ namespace Client.Forms
         {
             InitializeComponent();
         }
+        public frmCRUDCompetencias(
+            RRHHContext _context)
+        {
+            InitializeComponent();
+            this.context = _context;
+        }
 
 
         private void frmCRUDCompetencias_Load(object sender, EventArgs e)
         {
             _itemId = 0;
-            context = new RRHHContext();
             dataGridView1.RowHeaderMouseDoubleClick += DataGridView1_RowHeaderMouseDoubleClick;
             fillDataGrid();
-            fillEstadoCBX();
+           // fillEstadoCBX();
+
 
         }
 
@@ -37,7 +43,8 @@ namespace Client.Forms
             txtId.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtDescripcion.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             var selectedEstado = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-
+            
+            cbxEstado.SelectedIndex = cbxEstado.Items.IndexOf(selectedEstado);
         }
 
         private void fillEstadoCBX()
@@ -56,6 +63,7 @@ namespace Client.Forms
 
             var data = context.Competencias.ToList();
             dataGridView1.DataSource = data;
+            dataGridView1.Refresh();
         }
 
         private void cmdClean_Click(object sender, EventArgs e)
@@ -119,7 +127,7 @@ namespace Client.Forms
 
         private static bool BoxEliminar()
         {
-            return MessageBox.Show("Estas seguro de eliminar el Item", "Eliminando", MessageBoxButtons.OKCancel) == DialogResult.OK;
+            return MessageBox.Show("Estas seguro de eliminar el Item", "Eliminando", MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
 
         private void txtId_TextChanged(object sender, EventArgs e)

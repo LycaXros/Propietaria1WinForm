@@ -149,6 +149,12 @@
     <Compile Include="Forms\frmCRUDCompetencias.Designer.cs">
       <DependentUpon>frmCRUDCompetencias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmIdiomas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmIdiomas.Designer.cs">
+      <DependentUpon>frmIdiomas.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDIs\MDI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Forms\frmCRUDCompetencias.resx">
       <DependentUpon>frmCRUDCompetencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmIdiomas.resx">
+      <DependentUpon>frmIdiomas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIs\MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>

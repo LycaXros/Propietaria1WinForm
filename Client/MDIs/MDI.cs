@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace Client.MDIs
 {
     public partial class MDI_User : Form
     {
+        private RRHHContext _context;
         public MDI_User()
         {
             InitializeComponent();
+            _context = new RRHHContext();
         }
 
         private void MDI_User_Load(object sender, EventArgs e)
@@ -48,7 +51,12 @@ namespace Client.MDIs
 
         private void competenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new Forms.frmCRUDCompetencias());
+            ShowForm(new Forms.frmCRUDCompetencias(_context));
+        }
+
+        private void idiomasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Forms.frmIdiomas());
         }
     }
 }
