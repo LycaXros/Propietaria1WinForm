@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmdGuardar = new System.Windows.Forms.Button();
             this.cbxNivel = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,26 +36,16 @@
             this.lblID = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtDescipcion = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFin = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.dtpInicio = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtDescipcion = new System.Windows.Forms.RichTextBox();
+            this.cmdGuardar = new System.Windows.Forms.Button();
+            this.cmdCancelar = new System.Windows.Forms.Button();
+            this.cmdEliminar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cmdGuardar
-            // 
-            this.cmdGuardar.BackgroundImage = global::Client.Properties.Resources.save;
-            this.cmdGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdGuardar.FlatAppearance.BorderSize = 0;
-            this.cmdGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdGuardar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGuardar.Location = new System.Drawing.Point(12, 351);
-            this.cmdGuardar.Name = "cmdGuardar";
-            this.cmdGuardar.Size = new System.Drawing.Size(84, 70);
-            this.cmdGuardar.TabIndex = 23;
-            this.cmdGuardar.UseVisualStyleBackColor = true;
             // 
             // cbxNivel
             // 
@@ -94,7 +83,6 @@
             this.label3.Size = new System.Drawing.Size(82, 20);
             this.label3.TabIndex = 19;
             this.label3.Text = "Institucion";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -136,9 +124,10 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dateTimePicker2);
+            this.panel1.BackColor = System.Drawing.Color.Coral;
+            this.panel1.Controls.Add(this.dtpFin);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.dtpInicio);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtDescipcion);
             this.panel1.Controls.Add(this.lblID);
@@ -153,38 +142,12 @@
             this.panel1.Size = new System.Drawing.Size(423, 333);
             this.panel1.TabIndex = 26;
             // 
-            // txtDescipcion
+            // dtpFin
             // 
-            this.txtDescipcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescipcion.Location = new System.Drawing.Point(111, 70);
-            this.txtDescipcion.Name = "txtDescipcion";
-            this.txtDescipcion.Size = new System.Drawing.Size(295, 63);
-            this.txtDescipcion.TabIndex = 26;
-            this.txtDescipcion.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 226);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 20);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Fecha Inicio";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(17, 249);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 28;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(220, 249);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 30;
+            this.dtpFin.Location = new System.Drawing.Point(220, 249);
+            this.dtpFin.Name = "dtpFin";
+            this.dtpFin.Size = new System.Drawing.Size(200, 20);
+            this.dtpFin.TabIndex = 30;
             // 
             // label6
             // 
@@ -196,11 +159,83 @@
             this.label6.TabIndex = 29;
             this.label6.Text = "Fecha Fin";
             // 
+            // dtpInicio
+            // 
+            this.dtpInicio.Location = new System.Drawing.Point(17, 249);
+            this.dtpInicio.Name = "dtpInicio";
+            this.dtpInicio.Size = new System.Drawing.Size(200, 20);
+            this.dtpInicio.TabIndex = 28;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(18, 226);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 20);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Fecha Inicio";
+            // 
+            // txtDescipcion
+            // 
+            this.txtDescipcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescipcion.Location = new System.Drawing.Point(111, 70);
+            this.txtDescipcion.Name = "txtDescipcion";
+            this.txtDescipcion.Size = new System.Drawing.Size(295, 63);
+            this.txtDescipcion.TabIndex = 26;
+            this.txtDescipcion.Text = "";
+            // 
+            // cmdGuardar
+            // 
+            this.cmdGuardar.BackgroundImage = global::Client.Properties.Resources.save;
+            this.cmdGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdGuardar.FlatAppearance.BorderSize = 0;
+            this.cmdGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdGuardar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdGuardar.Location = new System.Drawing.Point(67, 351);
+            this.cmdGuardar.Name = "cmdGuardar";
+            this.cmdGuardar.Size = new System.Drawing.Size(60, 70);
+            this.cmdGuardar.TabIndex = 23;
+            this.cmdGuardar.UseVisualStyleBackColor = true;
+            this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
+            // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.BackgroundImage = global::Client.Properties.Resources.cancel_red;
+            this.cmdCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdCancelar.FlatAppearance.BorderSize = 0;
+            this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCancelar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancelar.Location = new System.Drawing.Point(310, 359);
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.Size = new System.Drawing.Size(60, 55);
+            this.cmdCancelar.TabIndex = 27;
+            this.cmdCancelar.UseVisualStyleBackColor = true;
+            // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.BackgroundImage = global::Client.Properties.Resources.trashCan;
+            this.cmdEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdEliminar.FlatAppearance.BorderSize = 0;
+            this.cmdEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdEliminar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdEliminar.Location = new System.Drawing.Point(192, 351);
+            this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.Size = new System.Drawing.Size(60, 70);
+            this.cmdEliminar.TabIndex = 28;
+            this.cmdEliminar.UseVisualStyleBackColor = true;
+            this.cmdEliminar.Click += new System.EventHandler(this.cmdEliminar_Click);
+            // 
             // workCapacitaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 433);
+            this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.cmdCancelar;
+            this.ClientSize = new System.Drawing.Size(454, 426);
+            this.Controls.Add(this.cmdEliminar);
+            this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmdGuardar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -225,9 +260,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox txtDescipcion;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpFin;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpInicio;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button cmdCancelar;
+        private System.Windows.Forms.Button cmdEliminar;
     }
 }

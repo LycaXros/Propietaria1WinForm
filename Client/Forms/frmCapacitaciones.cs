@@ -13,16 +13,28 @@ namespace Client.Forms
 {
     public partial class frmCapacitaciones : Form
     {
+        public List<Capacitaciones> Capacitaciones { get; set; }
+        public RRHHContext context { get; internal set; }
+
         public frmCapacitaciones()
         {
             InitializeComponent();
+            dgvCapacitaciones.CellMouseDoubleClick += DgvCapacitaciones_CellMouseDoubleClick;
         }
 
-        public RRHHContext context { get; internal set; }
+        private void DgvCapacitaciones_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var id = int.Parse(dgvCapacitaciones.Rows[e.RowIndex].Cells[0].Value.ToString());
+            var frm = new workCapacitaciones() { Editing = true, cap = Capacitaciones[id], context = context };
+            frm.StartPosition = FormStartPosition.CenterScreen;            
+            frm.ShowDialog();
+
+        }
 
         private void frmCapacitaciones_Load(object sender, EventArgs e)
         {
             this.panel1.BackColor = Color.FromArgb(52, 128, 86);
+            RefreshData();
         }
 
         private void frmCapacitaciones_Activated(object sender, EventArgs e)
@@ -32,12 +44,20 @@ namespace Client.Forms
 
         private void RefreshData()
         {
-            var l = context.Capacitaciones.ToList();
+           // var l = context.Capacitaciones.ToList();
 
 
 
-            dgvCapacitaciones.DataSource = l;
+            dgvCapacitaciones.DataSource = Capacitaciones;
             dgvCapacitaciones.Refresh();
+        }
+
+        private void cmdADD_Click(object sender, EventArgs e)
+        {
+            var frm = new workCapacitaciones() { context = context };
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Editing = false;
+            frm.ShowDialog();
         }
     }
 }

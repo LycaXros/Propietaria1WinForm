@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.cbxCriterio = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvCapacitaciones = new System.Windows.Forms.DataGridView();
+            this.cmdADD = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCapacitaciones)).BeginInit();
@@ -46,6 +47,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.cmdADD);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.cbxCriterio);
             this.panel1.Controls.Add(this.label4);
@@ -53,20 +55,8 @@
             this.panel1.Controls.Add(this.txtNombre);
             this.panel1.Location = new System.Drawing.Point(12, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(648, 75);
+            this.panel1.Size = new System.Drawing.Size(661, 75);
             this.panel1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::Client.Properties.Resources.Search;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(499, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 64);
-            this.button1.TabIndex = 20;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // cbxCriterio
             // 
@@ -115,7 +105,7 @@
             this.panel2.Controls.Add(this.dgvCapacitaciones);
             this.panel2.Location = new System.Drawing.Point(12, 118);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(648, 320);
+            this.panel2.Size = new System.Drawing.Size(661, 320);
             this.panel2.TabIndex = 1;
             // 
             // dgvCapacitaciones
@@ -126,15 +116,40 @@
             this.dgvCapacitaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCapacitaciones.Location = new System.Drawing.Point(12, 13);
             this.dgvCapacitaciones.Name = "dgvCapacitaciones";
-            this.dgvCapacitaciones.Size = new System.Drawing.Size(622, 292);
+            this.dgvCapacitaciones.Size = new System.Drawing.Size(635, 292);
             this.dgvCapacitaciones.TabIndex = 0;
+            // 
+            // cmdADD
+            // 
+            this.cmdADD.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.cmdADD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdADD.FlatAppearance.BorderSize = 0;
+            this.cmdADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdADD.Location = new System.Drawing.Point(583, 4);
+            this.cmdADD.Name = "cmdADD";
+            this.cmdADD.Size = new System.Drawing.Size(75, 64);
+            this.cmdADD.TabIndex = 21;
+            this.cmdADD.UseVisualStyleBackColor = true;
+            this.cmdADD.Click += new System.EventHandler(this.cmdADD_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::Client.Properties.Resources.Search;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(492, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 64);
+            this.button1.TabIndex = 20;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmCapacitaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(672, 450);
+            this.ClientSize = new System.Drawing.Size(685, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -160,5 +175,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvCapacitaciones;
+        private System.Windows.Forms.Button cmdADD;
     }
 }

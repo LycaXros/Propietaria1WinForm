@@ -297,6 +297,7 @@
     <None Include="Resources\save.png" />
     <None Include="Resources\Search.png" />
     <None Include="Resources\trashCan.png" />
+    <None Include="Resources\add-circle.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
