@@ -143,6 +143,12 @@
     <Compile Include="DB\Model\Territories.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCapacitaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCapacitaciones.Designer.cs">
+      <DependentUpon>frmCapacitaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCRUDCompetencias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,12 @@
     </Compile>
     <Compile Include="Forms\frmIdiomas.Designer.cs">
       <DependentUpon>frmIdiomas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\workCapacitaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\workCapacitaciones.Designer.cs">
+      <DependentUpon>workCapacitaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="MDIs\MDI.cs">
       <SubType>Form</SubType>
@@ -184,11 +196,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Forms\frmCapacitaciones.resx">
+      <DependentUpon>frmCapacitaciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCRUDCompetencias.resx">
       <DependentUpon>frmCRUDCompetencias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIdiomas.resx">
       <DependentUpon>frmIdiomas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\workCapacitaciones.resx">
+      <DependentUpon>workCapacitaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIs\MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>
@@ -207,6 +225,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reportes\Employees.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -273,6 +292,11 @@
       <DependentUpon>TryhardDB.mdf</DependentUpon>
     </Content>
     <Content Include="Imgs\logo-unapec_color.jpg" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\cancel-red.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\Search.png" />
+    <None Include="Resources\trashCan.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

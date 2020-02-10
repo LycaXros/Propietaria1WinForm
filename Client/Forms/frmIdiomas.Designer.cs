@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.cmdEliminar = new System.Windows.Forms.Button();
+            this.cmdClean = new System.Windows.Forms.Button();
+            this.cmdGuardar = new System.Windows.Forms.Button();
+            this.cbxGrado = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbxGrado = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dgvIdiomas = new System.Windows.Forms.DataGridView();
-            this.cmdEliminar = new System.Windows.Forms.Button();
-            this.cmdClean = new System.Windows.Forms.Button();
-            this.cmdGuardar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIdiomas)).BeginInit();
@@ -68,17 +68,61 @@
             this.panel1.Size = new System.Drawing.Size(537, 139);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // cmdEliminar
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.Salmon;
-            this.panel2.Controls.Add(this.dgvIdiomas);
-            this.panel2.Location = new System.Drawing.Point(12, 157);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(537, 281);
-            this.panel2.TabIndex = 1;
+            this.cmdEliminar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdEliminar.Location = new System.Drawing.Point(370, 96);
+            this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.Size = new System.Drawing.Size(84, 35);
+            this.cmdEliminar.TabIndex = 18;
+            this.cmdEliminar.Text = "Eliminar";
+            this.cmdEliminar.UseVisualStyleBackColor = true;
+            // 
+            // cmdClean
+            // 
+            this.cmdClean.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdClean.Location = new System.Drawing.Point(370, 51);
+            this.cmdClean.Name = "cmdClean";
+            this.cmdClean.Size = new System.Drawing.Size(84, 35);
+            this.cmdClean.TabIndex = 17;
+            this.cmdClean.Text = "Limpiar";
+            this.cmdClean.UseVisualStyleBackColor = true;
+            this.cmdClean.Click += new System.EventHandler(this.cmdClean_Click);
+            // 
+            // cmdGuardar
+            // 
+            this.cmdGuardar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdGuardar.Location = new System.Drawing.Point(370, 10);
+            this.cmdGuardar.Name = "cmdGuardar";
+            this.cmdGuardar.Size = new System.Drawing.Size(84, 35);
+            this.cmdGuardar.TabIndex = 16;
+            this.cmdGuardar.Text = "Guardar";
+            this.cmdGuardar.UseVisualStyleBackColor = true;
+            this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
+            // 
+            // cbxGrado
+            // 
+            this.cbxGrado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxGrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxGrado.FormattingEnabled = true;
+            this.cbxGrado.Items.AddRange(new object[] {
+            "Bajo",
+            "Medio",
+            "Alto"});
+            this.cbxGrado.Location = new System.Drawing.Point(73, 56);
+            this.cbxGrado.Name = "cbxGrado";
+            this.cbxGrado.Size = new System.Drawing.Size(101, 28);
+            this.cbxGrado.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(14, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 20);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Grado";
             // 
             // cbxEstado
             // 
@@ -142,29 +186,17 @@
             this.txtNombre.Size = new System.Drawing.Size(172, 26);
             this.txtNombre.TabIndex = 8;
             // 
-            // label4
+            // panel2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Grado";
-            // 
-            // cbxGrado
-            // 
-            this.cbxGrado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxGrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxGrado.FormattingEnabled = true;
-            this.cbxGrado.Items.AddRange(new object[] {
-            "Bajo",
-            "Medio",
-            "Alto"});
-            this.cbxGrado.Location = new System.Drawing.Point(73, 56);
-            this.cbxGrado.Name = "cbxGrado";
-            this.cbxGrado.Size = new System.Drawing.Size(101, 28);
-            this.cbxGrado.TabIndex = 15;
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.Salmon;
+            this.panel2.Controls.Add(this.dgvIdiomas);
+            this.panel2.Location = new System.Drawing.Point(12, 157);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(537, 281);
+            this.panel2.TabIndex = 1;
             // 
             // dgvIdiomas
             // 
@@ -176,37 +208,6 @@
             this.dgvIdiomas.Name = "dgvIdiomas";
             this.dgvIdiomas.Size = new System.Drawing.Size(492, 247);
             this.dgvIdiomas.TabIndex = 0;
-            // 
-            // cmdEliminar
-            // 
-            this.cmdEliminar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdEliminar.Location = new System.Drawing.Point(370, 96);
-            this.cmdEliminar.Name = "cmdEliminar";
-            this.cmdEliminar.Size = new System.Drawing.Size(84, 35);
-            this.cmdEliminar.TabIndex = 18;
-            this.cmdEliminar.Text = "Eliminar";
-            this.cmdEliminar.UseVisualStyleBackColor = true;
-            // 
-            // cmdClean
-            // 
-            this.cmdClean.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdClean.Location = new System.Drawing.Point(370, 51);
-            this.cmdClean.Name = "cmdClean";
-            this.cmdClean.Size = new System.Drawing.Size(84, 35);
-            this.cmdClean.TabIndex = 17;
-            this.cmdClean.Text = "Limpiar";
-            this.cmdClean.UseVisualStyleBackColor = true;
-            // 
-            // cmdGuardar
-            // 
-            this.cmdGuardar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGuardar.Location = new System.Drawing.Point(370, 10);
-            this.cmdGuardar.Name = "cmdGuardar";
-            this.cmdGuardar.Size = new System.Drawing.Size(84, 35);
-            this.cmdGuardar.TabIndex = 16;
-            this.cmdGuardar.Text = "Guardar";
-            this.cmdGuardar.UseVisualStyleBackColor = true;
-            this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
             // 
             // frmIdiomas
             // 

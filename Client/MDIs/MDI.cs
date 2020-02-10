@@ -33,7 +33,7 @@ namespace Client.MDIs
 
         private void ShowForm(Form frm)
         {
-            frm.MdiParent = this;
+            frm.MdiParent = this;            
             frm.Show();
         }
 
@@ -51,12 +51,17 @@ namespace Client.MDIs
 
         private void competenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new Forms.frmCRUDCompetencias(_context));
+            ShowForm(new Forms.frmCRUDCompetencias() { context = _context });
         }
 
         private void idiomasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new Forms.frmIdiomas());
+            ShowForm(new Forms.frmIdiomas() { _context = _context});
+        }
+
+        private void capacitacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Forms.frmCapacitaciones() { context = _context });
         }
     }
 }

@@ -14,17 +14,11 @@ namespace Client.Forms
 {
     public partial class frmCRUDCompetencias : Form
     {
-        RRHHContext context;
+        public RRHHContext context { get; set; }
         private int _itemId;
         public frmCRUDCompetencias()
         {
             InitializeComponent();
-        }
-        public frmCRUDCompetencias(
-            RRHHContext _context)
-        {
-            InitializeComponent();
-            this.context = _context;
         }
 
 
@@ -33,7 +27,8 @@ namespace Client.Forms
             _itemId = 0;
             dataGridView1.RowHeaderMouseDoubleClick += DataGridView1_RowHeaderMouseDoubleClick;
             fillDataGrid();
-           // fillEstadoCBX();
+            // fillEstadoCBX();
+            cmdEliminar.Visible = false;
 
 
         }
@@ -45,6 +40,7 @@ namespace Client.Forms
             var selectedEstado = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             
             cbxEstado.SelectedIndex = cbxEstado.Items.IndexOf(selectedEstado);
+            cmdEliminar.Visible = true;
         }
 
         private void fillEstadoCBX()
@@ -68,6 +64,7 @@ namespace Client.Forms
 
         private void cmdClean_Click(object sender, EventArgs e)
         {
+            cmdEliminar.Visible = false;
             cleanTxt();
         }
 
