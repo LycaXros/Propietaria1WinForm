@@ -57,7 +57,7 @@ namespace Client.Forms
                     return;
                 }
                 else
-                if (cbxNivel.SelectedItem == null)
+                if (cbxNivel.SelectedItem == null )
                 {
 
                     MessageBox.Show("Campo Nivel Vacio Favor de Seleccionar Uno");
