@@ -33,22 +33,22 @@ namespace Client
             var fechaF = fechaHasta.Value;
 
 
-            var db = new DB.Model.NorthwindEntities();
-            var productos = (from p in db.Products select p).ToList();
-            var cat = (from p in db.Sales_by_Category select p).ToList();
-            var ord = (from p in db.Orders
-                       where p.OrderDate.Value >= fechaI && p.OrderDate.Value <=fechaF
-                       select p).ToList();
-            reportViewer1.ProcessingMode = ProcessingMode.Local;
-            reportViewer1.LocalReport.DataSources.Clear();
-            var rds = new ReportDataSource("DataSet1", productos);
-            reportViewer1.LocalReport.DataSources.Add(rds);
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet2", cat));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet3", ord));
-            reportViewer1.LocalReport.ReportEmbeddedResource = "Reportes/Employees.rdlc";
-            reportViewer1.LocalReport.ReportPath = @"Reportes/Employees.rdlc";
-            //reportViewer1.LocalReport.Refresh();
-            reportViewer1.RefreshReport();
+            //var db = new DB.Model.NorthwindEntities();
+            //var productos = (from p in db.Products select p).ToList();
+            //var cat = (from p in db.Sales_by_Category select p).ToList();
+            //var ord = (from p in db.Orders
+            //           where p.OrderDate.Value >= fechaI && p.OrderDate.Value <=fechaF
+            //           select p).ToList();
+            //reportViewer1.ProcessingMode = ProcessingMode.Local;
+            //reportViewer1.LocalReport.DataSources.Clear();
+            //var rds = new ReportDataSource("DataSet1", productos);
+            //reportViewer1.LocalReport.DataSources.Add(rds);
+            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet2", cat));
+            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet3", ord));
+            //reportViewer1.LocalReport.ReportEmbeddedResource = "Reportes/Employees.rdlc";
+            //reportViewer1.LocalReport.ReportPath = @"Reportes/Employees.rdlc";
+            ////reportViewer1.LocalReport.Refresh();
+            //reportViewer1.RefreshReport();
 
         }
 

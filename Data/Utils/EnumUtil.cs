@@ -24,7 +24,7 @@ namespace Data.Utils
         //    //    return defaultValue;
         //    //}
         //}
-        public static T ParseEnum<T>(string value) where T : Enum
+        public static T ParseEnum<T>(string value)
         {
             return (T)Enum.Parse(typeof(T), value, true);
         }

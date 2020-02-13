@@ -58,16 +58,18 @@
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.3.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1358.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -86,63 +88,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DB\Model\Categories.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\CustomerDemographics.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Customers.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Employees.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\NorthwindModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NorthwindModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\NorthwindModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\NorthwindModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NorthwindModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Orders.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Order_Details.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Products.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Products_by_Category.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Region.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Sales_by_Category.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Sales_Totals_by_Amount.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Shippers.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Suppliers.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Model\Territories.cs">
-      <DependentUpon>NorthwindModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmCapacitaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,9 +118,7 @@
     <Compile Include="MDIs\MDI.Designer.cs">
       <DependentUpon>MDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="NorthwindDataSet.cs">
-      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="VerReporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,14 +131,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="NorthwindDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Forms\frmCapacitaciones.resx">
       <DependentUpon>frmCapacitaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,24 +167,6 @@
     <EmbeddedResource Include="Reportes\Employees.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EntityDeploy Include="DB\Model\NorthwindModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NorthwindModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DB\Model\NorthwindModel.edmx.diagram">
-      <DependentUpon>NorthwindModel.edmx</DependentUpon>
-    </None>
-    <None Include="NorthwindDataSet.xsc">
-      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="NorthwindDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>NorthwindDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="NorthwindDataSet.xss">
-      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Client.DB.Model.Products.datasource" />
     <None Include="Properties\DataSources\Data.Models.Candidatos.datasource" />
@@ -274,30 +193,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DB\Model\NorthwindModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NorthwindModel.edmx</DependentUpon>
-      <LastGenOutput>NorthwindModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DB\Model\NorthwindModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NorthwindModel.edmx</DependentUpon>
-      <LastGenOutput>NorthwindModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="DB\TryhardDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DB\TryhardDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>TryhardDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Imgs\logo-unapec_color.jpg" />
-    <None Include="Resources\cancel.png" />
-    <None Include="Resources\cancel-red.png" />
-    <None Include="Resources\save.png" />
-    <None Include="Resources\Search.png" />
-    <None Include="Resources\trashCan.png" />
-    <None Include="Resources\add-circle.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -311,6 +207,12 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\cancel-red.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\Search.png" />
+    <None Include="Resources\trashCan.png" />
+    <None Include="Resources\add-circle.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">

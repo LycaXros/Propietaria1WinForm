@@ -31,19 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.ProductsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.NorthwindDataSet = new Client.NorthwindDataSet();
-            this.salesByCatBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ProductsTableAdapter = new Client.NorthwindDataSetTableAdapters.ProductsTableAdapter();
-            this.salesByCatTableAdapter = new Client.NorthwindDataSetTableAdapters.SalesByCatTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.fechaHasta = new System.Windows.Forms.DateTimePicker();
             this.fechaDesde = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NorthwindDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salesByCatBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,29 +65,6 @@
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(599, 426);
             this.reportViewer1.TabIndex = 2;
-            // 
-            // ProductsBindingSource
-            // 
-            this.ProductsBindingSource.DataMember = "Products";
-            this.ProductsBindingSource.DataSource = this.NorthwindDataSet;
-            // 
-            // NorthwindDataSet
-            // 
-            this.NorthwindDataSet.DataSetName = "NorthwindDataSet";
-            this.NorthwindDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // salesByCatBindingSource
-            // 
-            this.salesByCatBindingSource.DataMember = "SalesByCat";
-            this.salesByCatBindingSource.DataSource = this.NorthwindDataSet;
-            // 
-            // ProductsTableAdapter
-            // 
-            this.ProductsTableAdapter.ClearBeforeFill = true;
-            // 
-            // salesByCatTableAdapter
-            // 
-            this.salesByCatTableAdapter.ClearBeforeFill = true;
             // 
             // groupBox1
             // 
@@ -159,9 +128,6 @@
             this.Name = "VerReporte";
             this.Text = "VerReporte";
             this.Load += new System.EventHandler(this.VerReporte_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ProductsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NorthwindDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salesByCatBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -171,11 +137,6 @@
         #endregion
         private System.Windows.Forms.Button button1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource ProductsBindingSource;
-        private NorthwindDataSet NorthwindDataSet;
-        private NorthwindDataSetTableAdapters.ProductsTableAdapter ProductsTableAdapter;
-        private System.Windows.Forms.BindingSource salesByCatBindingSource;
-        private NorthwindDataSetTableAdapters.SalesByCatTableAdapter salesByCatTableAdapter;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
