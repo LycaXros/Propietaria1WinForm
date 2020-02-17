@@ -15,7 +15,7 @@ namespace Data.Models
 
         public double Salario { get; set; }
 
-        public int CandidatoId { get; set; }
+        public string CandidatoCedula { get; set; }
         public virtual Candidatos Candidato { get; set; }
         
 

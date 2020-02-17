@@ -15,7 +15,7 @@ namespace Client.Forms
     {
         public bool Editing { get; set; }
         public Capacitaciones cap { get; set; }
-        public int CandidatoID { get; internal set; }
+        public string CedulaCandidato { get; internal set; }
         public RRHHContext context { get; internal set; }
 
         public workCapacitaciones()
@@ -36,7 +36,7 @@ namespace Client.Forms
             }
             else
             {
-                lblID.Text = cap.Id.ToString();
+                lblID.Text = cap.CandidatoCedula;
                 txtDescipcion.Text = cap.Descripcion;
                 txtInstitucion.Text = cap.Institucion;
                 dtpInicio.Value = cap.FechaDesde;
@@ -93,7 +93,7 @@ namespace Client.Forms
                 context.Capacitaciones.Add(
                     new Capacitaciones
                     {
-                        CandidatoId = CandidatoID,
+                        CandidatoCedula = CedulaCandidato,
                         Descripcion = txtDescipcion.Text,
                         FechaDesde = dtpInicio.Value,
                         FechaHasta = dtpFin.Value,

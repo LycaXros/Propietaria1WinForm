@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Repos;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace Data.Models
         public DbSet<Candidatos> Candidatos { get; set; }
         public DbSet<ExperienciaLaboral> ExpLaborales { get; set; }
         public DbSet<Empleados> Empleados { get; set; }
+        public DbSet<EmployeeDataView> V_EmployeePuesto { get; set; }
 
 
 
@@ -51,7 +53,7 @@ namespace Data.Models
             modelBuilder.Entity<Capacitaciones>()
                 .HasRequired(c => c.Candidato)
                 .WithMany(c => c.Capacitaciones)
-                .HasForeignKey(c => c.CandidatoId);
+                .HasForeignKey(c => c.CandidatoCedula);
 
             modelBuilder.Entity<ExperienciaLaboral>()
                 .ToTable("Experiencia_Laboral_Candidato");
@@ -59,7 +61,7 @@ namespace Data.Models
             modelBuilder.Entity<ExperienciaLaboral>()
                 .HasRequired(e => e.Candidato)
                 .WithMany(c => c.ExperienciaLaborales)
-                .HasForeignKey(e => e.CandidatoId);
+                .HasForeignKey(e => e.CandidatoCedula);
 
 
         }

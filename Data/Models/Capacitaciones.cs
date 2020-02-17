@@ -14,7 +14,7 @@ namespace Data.Models
         public DateTime FechaHasta { get; set; }
         public string Institucion { get; set; }
 
-        public int CandidatoId { get; set; }
+        public string CandidatoCedula { get; set; }
         public virtual Candidatos Candidato { get; set; }
     }
 }

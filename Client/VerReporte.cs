@@ -1,4 +1,5 @@
-﻿using Microsoft.Reporting.WinForms;
+﻿using Data.Models;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace Client
 {
     public partial class VerReporte : Form
     {
+        public RRHHContext _db { get; internal set; }
         public VerReporte()
         {
             InitializeComponent();
@@ -29,10 +31,27 @@ namespace Client
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            var fechaI = fechaDesde.Value;
-            var fechaF = fechaHasta.Value;
+            try
+            {
 
-
+                var fechaI = fechaDesde.Value;
+                var fechaF = fechaHasta.Value;
+                var data = _db.Empleados
+                    .Where(x => x.FechaIngreso >= fechaI && x.FechaIngreso < fechaF)
+                    .ToList();
+                reportViewer1.ProcessingMode = ProcessingMode.Local;
+                reportViewer1.LocalReport.DataSources.Clear();
+                var rds = new ReportDataSource("DataSet1", data);
+                reportViewer1.LocalReport.DataSources.Add(rds);
+                reportViewer1.LocalReport.ReportEmbeddedResource = "Reportes/Employees.rdlc";
+                reportViewer1.LocalReport.ReportPath = @"Reportes/Employees.rdlc";
+                reportViewer1.LocalReport.Refresh();
+                reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error:\n {ex.Message}");
+            }
             //var db = new DB.Model.NorthwindEntities();
             //var productos = (from p in db.Products select p).ToList();
             //var cat = (from p in db.Sales_by_Category select p).ToList();

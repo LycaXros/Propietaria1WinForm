@@ -90,9 +90,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(18, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 20);
+            this.label2.Size = new System.Drawing.Size(59, 20);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Id";
+            this.label2.Text = "Cedula";
             // 
             // txtInstitucion
             // 
@@ -106,11 +106,11 @@
             // 
             this.lblID.AutoSize = true;
             this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(89, 39);
+            this.lblID.Location = new System.Drawing.Point(174, 39);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(18, 20);
+            this.lblID.Size = new System.Drawing.Size(118, 20);
             this.lblID.TabIndex = 24;
-            this.lblID.Text = "0";
+            this.lblID.Text = "000-0000000-0";
             // 
             // label5
             // 

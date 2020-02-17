@@ -12,8 +12,6 @@ namespace Data.Models
         }
 
         [Key]
-        public int Id { get; set; }
-        [StringLength(15,ErrorMessage = "Formato de la Cedula 000-0000000-0 ")]
         [Index("CedulaCandidato", IsUnique = true)]
         public string Cedula { get; set; }
         public string Nombre { get; set; }

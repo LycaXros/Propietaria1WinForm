@@ -67,6 +67,10 @@
     <Compile Include="Migrations\202001281509496_SettingInitializer.designer.cs">
       <DependentUpon>202001281509496_SettingInitializer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002171303140_SettingInitializer1.cs" />
+    <Compile Include="Migrations\202002171303140_SettingInitializer1.designer.cs">
+      <DependentUpon>202002171303140_SettingInitializer1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidatos.cs" />
     <Compile Include="Models\Capacitaciones.cs" />
@@ -80,15 +84,14 @@
     <Compile Include="Models\RRHHContext.cs" />
     <Compile Include="Models\RRHHContextInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\EmployeeDataView.cs" />
     <Compile Include="Utils\EnumUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001141943539_First.resx">
       <DependentUpon>202001141943539_First.cs</DependentUpon>
@@ -102,8 +105,12 @@
     <EmbeddedResource Include="Migrations\202001281509496_SettingInitializer.resx">
       <DependentUpon>202001281509496_SettingInitializer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171303140_SettingInitializer1.resx">
+      <DependentUpon>202002171303140_SettingInitializer1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\EmployeePuestoView.sql" />
     <Content Include="SqlScripts\GenerateMoviesDatabase.sql" />
     <Content Include="SqlScripts\GenerateUpdatedMoviesDatabase.sql" />
   </ItemGroup>
