@@ -87,6 +87,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FrmCandidatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCandidatos.Designer.cs">
+      <DependentUpon>FrmCandidatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCapacitaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,10 +111,10 @@
     <Compile Include="Forms\frmIdiomas.Designer.cs">
       <DependentUpon>frmIdiomas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\workCapacitaciones.cs">
+    <Compile Include="WorkForms\workCapacitaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\workCapacitaciones.Designer.cs">
+    <Compile Include="WorkForms\workCapacitaciones.Designer.cs">
       <DependentUpon>workCapacitaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="MDIs\MDI.cs">
@@ -132,6 +138,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmCandidatos.resx">
+      <DependentUpon>FrmCandidatos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCapacitaciones.resx">
       <DependentUpon>frmCapacitaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,7 +150,7 @@
     <EmbeddedResource Include="Forms\frmIdiomas.resx">
       <DependentUpon>frmIdiomas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\workCapacitaciones.resx">
+    <EmbeddedResource Include="WorkForms\workCapacitaciones.resx">
       <DependentUpon>workCapacitaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIs\MDI.resx">

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Client.Forms
+namespace Client.WorkForms
 {
     public partial class workCapacitaciones : Form
     {
@@ -36,7 +36,7 @@ namespace Client.Forms
             }
             else
             {
-                lblID.Text = cap.CandidatoCedula;
+                lblID.Text = cap.Id.ToString();
                 txtDescipcion.Text = cap.Descripcion;
                 txtInstitucion.Text = cap.Institucion;
                 dtpInicio.Value = cap.FechaDesde;

@@ -110,7 +110,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Migrations\EmployeePuestoView.sql" />
+    <Content Include="Migrations\EmployeePuestoView.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SqlScripts\GenerateMoviesDatabase.sql" />
     <Content Include="SqlScripts\GenerateUpdatedMoviesDatabase.sql" />
   </ItemGroup>

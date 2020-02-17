@@ -1,4 +1,4 @@
-﻿namespace Client.Forms
+﻿namespace Client.WorkForms
 {
     partial class workCapacitaciones
     {
@@ -41,9 +41,9 @@
             this.dtpInicio = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescipcion = new System.Windows.Forms.RichTextBox();
-            this.cmdGuardar = new System.Windows.Forms.Button();
             this.cmdCancelar = new System.Windows.Forms.Button();
             this.cmdEliminar = new System.Windows.Forms.Button();
+            this.cmdGuardar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,9 +90,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(18, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 20);
+            this.label2.Size = new System.Drawing.Size(26, 20);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Cedula";
+            this.label2.Text = "ID";
             // 
             // txtInstitucion
             // 
@@ -106,11 +106,11 @@
             // 
             this.lblID.AutoSize = true;
             this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(174, 39);
+            this.lblID.Location = new System.Drawing.Point(176, 39);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(118, 20);
+            this.lblID.Size = new System.Drawing.Size(18, 20);
             this.lblID.TabIndex = 24;
-            this.lblID.Text = "000-0000000-0";
+            this.lblID.Text = "0";
             // 
             // label5
             // 
@@ -185,20 +185,6 @@
             this.txtDescipcion.TabIndex = 26;
             this.txtDescipcion.Text = "";
             // 
-            // cmdGuardar
-            // 
-            this.cmdGuardar.BackgroundImage = global::Client.Properties.Resources.save;
-            this.cmdGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdGuardar.FlatAppearance.BorderSize = 0;
-            this.cmdGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdGuardar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGuardar.Location = new System.Drawing.Point(67, 351);
-            this.cmdGuardar.Name = "cmdGuardar";
-            this.cmdGuardar.Size = new System.Drawing.Size(60, 70);
-            this.cmdGuardar.TabIndex = 23;
-            this.cmdGuardar.UseVisualStyleBackColor = true;
-            this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
-            // 
             // cmdCancelar
             // 
             this.cmdCancelar.BackgroundImage = global::Client.Properties.Resources.cancel_red;
@@ -226,6 +212,20 @@
             this.cmdEliminar.TabIndex = 28;
             this.cmdEliminar.UseVisualStyleBackColor = true;
             this.cmdEliminar.Click += new System.EventHandler(this.cmdEliminar_Click);
+            // 
+            // cmdGuardar
+            // 
+            this.cmdGuardar.BackgroundImage = global::Client.Properties.Resources.save;
+            this.cmdGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdGuardar.FlatAppearance.BorderSize = 0;
+            this.cmdGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdGuardar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdGuardar.Location = new System.Drawing.Point(67, 351);
+            this.cmdGuardar.Name = "cmdGuardar";
+            this.cmdGuardar.Size = new System.Drawing.Size(60, 70);
+            this.cmdGuardar.TabIndex = 23;
+            this.cmdGuardar.UseVisualStyleBackColor = true;
+            this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
             // 
             // workCapacitaciones
             // 

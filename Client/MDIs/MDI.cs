@@ -63,5 +63,10 @@ namespace Client.MDIs
         {
             ShowForm(new Forms.frmCapacitaciones() { context = _context });
         }
+
+        private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Forms.FrmCandidatos() { context = _context });
+        }
     }
 }

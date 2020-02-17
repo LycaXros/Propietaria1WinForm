@@ -1,4 +1,5 @@
-﻿using Data.Models;
+﻿using Client.WorkForms;
+using Data.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace Client.Forms
     {
         public List<Capacitaciones> Capacitaciones { get; set; }
         public RRHHContext context { get; internal set; }
+        public string Cedula { get; internal set; }
 
         public frmCapacitaciones()
         {
@@ -25,7 +27,7 @@ namespace Client.Forms
         private void DgvCapacitaciones_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var id = int.Parse(dgvCapacitaciones.Rows[e.RowIndex].Cells[0].Value.ToString());
-            var frm = new workCapacitaciones() { Editing = true, cap = Capacitaciones[id], context = context };
+            var frm = new workCapacitaciones() { Editing = true, cap = Capacitaciones[id], context = context, CedulaCandidato =  Cedula};
             frm.StartPosition = FormStartPosition.CenterScreen;            
             frm.ShowDialog();
 
