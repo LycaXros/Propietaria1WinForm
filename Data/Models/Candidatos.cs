@@ -29,5 +29,7 @@ namespace Data.Models
 
         public int RecomiendaId { get; set; }
         public virtual Empleados RecomendadoPor { get; set; }
+       // public int IdiomaId { get; set; }
+        public virtual Idiomas Idioma { get; set; }
     }
 }

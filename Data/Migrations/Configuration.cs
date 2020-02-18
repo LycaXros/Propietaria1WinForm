@@ -21,12 +21,12 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
-            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-            UriBuilder uri = new UriBuilder(codeBase);
-            string path = Uri.UnescapeDataString(uri.Path);
-            var baseDir = Path.GetDirectoryName(path) + "\\Migrations\\EmployeePuestoView.sql";
+            //string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            //UriBuilder uri = new UriBuilder(codeBase);
+            //string path = Uri.UnescapeDataString(uri.Path);
+            //var baseDir = Path.GetDirectoryName(path) + "\\Migrations\\EmployeePuestoView.sql";
 
-            context.Database.ExecuteSqlCommand(File.ReadAllText(baseDir));
+            //context.Database.ExecuteSqlCommand(File.ReadAllText(baseDir));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Data.Models
 {
     public class RRHHContext : DbContext
     {
-        public RRHHContext(): base("name=RRHH_Connection")
+        public RRHHContext() : base("name=RRHH_Connection")
         {
             Database.SetInitializer(new RRHHContextInitializer());
         }
@@ -23,7 +23,7 @@ namespace Data.Models
         public DbSet<Candidatos> Candidatos { get; set; }
         public DbSet<ExperienciaLaboral> ExpLaborales { get; set; }
         public DbSet<Empleados> Empleados { get; set; }
-      //  public DbSet<EmployeeDataView> V_EmployeePuesto { get; set; }
+        //public DbSet<EmployeeDataView> V_EmployeePuesto { get; set; }
 
 
 
@@ -34,7 +34,7 @@ namespace Data.Models
             modelBuilder.Entity<Puestos>()
                 .HasRequired(d => d.Departamento)
                 .WithMany(g => g.Puestos)
-                .HasForeignKey(p=>p.DepartamentoID);
+                .HasForeignKey(p => p.DepartamentoID);
 
             modelBuilder.Entity<Candidatos>()
                 .HasRequired(c => c.PuestoAspira)
@@ -63,7 +63,22 @@ namespace Data.Models
                 .WithMany(c => c.ExperienciaLaborales)
                 .HasForeignKey(e => e.CandidatoCedula);
 
+            modelBuilder.Entity<Empleados>()
+                .HasMany(e=> e.Recomendados)
+                .WithRequired(e => e.RecomendadoPor)
+                .HasForeignKey(e => e.RecomiendaId);
 
+            modelBuilder.Entity<Empleados>()
+                .HasOptional(e => e.LoginData)
+                .WithRequired(e => e.DatosEmpleado);
+
+            modelBuilder.Entity<Idiomas>()
+                .HasMany(e => e.Empleados)
+                .WithRequired(e => e.Idioma);
+
+            modelBuilder.Entity<Idiomas>()
+                .HasMany(e => e.Candidatos)
+                .WithRequired(e => e.Idioma);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,5 +20,10 @@ namespace Data.Models
         
         public double Salario { get; set; }
         public EstadoPersistencia Estado { get; set; }
+        public ICollection<Candidatos> Recomendados { get; set; }
+
+        public virtual Login LoginData { get; set; }
+        //public int IdiomaId { get; set; }
+        public virtual Idiomas  Idioma { get; set; }
     }
 }

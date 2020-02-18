@@ -71,6 +71,10 @@
     <Compile Include="Migrations\202002171303140_SettingInitializer1.designer.cs">
       <DependentUpon>202002171303140_SettingInitializer1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002182131194_LoginClass.cs" />
+    <Compile Include="Migrations\202002182131194_LoginClass.designer.cs">
+      <DependentUpon>202002182131194_LoginClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidatos.cs" />
     <Compile Include="Models\Capacitaciones.cs" />
@@ -80,6 +84,7 @@
     <Compile Include="Models\EstadoPersistencia.cs" />
     <Compile Include="Models\ExperienciaLaboral.cs" />
     <Compile Include="Models\Idiomas.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Puestos.cs" />
     <Compile Include="Models\RRHHContext.cs" />
     <Compile Include="Models\RRHHContextInitializer.cs" />
@@ -107,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002171303140_SettingInitializer1.resx">
       <DependentUpon>202002171303140_SettingInitializer1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002182131194_LoginClass.resx">
+      <DependentUpon>202002182131194_LoginClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

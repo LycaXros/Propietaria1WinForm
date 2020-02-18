@@ -31,12 +31,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvResultados = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmdADD = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.cbxCriterio = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtValorABuscar = new System.Windows.Forms.TextBox();
-            this.cmdADD = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).BeginInit();
             this.panel1.SuspendLayout();
@@ -81,6 +81,32 @@
             this.panel1.Size = new System.Drawing.Size(694, 75);
             this.panel1.TabIndex = 2;
             // 
+            // cmdADD
+            // 
+            this.cmdADD.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.cmdADD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdADD.FlatAppearance.BorderSize = 0;
+            this.cmdADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdADD.Location = new System.Drawing.Point(583, 4);
+            this.cmdADD.Name = "cmdADD";
+            this.cmdADD.Size = new System.Drawing.Size(75, 64);
+            this.cmdADD.TabIndex = 21;
+            this.cmdADD.UseVisualStyleBackColor = true;
+            this.cmdADD.Click += new System.EventHandler(this.cmdADD_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::Client.Properties.Resources.Search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(492, 4);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 64);
+            this.btnBuscar.TabIndex = 20;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // cbxCriterio
             // 
             this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -123,31 +149,6 @@
             this.txtValorABuscar.Name = "txtValorABuscar";
             this.txtValorABuscar.Size = new System.Drawing.Size(172, 26);
             this.txtValorABuscar.TabIndex = 16;
-            // 
-            // cmdADD
-            // 
-            this.cmdADD.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.cmdADD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdADD.FlatAppearance.BorderSize = 0;
-            this.cmdADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdADD.Location = new System.Drawing.Point(583, 4);
-            this.cmdADD.Name = "cmdADD";
-            this.cmdADD.Size = new System.Drawing.Size(75, 64);
-            this.cmdADD.TabIndex = 21;
-            this.cmdADD.UseVisualStyleBackColor = true;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::Client.Properties.Resources.Search;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(492, 4);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 64);
-            this.btnBuscar.TabIndex = 20;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // FrmCandidatos
             // 

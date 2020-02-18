@@ -24,7 +24,9 @@ namespace Client.Forms
 
         private void DgvResultados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-          //  throw new NotImplementedException();
+            var frm = new WorkForms.workCandidatos() { Context = context }; 
+            frm.Text += ": Editar";
+            frm.ShowDialog();
         }
 
         private void FrmCandidatos_Load(object sender, EventArgs e)
@@ -102,6 +104,13 @@ namespace Client.Forms
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmdADD_Click(object sender, EventArgs e)
+        {
+            var frm = new WorkForms.workCandidatos() { Context = context};
+            frm.Text += ": Nuevo";
+            frm.ShowDialog();
         }
     }
 }
