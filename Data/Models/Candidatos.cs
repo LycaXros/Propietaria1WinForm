@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,6 +10,10 @@ namespace Data.Models
         public Candidatos()
         {
             Competencias = new HashSet<Competencias>();
+            Capacitaciones = new HashSet<Capacitaciones>();
+            ExperienciaLaborales = new HashSet<ExperienciaLaboral>();
+            Idiomas = new HashSet<Idiomas>();
+
         }
 
         [Key]
@@ -24,12 +29,12 @@ namespace Data.Models
 
         public virtual ICollection<Competencias> Competencias { get; set; }
 
-        public ICollection<Capacitaciones> Capacitaciones { get; set; }
-        public ICollection<ExperienciaLaboral> ExperienciaLaborales { get; set; }
+        public virtual ICollection<Capacitaciones> Capacitaciones { get; set; }
+        public virtual ICollection<ExperienciaLaboral> ExperienciaLaborales { get; set; }
 
         public int RecomiendaId { get; set; }
         public virtual Empleados RecomendadoPor { get; set; }
-       // public int IdiomaId { get; set; }
-        public virtual Idiomas Idioma { get; set; }
+
+        public virtual ICollection<Idiomas> Idiomas { get; set; }
     }
 }

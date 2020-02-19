@@ -75,6 +75,10 @@
     <Compile Include="Migrations\202002182131194_LoginClass.designer.cs">
       <DependentUpon>202002182131194_LoginClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002191309430_IdiomasChanges.cs" />
+    <Compile Include="Migrations\202002191309430_IdiomasChanges.designer.cs">
+      <DependentUpon>202002191309430_IdiomasChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidatos.cs" />
     <Compile Include="Models\Capacitaciones.cs" />
@@ -115,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002182131194_LoginClass.resx">
       <DependentUpon>202002182131194_LoginClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002191309430_IdiomasChanges.resx">
+      <DependentUpon>202002191309430_IdiomasChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

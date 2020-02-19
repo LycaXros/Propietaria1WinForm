@@ -56,5 +56,12 @@ namespace Client.WorkForms
                 Candidato.Departamento = dep;
             }
         }
+
+        private void cmdADD_Capacitaciones_Click(object sender, EventArgs e)
+        {
+            var frm = new workCapacitaciones() { context = Context, Editing = false };
+
+            frm.ShowDialog();
+        }
     }
 }

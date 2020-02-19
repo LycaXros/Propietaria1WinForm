@@ -64,21 +64,34 @@ namespace Data.Models
                 .HasForeignKey(e => e.CandidatoCedula);
 
             modelBuilder.Entity<Empleados>()
-                .HasMany(e=> e.Recomendados)
+                .HasMany(e => e.Recomendados)
                 .WithRequired(e => e.RecomendadoPor)
-                .HasForeignKey(e => e.RecomiendaId);
+                .HasForeignKey(e => e.RecomiendaId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Empleados>()
                 .HasOptional(e => e.LoginData)
                 .WithRequired(e => e.DatosEmpleado);
 
-            modelBuilder.Entity<Idiomas>()
-                .HasMany(e => e.Empleados)
-                .WithRequired(e => e.Idioma);
+            modelBuilder.Entity<Empleados>()
+                .HasMany(e => e.Idiomas)
+                .WithMany(e => e.Empleados)
+                .Map(ee =>
+                {
+                    ee.MapLeftKey("EmpleadoRef");
+                    ee.MapRightKey("IdiomasRef");
+                    ee.ToTable("EmpleadosIdiomas");
+                });
 
-            modelBuilder.Entity<Idiomas>()
-                .HasMany(e => e.Candidatos)
-                .WithRequired(e => e.Idioma);
+            modelBuilder.Entity<Candidatos>()
+                .HasMany(e => e.Idiomas)
+                .WithMany(e => e.Candidatos)
+                .Map(ee =>
+                {
+                    ee.MapLeftKey("CandidatoRef");
+                    ee.MapRightKey("IdiomasRef");
+                    ee.ToTable("CandidatosIdiomas");
+                });
         }
     }
 }

@@ -7,7 +7,13 @@ namespace Data.Models
 {
     public class Empleados
     {
+        public Empleados()
+        {
+            Recomendados = new HashSet<Candidatos>();
+            Idiomas = new HashSet<Idiomas>();
+        }
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         
         public string Cedula { get; set; }
@@ -24,6 +30,6 @@ namespace Data.Models
 
         public virtual Login LoginData { get; set; }
         //public int IdiomaId { get; set; }
-        public virtual Idiomas  Idioma { get; set; }
+        public virtual ICollection<Idiomas> Idiomas { get; set; }
     }
 }

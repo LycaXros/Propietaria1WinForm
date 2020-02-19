@@ -7,6 +7,7 @@ namespace Data.Models
     public class Puestos
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string  Nombre { get; set; }
         public string Riesgo { get; set; }
