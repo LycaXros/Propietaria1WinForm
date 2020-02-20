@@ -1,5 +1,7 @@
-﻿using Client.WorkForms;
+﻿using Client.ViewModels;
+using Client.WorkForms;
 using Data.Models;
+using Mapster;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +29,8 @@ namespace Client.Forms
         private void DgvCapacitaciones_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var id = int.Parse(dgvCapacitaciones.Rows[e.RowIndex].Cells[0].Value.ToString());
-            var frm = new workCapacitaciones() { Editing = true, cap = Capacitaciones[id], context = context, CedulaCandidato =  Cedula};
+            var c = Capacitaciones[id].Adapt<CapacitacionViewModel>();
+            var frm = new workCapacitaciones() { Editing = true, cap = c, context = context, CedulaCandidato =  Cedula};
             frm.StartPosition = FormStartPosition.CenterScreen;            
             frm.ShowDialog();
 

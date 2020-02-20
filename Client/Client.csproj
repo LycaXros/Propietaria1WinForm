@@ -57,6 +57,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Mapster, Version=5.0.0.0, Culture=neutral, PublicKeyToken=2f39883af23c29a8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapster.5.0.0\lib\net45\Mapster.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -111,6 +114,8 @@
     <Compile Include="Forms\frmIdiomas.Designer.cs">
       <DependentUpon>frmIdiomas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\TextboxUtils.cs" />
+    <Compile Include="ViewModels\CapacitacionViewModel.cs" />
     <Compile Include="WorkForms\workCandidatos.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -25,7 +25,6 @@ namespace Client.Forms
         private void DgvResultados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var frm = new WorkForms.workCandidatos() { Context = context }; 
-            frm.Text += ": Editar";
             frm.ShowDialog();
         }
 
@@ -108,8 +107,7 @@ namespace Client.Forms
 
         private void cmdADD_Click(object sender, EventArgs e)
         {
-            var frm = new WorkForms.workCandidatos() { Context = context};
-            frm.Text += ": Nuevo";
+            var frm = new WorkForms.workCandidatos() { Context = context, Editing =false};
             frm.ShowDialog();
         }
     }

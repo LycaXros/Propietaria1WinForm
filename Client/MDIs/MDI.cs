@@ -13,6 +13,7 @@ namespace Client.MDIs
 {
     public partial class MDI_User : Form
     {
+        public static int IdentificadorEmpleado { get; internal set; }
         private RRHHContext _context;
         public MDI_User()
         {

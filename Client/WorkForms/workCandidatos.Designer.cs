@@ -41,21 +41,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cmdADD_Competencias = new System.Windows.Forms.Button();
             this.dgvCompetencias = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cmdADD_Capacitaciones = new System.Windows.Forms.Button();
             this.dgvCapacitaciones = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.dgvExpLaboral = new System.Windows.Forms.DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cmdGuardar = new System.Windows.Forms.Button();
             this.cmdEliminar = new System.Windows.Forms.Button();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.cmdADD_Competencias = new System.Windows.Forms.Button();
-            this.cmdADD_Capacitaciones = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.puestosBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -65,10 +65,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCapacitaciones)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExpLaboral)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -130,6 +130,7 @@
             this.mtxtCedula.Name = "mtxtCedula";
             this.mtxtCedula.Size = new System.Drawing.Size(126, 26);
             this.mtxtCedula.TabIndex = 4;
+            this.mtxtCedula.TextChanged += new System.EventHandler(this.mtxtCedula_TextChanged);
             // 
             // label4
             // 
@@ -202,6 +203,18 @@
             this.tabPage1.Text = "Competencias";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // cmdADD_Competencias
+            // 
+            this.cmdADD_Competencias.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.cmdADD_Competencias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdADD_Competencias.FlatAppearance.BorderSize = 0;
+            this.cmdADD_Competencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdADD_Competencias.Location = new System.Drawing.Point(537, 49);
+            this.cmdADD_Competencias.Name = "cmdADD_Competencias";
+            this.cmdADD_Competencias.Size = new System.Drawing.Size(75, 64);
+            this.cmdADD_Competencias.TabIndex = 22;
+            this.cmdADD_Competencias.UseVisualStyleBackColor = true;
+            // 
             // dgvCompetencias
             // 
             this.dgvCompetencias.AllowUserToAddRows = false;
@@ -225,6 +238,19 @@
             this.tabPage2.Text = "Capacitaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // cmdADD_Capacitaciones
+            // 
+            this.cmdADD_Capacitaciones.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.cmdADD_Capacitaciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdADD_Capacitaciones.FlatAppearance.BorderSize = 0;
+            this.cmdADD_Capacitaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdADD_Capacitaciones.Location = new System.Drawing.Point(29, 69);
+            this.cmdADD_Capacitaciones.Name = "cmdADD_Capacitaciones";
+            this.cmdADD_Capacitaciones.Size = new System.Drawing.Size(75, 64);
+            this.cmdADD_Capacitaciones.TabIndex = 23;
+            this.cmdADD_Capacitaciones.UseVisualStyleBackColor = true;
+            this.cmdADD_Capacitaciones.Click += new System.EventHandler(this.cmdADD_Capacitaciones_Click);
+            // 
             // dgvCapacitaciones
             // 
             this.dgvCapacitaciones.AllowUserToAddRows = false;
@@ -247,6 +273,18 @@
             this.tabPage3.Text = "Experiencia Laboral";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(554, 72);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 64);
+            this.button1.TabIndex = 23;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // dgvExpLaboral
             // 
             this.dgvExpLaboral.AllowUserToAddRows = false;
@@ -257,6 +295,41 @@
             this.dgvExpLaboral.ReadOnly = true;
             this.dgvExpLaboral.Size = new System.Drawing.Size(471, 193);
             this.dgvExpLaboral.TabIndex = 1;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.dataGridView1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(662, 220);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Idiomas";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(550, 72);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 64);
+            this.button2.TabIndex = 25;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(37, 14);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(471, 193);
+            this.dataGridView1.TabIndex = 24;
             // 
             // panel2
             // 
@@ -307,78 +380,6 @@
             this.cmdEliminar.TabIndex = 31;
             this.cmdEliminar.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.button2);
-            this.tabPage4.Controls.Add(this.dataGridView1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(662, 220);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Idiomas";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // cmdADD_Competencias
-            // 
-            this.cmdADD_Competencias.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.cmdADD_Competencias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdADD_Competencias.FlatAppearance.BorderSize = 0;
-            this.cmdADD_Competencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdADD_Competencias.Location = new System.Drawing.Point(537, 49);
-            this.cmdADD_Competencias.Name = "cmdADD_Competencias";
-            this.cmdADD_Competencias.Size = new System.Drawing.Size(75, 64);
-            this.cmdADD_Competencias.TabIndex = 22;
-            this.cmdADD_Competencias.UseVisualStyleBackColor = true;
-            // 
-            // cmdADD_Capacitaciones
-            // 
-            this.cmdADD_Capacitaciones.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.cmdADD_Capacitaciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdADD_Capacitaciones.FlatAppearance.BorderSize = 0;
-            this.cmdADD_Capacitaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdADD_Capacitaciones.Location = new System.Drawing.Point(29, 69);
-            this.cmdADD_Capacitaciones.Name = "cmdADD_Capacitaciones";
-            this.cmdADD_Capacitaciones.Size = new System.Drawing.Size(75, 64);
-            this.cmdADD_Capacitaciones.TabIndex = 23;
-            this.cmdADD_Capacitaciones.UseVisualStyleBackColor = true;
-            this.cmdADD_Capacitaciones.Click += new System.EventHandler(this.cmdADD_Capacitaciones_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(554, 72);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 64);
-            this.button1.TabIndex = 23;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(550, 72);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 64);
-            this.button2.TabIndex = 25;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 14);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(471, 193);
-            this.dataGridView1.TabIndex = 24;
-            // 
             // workCandidatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,10 +402,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCapacitaciones)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvExpLaboral)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
