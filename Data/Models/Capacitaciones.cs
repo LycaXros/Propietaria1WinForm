@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Models
 {
     public class Capacitaciones
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Descripcion { get; set; }
         public string Nivel { get; set; }
@@ -14,7 +16,7 @@ namespace Data.Models
         public DateTime FechaHasta { get; set; }
         public string Institucion { get; set; }
 
-        public int CandidatoId { get; set; }
+        public string CandidatoCedula { get; set; }
         public virtual Candidatos Candidato { get; set; }
     }
 }

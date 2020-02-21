@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Repos;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Data.Models
 {
     public class RRHHContext : DbContext
     {
-        public RRHHContext(): base("name=RRHH_Connection")
+        public RRHHContext() : base("name=RRHH_Connection")
         {
             Database.SetInitializer(new RRHHContextInitializer());
         }
@@ -21,6 +22,9 @@ namespace Data.Models
         public DbSet<Departamentos> Departamentos { get; set; }
         public DbSet<Candidatos> Candidatos { get; set; }
         public DbSet<ExperienciaLaboral> ExpLaborales { get; set; }
+        public DbSet<Empleados> Empleados { get; set; }
+        //public DbSet<EmployeeDataView> V_EmployeePuesto { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -30,7 +34,7 @@ namespace Data.Models
             modelBuilder.Entity<Puestos>()
                 .HasRequired(d => d.Departamento)
                 .WithMany(g => g.Puestos)
-                .HasForeignKey(p=>p.DepartamentoID);
+                .HasForeignKey(p => p.DepartamentoID);
 
             modelBuilder.Entity<Candidatos>()
                 .HasRequired(c => c.PuestoAspira)
@@ -49,7 +53,7 @@ namespace Data.Models
             modelBuilder.Entity<Capacitaciones>()
                 .HasRequired(c => c.Candidato)
                 .WithMany(c => c.Capacitaciones)
-                .HasForeignKey(c => c.CandidatoId);
+                .HasForeignKey(c => c.CandidatoCedula);
 
             modelBuilder.Entity<ExperienciaLaboral>()
                 .ToTable("Experiencia_Laboral_Candidato");
@@ -57,8 +61,37 @@ namespace Data.Models
             modelBuilder.Entity<ExperienciaLaboral>()
                 .HasRequired(e => e.Candidato)
                 .WithMany(c => c.ExperienciaLaborales)
-                .HasForeignKey(e => e.CandidatoId);
+                .HasForeignKey(e => e.CandidatoCedula);
 
+            modelBuilder.Entity<Empleados>()
+                .HasMany(e => e.Recomendados)
+                .WithRequired(e => e.RecomendadoPor)
+                .HasForeignKey(e => e.RecomiendaId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Empleados>()
+                .HasOptional(e => e.LoginData)
+                .WithRequired(e => e.DatosEmpleado);
+
+            modelBuilder.Entity<Empleados>()
+                .HasMany(e => e.Idiomas)
+                .WithMany(e => e.Empleados)
+                .Map(ee =>
+                {
+                    ee.MapLeftKey("EmpleadoRef");
+                    ee.MapRightKey("IdiomasRef");
+                    ee.ToTable("EmpleadosIdiomas");
+                });
+
+            modelBuilder.Entity<Candidatos>()
+                .HasMany(e => e.Idiomas)
+                .WithMany(e => e.Candidatos)
+                .Map(ee =>
+                {
+                    ee.MapLeftKey("CandidatoRef");
+                    ee.MapRightKey("IdiomasRef");
+                    ee.ToTable("CandidatosIdiomas");
+                });
         }
     }
 }
