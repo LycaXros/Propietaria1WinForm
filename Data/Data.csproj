@@ -52,32 +52,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\202001141943539_First.cs" />
-    <Compile Include="Migrations\202001141943539_First.designer.cs">
+    <Compile Include="Migrations\202001141943539_First.Designer.cs">
       <DependentUpon>202001141943539_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202001151742034_SecondBatchModels.cs" />
-    <Compile Include="Migrations\202001151742034_SecondBatchModels.designer.cs">
+    <Compile Include="Migrations\202001151742034_SecondBatchModels.Designer.cs">
       <DependentUpon>202001151742034_SecondBatchModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202001161234350_addingDefaultValues.cs" />
-    <Compile Include="Migrations\202001161234350_addingDefaultValues.designer.cs">
+    <Compile Include="Migrations\202001161234350_addingDefaultValues.Designer.cs">
       <DependentUpon>202001161234350_addingDefaultValues.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202001281509496_SettingInitializer.cs" />
-    <Compile Include="Migrations\202001281509496_SettingInitializer.designer.cs">
+    <Compile Include="Migrations\202001281509496_SettingInitializer.Designer.cs">
       <DependentUpon>202001281509496_SettingInitializer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202002171303140_SettingInitializer1.cs" />
-    <Compile Include="Migrations\202002171303140_SettingInitializer1.designer.cs">
+    <Compile Include="Migrations\202002171303140_SettingInitializer1.Designer.cs">
       <DependentUpon>202002171303140_SettingInitializer1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002182131194_LoginClass.cs" />
-    <Compile Include="Migrations\202002182131194_LoginClass.designer.cs">
-      <DependentUpon>202002182131194_LoginClass.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202002191309430_IdiomasChanges.cs" />
-    <Compile Include="Migrations\202002191309430_IdiomasChanges.designer.cs">
+    <Compile Include="Migrations\202002191309430_IdiomasChanges.Designer.cs">
       <DependentUpon>202002191309430_IdiomasChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002221302381_LoginI.cs" />
+    <Compile Include="Migrations\202002221302381_LoginI.designer.cs">
+      <DependentUpon>202002221302381_LoginI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002221307071_LoginII.cs" />
+    <Compile Include="Migrations\202002221307071_LoginII.designer.cs">
+      <DependentUpon>202002221307071_LoginII.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidatos.cs" />
@@ -100,7 +104,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001141943539_First.resx">
       <DependentUpon>202001141943539_First.cs</DependentUpon>
@@ -117,11 +120,14 @@
     <EmbeddedResource Include="Migrations\202002171303140_SettingInitializer1.resx">
       <DependentUpon>202002171303140_SettingInitializer1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002182131194_LoginClass.resx">
-      <DependentUpon>202002182131194_LoginClass.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002191309430_IdiomasChanges.resx">
       <DependentUpon>202002191309430_IdiomasChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002221302381_LoginI.resx">
+      <DependentUpon>202002221302381_LoginI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002221307071_LoginII.resx">
+      <DependentUpon>202002221307071_LoginII.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

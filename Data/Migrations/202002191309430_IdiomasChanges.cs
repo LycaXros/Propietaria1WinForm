@@ -39,8 +39,8 @@
                 .Index(t => t.IdiomasRef);
             
             AddForeignKey("dbo.Candidatos", "RecomiendaId", "dbo.Empleados", "Id");
-            DropColumn("dbo.Candidatos", "Idioma_Id");
-            DropColumn("dbo.Empleados", "Idioma_Id");
+            //DropColumn("dbo.Candidatos", "Idioma_Id");
+            //DropColumn("dbo.Empleados", "Idioma_Id");
         }
         
         public override void Down()

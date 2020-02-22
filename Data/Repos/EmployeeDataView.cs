@@ -12,6 +12,7 @@ namespace Data.Repos
     public class EmployeeDataView
     {
         [Key]
+        public Guid RowId { get; set; }
         public string Cedula { get; set; }
         public string Nombre { get; set; }
         public DateTime FechaIngreso { get; set; }

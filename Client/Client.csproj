@@ -114,6 +114,7 @@
     <Compile Include="Forms\frmIdiomas.Designer.cs">
       <DependentUpon>frmIdiomas.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Utils\TextboxUtils.cs" />
     <Compile Include="ViewModels\CapacitacionViewModel.cs" />
     <Compile Include="WorkForms\workCandidatos.cs">
@@ -134,7 +135,6 @@
     <Compile Include="MDIs\MDI.Designer.cs">
       <DependentUpon>MDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="VerReporte.cs">
       <SubType>Form</SubType>
     </Compile>
