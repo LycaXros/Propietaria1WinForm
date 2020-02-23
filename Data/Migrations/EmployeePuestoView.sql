@@ -5,6 +5,6 @@ EXEC dbo.sp_executesql @statement = N'
 
 CREATE VIEW [dbo].[V_EmployeePuesto]
 AS
-SELECT E.Cedula, E.Nombre, E.FechaIngreso, E.Departamento, E.Salario, P.Nombre as "Puesto"
+SELECT ROW_NUMBER() over( order by E.Cedula) as "RowId", E.Cedula, E.Nombre, E.FechaIngreso, E.Departamento, E.Salario, P.Nombre as "Puesto"
 FROM   RRHH_DATA.dbo.Empleados as E join RRHH_DATA.dbo.Puestos as P on E.PuestoId = P.Id 
 WHERE E.Estado = 1    '

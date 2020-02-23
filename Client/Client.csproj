@@ -126,6 +126,11 @@
     <Compile Include="Forms\FrmPuestos.Designer.cs">
       <DependentUpon>FrmPuestos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\ReportViewDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportViewDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SimpleModels\SimpleModel.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Utils\TextboxUtils.cs" />
@@ -219,6 +224,7 @@
     </Compile>
     <EmbeddedResource Include="Reportes\Employees.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkForms\workPuesto.resx">
       <DependentUpon>workPuesto.cs</DependentUpon>
@@ -250,6 +256,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Imgs\logo-unapec_color.jpg" />
+    <None Include="Reportes\ReportViewDS.xsc">
+      <DependentUpon>ReportViewDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\ReportViewDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportViewDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\ReportViewDS.xss">
+      <DependentUpon>ReportViewDS.xsd</DependentUpon>
+    </None>
     <None Include="Resources\refresh-512.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

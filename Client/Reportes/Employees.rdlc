@@ -2,7 +2,7 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="NorthwindDataSet">
+    <DataSource Name="RRHH_DATAConnectionString">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
@@ -13,58 +13,46 @@
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>NorthwindDataSet</DataSourceName>
+        <DataSourceName>ReportViewDS</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="ProductID">
-          <DataField>ProductID</DataField>
+        <Field Name="RowId">
+          <DataField>Identificador</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="ProductName">
-          <DataField>ProductName</DataField>
+        <Field Name="Cedula">
+          <DataField>Cedula</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="SupplierID">
-          <DataField>SupplierID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="CategoryID">
-          <DataField>CategoryID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="QuantityPerUnit">
-          <DataField>QuantityPerUnit</DataField>
+        <Field Name="Nombre">
+          <DataField>Nombre</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="UnitPrice">
-          <DataField>UnitPrice</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="FechaIngreso">
+          <DataField>Fecha de Ingreso</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="UnitsInStock">
-          <DataField>UnitsInStock</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
+        <Field Name="Departamento">
+          <DataField>Departamento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="UnitsOnOrder">
-          <DataField>UnitsOnOrder</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
+        <Field Name="Salario">
+          <DataField>Salario</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="ReorderLevel">
-          <DataField>ReorderLevel</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
-        </Field>
-        <Field Name="Discontinued">
-          <DataField>Discontinued</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
+        <Field Name="Puesto">
+          <DataField>Puesto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>NorthwindDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Jesus Dicent\source\repos\ProyectoISO605\Client\NorthwindDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>Products</rd:TableName>
+        <rd:DataSetName>ReportViewDS</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Jesus Dicent\source\repos\ProyectoISO605\Client\Reportes\ReportViewDS.xsd</rd:SchemaPath>
+        <rd:TableName>V_EmployeePuesto</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>ProductsTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>V_EmployeePuestoTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

@@ -47,7 +47,7 @@ namespace Client.MDIs
 
         private void reporteNuevosEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new VerReporte());
+            ShowForm(new VerReporte() {_db = _context });
         }
 
         private void competenciasToolStripMenuItem_Click(object sender, EventArgs e)
