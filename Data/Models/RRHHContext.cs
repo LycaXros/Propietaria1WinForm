@@ -23,7 +23,8 @@ namespace Data.Models
         public DbSet<Candidatos> Candidatos { get; set; }
         public DbSet<ExperienciaLaboral> ExpLaborales { get; set; }
         public DbSet<Empleados> Empleados { get; set; }
-        //public DbSet<EmployeeDataView> V_EmployeePuesto { get; set; }
+        public DbSet<EmployeeDataView> V_EmployeePuesto { get; set; }
+        //public DbSet<Login> Credenciales { get; set; }
 
 
 

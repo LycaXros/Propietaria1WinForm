@@ -1,6 +1,6 @@
 ﻿namespace Client.Forms
 {
-    partial class frmIdiomas
+    partial class FrmDepartamento
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvDepartamento = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmdEliminar = new System.Windows.Forms.Button();
             this.cmdClean = new System.Windows.Forms.Button();
             this.cmdGuardar = new System.Windows.Forms.Button();
-            this.cbxGrado = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dgvIdiomas = new System.Windows.Forms.DataGridView();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIdiomas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDepartamento)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.Salmon;
+            this.panel2.Controls.Add(this.dgvDepartamento);
+            this.panel2.Location = new System.Drawing.Point(12, 157);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(486, 281);
+            this.panel2.TabIndex = 3;
+            // 
+            // dgvDepartamento
+            // 
+            this.dgvDepartamento.AllowUserToAddRows = false;
+            this.dgvDepartamento.AllowUserToDeleteRows = false;
+            this.dgvDepartamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvDepartamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDepartamento.Location = new System.Drawing.Point(22, 15);
+            this.dgvDepartamento.Name = "dgvDepartamento";
+            this.dgvDepartamento.ReadOnly = true;
+            this.dgvDepartamento.Size = new System.Drawing.Size(441, 247);
+            this.dgvDepartamento.TabIndex = 0;
             // 
             // panel1
             // 
@@ -55,8 +79,6 @@
             this.panel1.Controls.Add(this.cmdEliminar);
             this.panel1.Controls.Add(this.cmdClean);
             this.panel1.Controls.Add(this.cmdGuardar);
-            this.panel1.Controls.Add(this.cbxGrado);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.cbxEstado);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -65,8 +87,8 @@
             this.panel1.Controls.Add(this.txtNombre);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(466, 139);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(486, 139);
+            this.panel1.TabIndex = 2;
             // 
             // cmdEliminar
             // 
@@ -100,30 +122,6 @@
             this.cmdGuardar.Text = "Guardar";
             this.cmdGuardar.UseVisualStyleBackColor = true;
             this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
-            // 
-            // cbxGrado
-            // 
-            this.cbxGrado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxGrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxGrado.FormattingEnabled = true;
-            this.cbxGrado.Items.AddRange(new object[] {
-            "Bajo",
-            "Medio",
-            "Alto"});
-            this.cbxGrado.Location = new System.Drawing.Point(73, 56);
-            this.cbxGrado.Name = "cbxGrado";
-            this.cbxGrado.Size = new System.Drawing.Size(101, 28);
-            this.cbxGrado.TabIndex = 15;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Grado";
             // 
             // cbxEstado
             // 
@@ -187,63 +185,37 @@
             this.txtNombre.Size = new System.Drawing.Size(172, 26);
             this.txtNombre.TabIndex = 8;
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.Salmon;
-            this.panel2.Controls.Add(this.dgvIdiomas);
-            this.panel2.Location = new System.Drawing.Point(12, 157);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(466, 281);
-            this.panel2.TabIndex = 1;
-            // 
-            // dgvIdiomas
-            // 
-            this.dgvIdiomas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvIdiomas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIdiomas.Location = new System.Drawing.Point(22, 15);
-            this.dgvIdiomas.Name = "dgvIdiomas";
-            this.dgvIdiomas.Size = new System.Drawing.Size(421, 247);
-            this.dgvIdiomas.TabIndex = 0;
-            // 
-            // frmIdiomas
+            // FrmDepartamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 450);
+            this.ClientSize = new System.Drawing.Size(510, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "frmIdiomas";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Idiomas";
-            this.Load += new System.EventHandler(this.frmIdiomas_Load);
+            this.Name = "FrmDepartamento";
+            this.Text = "Departamentos";
+            this.Load += new System.EventHandler(this.FrmDepartamento_Load);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDepartamento)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIdiomas)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dgvDepartamento;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button cmdEliminar;
+        private System.Windows.Forms.Button cmdClean;
+        private System.Windows.Forms.Button cmdGuardar;
         private System.Windows.Forms.ComboBox cbxEstado;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbxGrado;
-        private System.Windows.Forms.DataGridView dgvIdiomas;
-        private System.Windows.Forms.Button cmdEliminar;
-        private System.Windows.Forms.Button cmdClean;
-        private System.Windows.Forms.Button cmdGuardar;
     }
 }

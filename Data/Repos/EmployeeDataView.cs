@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace Data.Repos
 {
-    [Table("V_EmployeePuesto")]
+    [Table("[dbo].[V_EmployeePuesto]")]
     public class EmployeeDataView
     {
         [Key]
+        public Int64 RowId { get; set; }
         public string Cedula { get; set; }
         public string Nombre { get; set; }
         public DateTime FechaIngreso { get; set; }

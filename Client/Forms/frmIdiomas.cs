@@ -1,4 +1,5 @@
-﻿using Data.Models;
+﻿using Client.Utils;
+using Data.Models;
 using Data.Utils;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,12 @@ namespace Client.Forms
         public frmIdiomas()
         {
             InitializeComponent();
+            txtId.TextChanged += TxtId_TextChanged;
+        }
+
+        private void TxtId_TextChanged(object sender, EventArgs e)
+        {
+            _itemId = int.Parse((sender as TextBox).Text);
         }
 
         private void cmdGuardar_Click(object sender, EventArgs e)
@@ -27,7 +34,7 @@ namespace Client.Forms
             int id = int.Parse(txtId.Text);
             string nom = txtNombre.Text;
             string selected = cbxEstado.SelectedItem.ToString();
-            string gradop = cbxGrado.SelectedText;
+            string gradop = cbxGrado.SelectedItem.ToString();
             EstadoPersistencia estado = EstadoPersistencia.Inactivo;
 
             estado = EnumUtil.ParseEnum<EstadoPersistencia>(selected);
@@ -64,8 +71,10 @@ namespace Client.Forms
         {
             txtId.Text = dgvIdiomas.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtNombre.Text = dgvIdiomas.Rows[e.RowIndex].Cells[1].Value.ToString();
-            var selectedItem = dgvIdiomas.Rows[e.RowIndex].Cells[3].Value.ToString();
-            cbxGrado.SelectedIndex = cbxGrado.Items.IndexOf(selectedItem);
+            var selectedItem = dgvIdiomas.Rows[e.RowIndex].Cells[2].Value.ToString();
+            cbxGrado.SelectedIndex = cbxGrado.FindString(selectedItem);
+            selectedItem = dgvIdiomas.Rows[e.RowIndex].Cells[3].Value.ToString();
+            cbxEstado.SelectedIndex = cbxEstado.FindString(selectedItem);
             cmdEliminar.Visible = true;
 
         }
@@ -74,8 +83,23 @@ namespace Client.Forms
         {
             var l = _context.Idiomas.ToList();
 
-            dgvIdiomas.DataSource = l;
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Id");
+            dt.Columns.Add("Nombre");
+            dt.Columns.Add("Grado");
+            dt.Columns.Add("Estado");
+            foreach (var item in l)
+            {
+                var r = dt.NewRow();
+                r[0] = item.Id;
+                r[1] = item.Nombre;
+                r[2] = item.Grado;
+                r[3] = item.Estado.ToString();
+                dt.Rows.Add(r);
+            }
+            dgvIdiomas.DataSource = dt;
             dgvIdiomas.Refresh();
+            dgvIdiomas.Columns["Id"].Visible = false;
         }
 
         private void cleanTxt()
@@ -90,6 +114,18 @@ namespace Client.Forms
         private void cmdClean_Click(object sender, EventArgs e)
         {
             cleanTxt();
+        }
+
+        private void cmdEliminar_Click(object sender, EventArgs e)
+        {
+
+            if (MessageUtils.BoxEliminar())
+            {
+                var it = _context.Idiomas.Find(_itemId);
+                if (it == null) return;
+                _context.Idiomas.Remove(it);
+                RefreshData();
+            }
         }
     }
 }

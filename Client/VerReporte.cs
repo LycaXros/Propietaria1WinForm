@@ -23,7 +23,7 @@ namespace Client
         private void VerReporte_Load(object sender, EventArgs e)
         {
             var d = DateTime.Now;
-            fechaDesde.Value = fechaDesde.MinDate.AddDays(1);
+            fechaDesde.Value = DateTime.Now.AddDays(-100);
             fechaDesde.MaxDate = d.AddDays(-1);
             fechaHasta.MaxDate = d.AddDays(1).AddTicks(-1);
             fechaHasta.Value = d;
@@ -36,8 +36,8 @@ namespace Client
 
                 var fechaI = fechaDesde.Value;
                 var fechaF = fechaHasta.Value;
-                var data = _db.Empleados
-                    .Where(x => x.FechaIngreso >= fechaI && x.FechaIngreso < fechaF)
+                var data = _db.V_EmployeePuesto
+                    //.Where(x => x.FechaIngreso >= fechaI && x.FechaIngreso < fechaF)
                     .ToList();
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
                 reportViewer1.LocalReport.DataSources.Clear();

@@ -108,14 +108,39 @@
     <Compile Include="Forms\frmCRUDCompetencias.Designer.cs">
       <DependentUpon>frmCRUDCompetencias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmDepartamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDepartamento.Designer.cs">
+      <DependentUpon>FrmDepartamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmIdiomas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmIdiomas.Designer.cs">
       <DependentUpon>frmIdiomas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmPuestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPuestos.Designer.cs">
+      <DependentUpon>FrmPuestos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReportViewDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportViewDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleModels\SimpleModel.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Utils\TextboxUtils.cs" />
+    <Compile Include="ViewModels\CandidatoViewModel.cs" />
     <Compile Include="ViewModels\CapacitacionViewModel.cs" />
+    <Compile Include="ViewModels\CompetenciasViewModel.cs" />
+    <Compile Include="ViewModels\ExperienciaLaboralViewModel.cs" />
+    <Compile Include="ViewModels\IdiomaViewModel.cs" />
+    <Compile Include="ViewModels\PuestoViewModel.cs" />
+    <Compile Include="Events\SaveEvent.cs" />
     <Compile Include="WorkForms\workCandidatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,7 +159,6 @@
     <Compile Include="MDIs\MDI.Designer.cs">
       <DependentUpon>MDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="VerReporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +173,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkForms\workPuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkForms\workPuesto.Designer.cs">
+      <DependentUpon>workPuesto.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FrmCandidatos.resx">
       <DependentUpon>FrmCandidatos.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,8 +188,14 @@
     <EmbeddedResource Include="Forms\frmCRUDCompetencias.resx">
       <DependentUpon>frmCRUDCompetencias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDepartamento.resx">
+      <DependentUpon>FrmDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIdiomas.resx">
       <DependentUpon>frmIdiomas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPuestos.resx">
+      <DependentUpon>FrmPuestos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkForms\workCandidatos.resx">
       <DependentUpon>workCandidatos.cs</DependentUpon>
@@ -188,6 +224,10 @@
     </Compile>
     <EmbeddedResource Include="Reportes\Employees.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkForms\workPuesto.resx">
+      <DependentUpon>workPuesto.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Client.DB.Model.Products.datasource" />
@@ -216,6 +256,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Imgs\logo-unapec_color.jpg" />
+    <None Include="Reportes\ReportViewDS.xsc">
+      <DependentUpon>ReportViewDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\ReportViewDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportViewDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\ReportViewDS.xss">
+      <DependentUpon>ReportViewDS.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\refresh-512.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

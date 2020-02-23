@@ -29,7 +29,7 @@ namespace Data.Models
         public ICollection<Candidatos> Recomendados { get; set; }
 
         public virtual Login LoginData { get; set; }
-        //public int IdiomaId { get; set; }
+        
         public virtual ICollection<Idiomas> Idiomas { get; set; }
     }
 }

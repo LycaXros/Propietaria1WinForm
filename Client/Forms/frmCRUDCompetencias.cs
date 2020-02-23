@@ -1,4 +1,6 @@
-﻿using Data.Models;
+﻿using Client.Utils;
+using Client.ViewModels;
+using Data.Models;
 using Data.Utils;
 using System;
 using System.Collections.Generic;
@@ -14,11 +16,13 @@ namespace Client.Forms
 {
     public partial class frmCRUDCompetencias : Form
     {
-        public RRHHContext context { get; set; }
+        public List<CompetenciaViewModel> L_Competencias { get; set; }
+        
         private int _itemId;
         public frmCRUDCompetencias()
         {
             InitializeComponent();
+        
         }
 
 
@@ -26,6 +30,11 @@ namespace Client.Forms
         {
             _itemId = 0;
             dataGridView1.RowHeaderMouseDoubleClick += DataGridView1_RowHeaderMouseDoubleClick;
+            int c = 0;
+            foreach (var item in L_Competencias)
+            {
+                item.Id = ++c;
+            }
             fillDataGrid();
             // fillEstadoCBX();
             cmdEliminar.Visible = false;
@@ -56,9 +65,7 @@ namespace Client.Forms
 
         private void fillDataGrid()
         {
-
-            var data = context.Competencias.ToList();
-            dataGridView1.DataSource = data;
+            dataGridView1.DataSource = L_Competencias;
             dataGridView1.Refresh();
         }
 
@@ -83,11 +90,11 @@ namespace Client.Forms
             EstadoPersistencia estado = EstadoPersistencia.Inactivo;
 
             estado = EnumUtil.ParseEnum<EstadoPersistencia>(selected);
-            Competencias cpt = new Competencias();
+            CompetenciaViewModel cpt = new CompetenciaViewModel();
 
             if (id > 0)
             {
-                cpt = context.Competencias.Find(id);
+                cpt = L_Competencias.Find(x=> x.Id == id);
 
                 cpt.Descripcion = desc;
                 cpt.Estado = estado;
@@ -96,9 +103,8 @@ namespace Client.Forms
             {
                 cpt.Descripcion = desc;
                 cpt.Estado = estado;
-                context.Competencias.Add(cpt);
+                L_Competencias.Add(cpt);
             }
-            context.SaveChanges();
             cleanTxt();
             fillDataGrid();
         }
@@ -111,20 +117,14 @@ namespace Client.Forms
             }
             else
             {
-                if (BoxEliminar())
+                if (MessageUtils.BoxEliminar())
                 {
-                    var it = context.Competencias.Find(_itemId);
+                    var it = L_Competencias.Find(x=> x.Id== _itemId);
                     if (it == null) return;
-                    context.Competencias.Remove(it);
-                    context.SaveChanges();
+                    L_Competencias.Remove(it);
                     fillDataGrid();
                 }
             }
-        }
-
-        private static bool BoxEliminar()
-        {
-            return MessageBox.Show("Estas seguro de eliminar el Item", "Eliminando", MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
 
         private void txtId_TextChanged(object sender, EventArgs e)

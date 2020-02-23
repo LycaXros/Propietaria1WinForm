@@ -14,12 +14,4 @@ namespace Client.ViewModels
 
         public string CandidatoCedula { get; set; }
     }
-    public class CandidatoViewModel
-    {
-        public string Cedula { get; set; }
-        public string Nombre { get; set; }
-        public int PuestoId { get; set; }
-        public string Departamento { get; set; }
-        public int RecomiendaId { get; set; }
-    }
 }
