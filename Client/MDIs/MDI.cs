@@ -52,7 +52,7 @@ namespace Client.MDIs
 
         private void competenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new Forms.frmCRUDCompetencias() { context = _context });
+           // ShowForm(new Forms.frmCRUDCompetencias() { context = _context });
         }
 
         private void idiomasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,6 +68,16 @@ namespace Client.MDIs
         private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(new Forms.FrmCandidatos() { context = _context });
+        }
+
+        private void puestosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Forms.FrmPuestos() { context = _context });
+        }
+
+        private void departamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Forms.FrmDepartamento() { _context = _context });
         }
     }
 }

@@ -18,5 +18,13 @@ namespace Client.Utils
             }
             return true;
         }
+
+    }
+    public static class MessageUtils
+    {
+        public static bool BoxEliminar()
+        {
+            return MessageBox.Show("Estas seguro de eliminar el Item", "Eliminando", MessageBoxButtons.YesNo) == DialogResult.Yes;
+        }
     }
 }

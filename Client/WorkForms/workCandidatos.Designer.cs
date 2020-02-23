@@ -214,6 +214,7 @@
             this.cmdADD_Competencias.Size = new System.Drawing.Size(75, 64);
             this.cmdADD_Competencias.TabIndex = 22;
             this.cmdADD_Competencias.UseVisualStyleBackColor = true;
+            this.cmdADD_Competencias.Click += new System.EventHandler(this.cmdADD_Competencias_Click);
             // 
             // dgvCompetencias
             // 

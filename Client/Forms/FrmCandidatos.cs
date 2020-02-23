@@ -1,4 +1,7 @@
-﻿using Data.Models;
+﻿using Client.SimpleModels;
+using Client.ViewModels;
+using Data.Models;
+using Mapster;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +17,8 @@ namespace Client.Forms
     public partial class FrmCandidatos : Form
     {
         public RRHHContext context { get; set; }
+        public CandidatoViewModel WorkingCandidato { get; private set; }
+
         public FrmCandidatos()
         {
             InitializeComponent();
@@ -24,7 +29,19 @@ namespace Client.Forms
 
         private void DgvResultados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var frm = new WorkForms.workCandidatos() { Context = context }; 
+            var row = dgvResultados.Rows[e.RowIndex];
+            var id = int.Parse(row.Cells["ID"].Value.ToString());
+            var frm = new WorkForms.workCandidatos()
+            {
+                Context = context,
+                Editing = true,
+                PuestosList = GetPuestos()
+            };
+            var c = context.Candidatos.Find(id);
+
+            var data = c.Adapt<CandidatoViewModel>();
+            frm.Candidato = data;
+
             frm.ShowDialog();
         }
 
@@ -107,8 +124,35 @@ namespace Client.Forms
 
         private void cmdADD_Click(object sender, EventArgs e)
         {
-            var frm = new WorkForms.workCandidatos() { Context = context, Editing =false};
+            WorkingCandidato = new CandidatoViewModel();
+            var frm = new WorkForms.workCandidatos()
+            {
+                Context = context,
+                Editing = false,
+                PuestosList = GetPuestos(),
+                Candidato = WorkingCandidato
+            };
             frm.ShowDialog();
+        }
+
+        private List<SimpleModel> GetPuestos()
+        {
+            try
+            {
+                var d = context.Puestos
+                    .Where(x => x.Estado == EstadoPersistencia.Activo)
+                    .Select(x => new SimpleModel
+                    {
+                        Id = x.Id,
+                        Nombre = x.Nombre
+                    }).ToList();
+                return d;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No se pudo Generar lista de Puestos");
+            }
+            return new List<SimpleModel>();
         }
     }
 }

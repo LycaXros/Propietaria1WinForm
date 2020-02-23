@@ -11,12 +11,13 @@ using System.Windows.Forms;
 using Client.Utils;
 using Client.ViewModels;
 using Mapster;
+using Client.SimpleModels;
 
 namespace Client.WorkForms
 {
     public partial class workCandidatos : Form
     {
-
+        public List<SimpleModel> PuestosList { get; set; }
         public CandidatoViewModel Candidato { get; internal set; }
         public RRHHContext Context { get; internal set; }
         public bool Editing { get; set; }
@@ -28,6 +29,7 @@ namespace Client.WorkForms
 
         private void workCandidatos_Load(object sender, EventArgs e)
         {
+            fillCbxPuestos();
             panel1.BackColor = Color.FromArgb(153, 88, 61);
             panel3.BackColor = Color.FromArgb(232, 69, 67);
             this.BackColor = Color.FromArgb(181, 78, 34);
@@ -42,6 +44,9 @@ namespace Client.WorkForms
             {
                 Candidato = new CandidatoViewModel();
                 Candidato.RecomiendaId = MDIs.MDI_User.IdentificadorEmpleado;
+                Candidato.Competencias = new List<CompetenciaViewModel>();
+                Candidato.ExperienciaLaborales = new List<ExperienciaLaboralViewModel>();
+                Candidato.Idiomas = new List<IdiomaViewModel>();
                 this.Text += ": Nuevo";
             }
         }
@@ -61,13 +66,18 @@ namespace Client.WorkForms
                     MessageBox.Show("Complete los campos faltantes");
                     return;
                 }
-
                 var c = Candidato.Adapt<Candidatos>();
-                Context.Candidatos.Add(c);
-                Context.SaveChanges();
-                MessageBox.Show("Saved!!!!!!");
-                this.Close();
-
+                if (Editing)
+                {
+                    Context.Entry(c).State = System.Data.Entity.EntityState.Modified;
+                }
+                else
+                {
+                    Context.Candidatos.Add(c);
+                }
+                    Context.SaveChanges();
+                    MessageBox.Show("Saved!!!!!!");
+                    this.Close();
             }
             catch (Exception)
             {
@@ -91,7 +101,7 @@ namespace Client.WorkForms
             int PID = (int)cbxPuesto.SelectedValue;
             Candidato.PuestoId = PID;
 
-            string dep = Context.Puestos.Include("Departammento").FirstOrDefault(x => x.Id == PID).Departamento.Nombre ?? null;
+            string dep = Context.Puestos.Include("Departamento").FirstOrDefault(x => x.Id == PID).Departamento.Nombre ?? null;
             if (dep != null)
             {
                 txtDepartamento.Text = dep;
@@ -116,6 +126,7 @@ namespace Client.WorkForms
             };
 
             frm.ShowDialog();
+            Candidato.Capacitaciones.Add(cap);
             fillCapacitaciones();
         }
 
@@ -132,9 +143,9 @@ namespace Client.WorkForms
                 dt.Columns.Add("Fecha de Finalizacion");
                 dt.Columns.Add("Institucion");
 
-                var query = Context.Capacitaciones.Where(x => x.CandidatoCedula == Candidato.Cedula);
+                //var query = ca.Capacitaciones.Where(x => x.CandidatoCedula == Candidato.Cedula);
 
-                var data = query.ToList();
+                var data = Candidato.Capacitaciones;
                 foreach (var item in data)
                 {
                     var row = dt.NewRow();
@@ -163,11 +174,11 @@ namespace Client.WorkForms
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Descripcion");
 
-                var query = Context.Candidatos
-                    .Include("Competencias")
-                    .First(x => x.Cedula == Candidato.Cedula).Competencias;
+                //var query = Context.Candidatos
+                //    .Include("Competencias")
+                //    .First(x => x.Cedula == Candidato.Cedula).Competencias;
 
-                var data = query.ToList();
+                var data = Candidato.Competencias;
                 foreach (var item in data)
                 {
                     var row = dt.NewRow();
@@ -196,9 +207,9 @@ namespace Client.WorkForms
                 dt.Columns.Add("Fecha de Finalizacion");
                 dt.Columns.Add("Salario");
 
-                var query = Context.ExpLaborales.Where(x => x.CandidatoCedula == Candidato.Cedula);
+                //var query = Context.ExpLaborales.Where(x => x.CandidatoCedula == Candidato.Cedula);
 
-                var data = query.ToList();
+                var data = Candidato.ExperienciaLaborales;
                 foreach (var item in data)
                 {
                     var row = dt.NewRow();
@@ -219,9 +230,25 @@ namespace Client.WorkForms
             }
         }
 
+        private void fillCbxPuestos()
+        {
+            cbxPuesto.DisplayMember = "Nombre";
+            cbxPuesto.ValueMember = "Id";
+            cbxPuesto.DataSource = PuestosList;
+            cbxPuesto.Refresh();
+        }
+
         private void mtxtCedula_TextChanged(object sender, EventArgs e)
         {
             Candidato.Cedula = mtxtCedula.Text;
+        }
+
+        private void cmdADD_Competencias_Click(object sender, EventArgs e)
+        {
+            var fm = new Forms.frmCRUDCompetencias();
+            fm.L_Competencias = Candidato.Competencias;
+
+            fm.ShowDialog();
         }
     }
 }
