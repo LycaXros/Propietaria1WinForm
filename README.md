@@ -1,15 +1,13 @@
-Hola Amigos
+
+#DESARROLLO DE SOFTWARE CON TECNOLOGIA PROPIETARIA I - ISO605-41060-001
 
 
-Aqui esta mi proyecto de ISO605
-
-Proyecto Final Asignatura
 Universidad Apec
 Profesor: Juan P. Valdez
-2020
+
 
 JESUS FRANCISCO DICENT AGUERO
 2018-1523
 
-ISO605 DESARROLLO DE SOFTWARE CON TECNOLOGIA PROPIETARIA I
+##Link Repositorio: https://github.com/LycaXros/Propietaria1WinForm
 
