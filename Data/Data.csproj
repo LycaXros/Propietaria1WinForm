@@ -83,6 +83,10 @@
     <Compile Include="Migrations\202002221307071_LoginII.designer.cs">
       <DependentUpon>202002221307071_LoginII.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002231407195_IdentityColumns.cs" />
+    <Compile Include="Migrations\202002231407195_IdentityColumns.designer.cs">
+      <DependentUpon>202002231407195_IdentityColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidatos.cs" />
     <Compile Include="Models\Capacitaciones.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002221307071_LoginII.resx">
       <DependentUpon>202002221307071_LoginII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002231407195_IdentityColumns.resx">
+      <DependentUpon>202002231407195_IdentityColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

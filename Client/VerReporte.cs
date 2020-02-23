@@ -36,7 +36,7 @@ namespace Client
 
                 var fechaI = fechaDesde.Value;
                 var fechaF = fechaHasta.Value;
-                var data = _db.Empleados
+                var data = _db.V_EmployeePuesto
                     .Where(x => x.FechaIngreso >= fechaI && x.FechaIngreso < fechaF)
                     .ToList();
                 reportViewer1.ProcessingMode = ProcessingMode.Local;

@@ -29,13 +29,15 @@
             var baseDir = Path.GetDirectoryName(path) + "\\Migrations\\EmployeePuestoView.sql";
 
             context.Database.ExecuteSqlCommand(File.ReadAllText(baseDir));
-            IList<Departamentos> dList = new List<Departamentos>();
-            dList.Add(new Departamentos() { Nombre = "Tecnologias de la Informacion", Estado = EstadoPersistencia.Activo });
-            dList.Add(new Departamentos() { Nombre = "Ventas", Estado = EstadoPersistencia.Activo });
-            dList.Add(new Departamentos() { Nombre = "Soporte Tecnico", Estado = EstadoPersistencia.Inactivo });
+            if (context.Departamentos.Count() > 0)
+            {
+                IList<Departamentos> dList = new List<Departamentos>();
+                dList.Add(new Departamentos() { Nombre = "Tecnologias de la Informacion", Estado = EstadoPersistencia.Activo });
+                dList.Add(new Departamentos() { Nombre = "Ventas", Estado = EstadoPersistencia.Activo });
+                dList.Add(new Departamentos() { Nombre = "Soporte Tecnico", Estado = EstadoPersistencia.Inactivo });
 
-            context.Departamentos.AddRange(dList);
-
+                context.Departamentos.AddRange(dList);
+            }
 
             base.Seed(context);
 

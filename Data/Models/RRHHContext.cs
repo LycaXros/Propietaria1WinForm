@@ -24,7 +24,7 @@ namespace Data.Models
         public DbSet<ExperienciaLaboral> ExpLaborales { get; set; }
         public DbSet<Empleados> Empleados { get; set; }
         public DbSet<EmployeeDataView> V_EmployeePuesto { get; set; }
-        public DbSet<Login> Credenciales { get; set; }
+        //public DbSet<Login> Credenciales { get; set; }
 
 
 
@@ -70,9 +70,9 @@ namespace Data.Models
                 .HasForeignKey(e => e.RecomiendaId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Empleados>()
-                .HasOptional(e => e.LoginData)
-                .WithRequired(e => e.DatosEmpleado);
+            //modelBuilder.Entity<Empleados>()
+            //    .HasOptional(e => e.LoginData)
+            //    .WithRequired(e => e.DatosEmpleado);
 
             modelBuilder.Entity<Empleados>()
                 .HasMany(e => e.Idiomas)
