@@ -35,9 +35,6 @@ namespace Client.WorkForms
             this.BackColor = Color.FromArgb(181, 78, 34);
             if (Editing)
             {
-                this.fillCapacitaciones();
-                this.fillCompetencias();
-                this.fillExperiencia();
                 this.Text += ": Editar";
             }
             else
@@ -47,9 +44,16 @@ namespace Client.WorkForms
                 Candidato.Competencias = new List<CompetenciaViewModel>();
                 Candidato.ExperienciaLaborales = new List<ExperienciaLaboralViewModel>();
                 Candidato.Idiomas = new List<IdiomaViewModel>();
+                Candidato.Capacitaciones = new List<CapacitacionViewModel>();
                 this.Text += ": Nuevo";
             }
+
+            this.fillCapacitaciones();
+            this.fillCompetencias();
+            this.fillExperiencia();
+            this.fillIdiomas();
         }
+
 
         private void cmdCancelar_Click(object sender, EventArgs e)
         {
@@ -75,9 +79,9 @@ namespace Client.WorkForms
                 {
                     Context.Candidatos.Add(c);
                 }
-                    Context.SaveChanges();
-                    MessageBox.Show("Saved!!!!!!");
-                    this.Close();
+                Context.SaveChanges();
+                MessageBox.Show("Saved!!!!!!");
+                this.Close();
             }
             catch (Exception)
             {
@@ -89,6 +93,11 @@ namespace Client.WorkForms
         {
             if (string.IsNullOrEmpty(txtNombre.Text) || !mtxtCedula.ValidateMaskedTextbox() || false)
                 return false;
+            else if (!mtxtCedula.Text.validaCedula())
+            {
+                MessageBox.Show("Cedula Invalida");
+                return false;
+            }
 
             Candidato.Nombre = txtNombre.Text;
 
@@ -173,6 +182,7 @@ namespace Client.WorkForms
             {
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Descripcion");
+                dt.Columns.Add("ID");
 
                 //var query = Context.Candidatos
                 //    .Include("Competencias")
@@ -183,10 +193,12 @@ namespace Client.WorkForms
                 {
                     var row = dt.NewRow();
                     row[0] = item.Descripcion;
+                    row["ID"] = item.Id;
                     dt.Rows.Add(row);
                 }
                 dgvCompetencias.DataSource = dt;
                 dgvCompetencias.Refresh();
+                dgvCompetencias.Columns["ID"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -206,7 +218,7 @@ namespace Client.WorkForms
                 dt.Columns.Add("Fecha de Inicio");
                 dt.Columns.Add("Fecha de Finalizacion");
                 dt.Columns.Add("Salario");
-
+                dt.Columns.Add("ID");
                 //var query = Context.ExpLaborales.Where(x => x.CandidatoCedula == Candidato.Cedula);
 
                 var data = Candidato.ExperienciaLaborales;
@@ -218,10 +230,12 @@ namespace Client.WorkForms
                     row[2] = item.FechaDesde;
                     row[3] = item.FechaDesde;
                     row[4] = item.Salario;
+                    row["ID"] = item.Id;
                     dt.Rows.Add(row);
                 }
                 dgvExpLaboral.DataSource = dt;
                 dgvExpLaboral.Refresh();
+                dgvExpLaboral.Columns["ID"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -237,6 +251,37 @@ namespace Client.WorkForms
             cbxPuesto.DataSource = PuestosList;
             cbxPuesto.Refresh();
         }
+        private void fillIdiomas()
+        {
+
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("Nombre ");
+                dt.Columns.Add("Grado");
+
+                //var query = Context.ExpLaborales.Where(x => x.CandidatoCedula == Candidato.Cedula);
+
+                var data = Candidato.Idiomas;
+                foreach (var item in data)
+                {
+                    var row = dt.NewRow();
+                    row[0] = item.Id;
+                    row[1] = item.Nombre;
+                    row[2] = item.Grado;
+                    dt.Rows.Add(row);
+                }
+                dgvIdiomas.DataSource = dt;
+                dgvIdiomas.Refresh();
+                dgvIdiomas.Columns["ID"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                //throw ex;
+            }
+        }
 
         private void mtxtCedula_TextChanged(object sender, EventArgs e)
         {
@@ -249,6 +294,9 @@ namespace Client.WorkForms
             fm.L_Competencias = Candidato.Competencias;
 
             fm.ShowDialog();
+            Candidato.Competencias.ForEach(x => x.Id = 0);
+            this.fillCompetencias();
+
         }
     }
 }

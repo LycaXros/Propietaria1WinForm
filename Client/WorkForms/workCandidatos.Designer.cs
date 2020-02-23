@@ -51,7 +51,7 @@
             this.dgvExpLaboral = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvIdiomas = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cmdGuardar = new System.Windows.Forms.Button();
@@ -66,7 +66,7 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExpLaboral)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIdiomas)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -300,7 +300,7 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.button2);
-            this.tabPage4.Controls.Add(this.dataGridView1);
+            this.tabPage4.Controls.Add(this.dgvIdiomas);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -321,16 +321,16 @@
             this.button2.TabIndex = 25;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvIdiomas
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 14);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(471, 193);
-            this.dataGridView1.TabIndex = 24;
+            this.dgvIdiomas.AllowUserToAddRows = false;
+            this.dgvIdiomas.AllowUserToDeleteRows = false;
+            this.dgvIdiomas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIdiomas.Location = new System.Drawing.Point(37, 14);
+            this.dgvIdiomas.Name = "dgvIdiomas";
+            this.dgvIdiomas.ReadOnly = true;
+            this.dgvIdiomas.Size = new System.Drawing.Size(471, 193);
+            this.dgvIdiomas.TabIndex = 24;
             // 
             // panel2
             // 
@@ -404,7 +404,7 @@
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvExpLaboral)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIdiomas)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -439,6 +439,6 @@
         private System.Windows.Forms.Button cmdADD_Capacitaciones;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvIdiomas;
     }
 }

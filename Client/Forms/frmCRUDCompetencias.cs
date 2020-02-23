@@ -17,10 +17,12 @@ namespace Client.Forms
     public partial class frmCRUDCompetencias : Form
     {
         public List<CompetenciaViewModel> L_Competencias { get; set; }
+        
         private int _itemId;
         public frmCRUDCompetencias()
         {
             InitializeComponent();
+        
         }
 
 
@@ -28,6 +30,11 @@ namespace Client.Forms
         {
             _itemId = 0;
             dataGridView1.RowHeaderMouseDoubleClick += DataGridView1_RowHeaderMouseDoubleClick;
+            int c = 0;
+            foreach (var item in L_Competencias)
+            {
+                item.Id = ++c;
+            }
             fillDataGrid();
             // fillEstadoCBX();
             cmdEliminar.Visible = false;
@@ -87,7 +94,7 @@ namespace Client.Forms
 
             if (id > 0)
             {
-                cpt = L_Competencias.Find(x=> x.Id ==id);
+                cpt = L_Competencias.Find(x=> x.Id == id);
 
                 cpt.Descripcion = desc;
                 cpt.Estado = estado;

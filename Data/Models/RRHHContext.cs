@@ -70,9 +70,9 @@ namespace Data.Models
                 .HasForeignKey(e => e.RecomiendaId)
                 .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Empleados>()
-            //    .HasOptional(e => e.LoginData)
-            //    .WithRequired(e => e.DatosEmpleado);
+            modelBuilder.Entity<Empleados>()
+                .HasOptional(e => e.LoginData)
+                .WithRequired(e => e.DatosEmpleado);
 
             modelBuilder.Entity<Empleados>()
                 .HasMany(e => e.Idiomas)

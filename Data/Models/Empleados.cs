@@ -13,7 +13,7 @@ namespace Data.Models
             Idiomas = new HashSet<Idiomas>();
         }
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         
         public string Cedula { get; set; }
@@ -28,7 +28,7 @@ namespace Data.Models
         public EstadoPersistencia Estado { get; set; }
         public ICollection<Candidatos> Recomendados { get; set; }
 
-        //public virtual Login LoginData { get; set; }
+        public virtual Login LoginData { get; set; }
         
         public virtual ICollection<Idiomas> Idiomas { get; set; }
     }

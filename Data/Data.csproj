@@ -87,6 +87,14 @@
     <Compile Include="Migrations\202002231407195_IdentityColumns.designer.cs">
       <DependentUpon>202002231407195_IdentityColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002231507513_IdentityColumns1.cs" />
+    <Compile Include="Migrations\202002231507513_IdentityColumns1.designer.cs">
+      <DependentUpon>202002231507513_IdentityColumns1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002231522545_IdentityColumns11.cs" />
+    <Compile Include="Migrations\202002231522545_IdentityColumns11.designer.cs">
+      <DependentUpon>202002231522545_IdentityColumns11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidatos.cs" />
     <Compile Include="Models\Capacitaciones.cs" />
@@ -135,6 +143,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002231407195_IdentityColumns.resx">
       <DependentUpon>202002231407195_IdentityColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002231507513_IdentityColumns1.resx">
+      <DependentUpon>202002231507513_IdentityColumns1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002231522545_IdentityColumns11.resx">
+      <DependentUpon>202002231522545_IdentityColumns11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
