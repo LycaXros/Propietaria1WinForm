@@ -131,8 +131,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportViewDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SimpleModels\EmpleadoDataModel.cs" />
     <Compile Include="SimpleModels\SimpleModel.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Utils\CryptoServices.cs" />
     <Compile Include="Utils\TextboxUtils.cs" />
     <Compile Include="ViewModels\CandidatoViewModel.cs" />
     <Compile Include="ViewModels\CapacitacionViewModel.cs" />
@@ -268,6 +270,7 @@
       <DependentUpon>ReportViewDS.xsd</DependentUpon>
     </None>
     <None Include="Resources\refresh-512.png" />
+    <None Include="Resources\Logo unapec.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -40,9 +40,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cmdADD_Competencias = new System.Windows.Forms.Button();
-            this.dgvCompetencias = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cmdADD_Capacitaciones = new System.Windows.Forms.Button();
             this.dgvCapacitaciones = new System.Windows.Forms.DataGridView();
@@ -59,8 +56,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.puestosBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCompetencias)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCapacitaciones)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -181,7 +176,6 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -190,42 +184,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(670, 246);
             this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.cmdADD_Competencias);
-            this.tabPage1.Controls.Add(this.dgvCompetencias);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(662, 220);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Competencias";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // cmdADD_Competencias
-            // 
-            this.cmdADD_Competencias.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.cmdADD_Competencias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdADD_Competencias.FlatAppearance.BorderSize = 0;
-            this.cmdADD_Competencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdADD_Competencias.Location = new System.Drawing.Point(537, 49);
-            this.cmdADD_Competencias.Name = "cmdADD_Competencias";
-            this.cmdADD_Competencias.Size = new System.Drawing.Size(75, 64);
-            this.cmdADD_Competencias.TabIndex = 22;
-            this.cmdADD_Competencias.UseVisualStyleBackColor = true;
-            this.cmdADD_Competencias.Click += new System.EventHandler(this.cmdADD_Competencias_Click);
-            // 
-            // dgvCompetencias
-            // 
-            this.dgvCompetencias.AllowUserToAddRows = false;
-            this.dgvCompetencias.AllowUserToDeleteRows = false;
-            this.dgvCompetencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCompetencias.Location = new System.Drawing.Point(6, 22);
-            this.dgvCompetencias.Name = "dgvCompetencias";
-            this.dgvCompetencias.ReadOnly = true;
-            this.dgvCompetencias.Size = new System.Drawing.Size(428, 181);
-            this.dgvCompetencias.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -397,8 +355,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.puestosBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCompetencias)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCapacitaciones)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -415,11 +371,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dgvCompetencias;
         private System.Windows.Forms.DataGridView dgvCapacitaciones;
         private System.Windows.Forms.DataGridView dgvExpLaboral;
         private System.Windows.Forms.Label label1;
@@ -435,7 +389,6 @@
         private System.Windows.Forms.Button cmdEliminar;
         private System.Windows.Forms.BindingSource puestosBindingSource;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button cmdADD_Competencias;
         private System.Windows.Forms.Button cmdADD_Capacitaciones;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

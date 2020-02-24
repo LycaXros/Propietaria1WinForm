@@ -59,13 +59,11 @@ namespace Client.Forms
                 dt.Columns.Add("Nombre");
                 dt.Columns.Add("Puesto");
                 dt.Columns.Add("Departamento");
-                dt.Columns.Add("Cantidad Competencias");
                 dt.Columns.Add("Cantidad Capacitaciones");
                 dt.Columns.Add("Cantidad Experiencias");
                 dt.Columns.Add("Recomendado Por");
 
                 var query = context.Candidatos
-                    .Include("Competencias")
                     .Include("Capacitaciones")
                     .Include("ExperienciaLaborales")
                     .Include("RecomendadoPor")
@@ -101,7 +99,6 @@ namespace Client.Forms
                     row[1] = item.Nombre;
                     row[2] = item.PuestoAspira.Nombre;
                     row[3] = item.Departamento;
-                    row[4] = item.Competencias.Count;
                     row[5] = item.Capacitaciones.Count;
                     row[6] = item.ExperienciaLaborales.Count;
                     row[7] = $"{item.RecomendadoPor.Nombre} ({item.RecomendadoPor.Cedula})";

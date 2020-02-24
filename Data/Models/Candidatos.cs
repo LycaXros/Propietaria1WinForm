@@ -9,11 +9,9 @@ namespace Data.Models
     {
         public Candidatos()
         {
-            Competencias = new HashSet<Competencias>();
             Capacitaciones = new HashSet<Capacitaciones>();
             ExperienciaLaborales = new HashSet<ExperienciaLaboral>();
             Idiomas = new HashSet<Idiomas>();
-
         }
 
         [Key]
@@ -27,7 +25,6 @@ namespace Data.Models
 
         public string Departamento { get; set; }
 
-        public virtual ICollection<Competencias> Competencias { get; set; }
 
         public virtual ICollection<Capacitaciones> Capacitaciones { get; set; }
         public virtual ICollection<ExperienciaLaboral> ExperienciaLaborales { get; set; }

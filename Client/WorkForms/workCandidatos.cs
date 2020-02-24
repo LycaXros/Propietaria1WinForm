@@ -41,7 +41,6 @@ namespace Client.WorkForms
             {
                 Candidato = new CandidatoViewModel();
                 Candidato.RecomiendaId = MDIs.MDI_User.IdentificadorEmpleado;
-                Candidato.Competencias = new List<CompetenciaViewModel>();
                 Candidato.ExperienciaLaborales = new List<ExperienciaLaboralViewModel>();
                 Candidato.Idiomas = new List<IdiomaViewModel>();
                 Candidato.Capacitaciones = new List<CapacitacionViewModel>();
@@ -49,7 +48,6 @@ namespace Client.WorkForms
             }
 
             this.fillCapacitaciones();
-            this.fillCompetencias();
             this.fillExperiencia();
             this.fillIdiomas();
         }
@@ -175,37 +173,6 @@ namespace Client.WorkForms
             }
         }
 
-        private void fillCompetencias()
-        {
-
-            try
-            {
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Descripcion");
-                dt.Columns.Add("ID");
-
-                //var query = Context.Candidatos
-                //    .Include("Competencias")
-                //    .First(x => x.Cedula == Candidato.Cedula).Competencias;
-
-                var data = Candidato.Competencias;
-                foreach (var item in data)
-                {
-                    var row = dt.NewRow();
-                    row[0] = item.Descripcion;
-                    row["ID"] = item.Id;
-                    dt.Rows.Add(row);
-                }
-                dgvCompetencias.DataSource = dt;
-                dgvCompetencias.Refresh();
-                dgvCompetencias.Columns["ID"].Visible = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-                //throw ex;
-            }
-        }
 
         private void fillExperiencia()
         {
@@ -288,15 +255,5 @@ namespace Client.WorkForms
             Candidato.Cedula = mtxtCedula.Text;
         }
 
-        private void cmdADD_Competencias_Click(object sender, EventArgs e)
-        {
-            var fm = new Forms.frmCRUDCompetencias();
-            fm.L_Competencias = Candidato.Competencias;
-
-            fm.ShowDialog();
-            Candidato.Competencias.ForEach(x => x.Id = 0);
-            this.fillCompetencias();
-
-        }
     }
 }

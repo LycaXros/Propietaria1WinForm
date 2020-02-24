@@ -22,8 +22,9 @@ namespace Data.Models
         public DateTime FechaIngreso { get; set; }
         public string Departamento { get; set; }
         
-        public int PuestoId { get; set; }
-        
+        public int? PuestoId { get; set; }
+        public Puestos Puesto { get; set; }
+
         public double Salario { get; set; }
         public EstadoPersistencia Estado { get; set; }
         public ICollection<Candidatos> Recomendados { get; set; }

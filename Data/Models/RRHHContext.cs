@@ -24,7 +24,7 @@ namespace Data.Models
         public DbSet<ExperienciaLaboral> ExpLaborales { get; set; }
         public DbSet<Empleados> Empleados { get; set; }
         public DbSet<EmployeeDataView> V_EmployeePuesto { get; set; }
-        //public DbSet<Login> Credenciales { get; set; }
+        public DbSet<Login> Credenciales { get; set; }
 
 
 
@@ -42,15 +42,6 @@ namespace Data.Models
                 .WithMany(p => p.Aspirantes)
                 .HasForeignKey(c => c.PuestoId);
 
-            modelBuilder.Entity<Candidatos>()
-                .HasMany(c => c.Competencias)
-                .WithMany(cc => cc.Candidatos)
-                .Map(Cc =>
-                {
-                    Cc.MapLeftKey("CandidatosRefKey");
-                    Cc.MapRightKey("CompetenciasRefKey");
-                    Cc.ToTable("CandidatosCompetencias");
-                });
             modelBuilder.Entity<Capacitaciones>()
                 .HasRequired(c => c.Candidato)
                 .WithMany(c => c.Capacitaciones)
@@ -93,6 +84,18 @@ namespace Data.Models
                     ee.MapRightKey("IdiomasRef");
                     ee.ToTable("CandidatosIdiomas");
                 });
+
+            modelBuilder.Entity<Competencias>()
+                .HasRequired(e => e.Puesto)
+                .WithMany(e => e.Competencias)
+                .HasForeignKey(e => e.PuestoId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Empleados>()
+                .HasOptional(e => e.Puesto)
+                .WithMany(e => e.Empleados)
+                .HasForeignKey(e => e.PuestoId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

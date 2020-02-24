@@ -30,6 +30,7 @@
             var baseDir = Path.GetDirectoryName(path) + "\\Migrations\\EmployeePuestoView.sql";
 
             context.Database.ExecuteSqlCommand(File.ReadAllText(baseDir));
+
             if (context.Departamentos.Count() <= 0)
             {
                 IList<Puestos> pl = new List<Puestos>();
