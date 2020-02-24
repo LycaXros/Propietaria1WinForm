@@ -24,13 +24,15 @@ namespace Client.WorkForms
             nupSalMin.Maximum = Int32.MaxValue-2;
             nupSalMax.Maximum = Int32.MaxValue;
             nupSalMin.ValueChanged += NupSalMin_ValueChanged;
+            this.Size = new System.Drawing.Size(572, 444);
+            toolTip1.SetToolTip(cmdCompetencias, "Agregar/Editar Competencias");
+
         }
 
         private void NupSalMin_ValueChanged(object sender, EventArgs e)
         {
             try
             {
-
                 nupSalMax.Value = nupSalMin.Value + 1;
                 nupSalMax.Minimum = nupSalMin.Value;
             }

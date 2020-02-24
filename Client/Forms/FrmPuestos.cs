@@ -68,6 +68,7 @@ namespace Client.Forms
                 dt.Columns.Add("Salario Maximo");
                 dt.Columns.Add("Departamento");
                 dt.Columns.Add("Cantidad Aspirantes");
+                dt.Columns.Add("Cantidad Competencias");
                 dt.Columns.Add("Estado");
                 dt.Columns.Add("Disponibilidad");
                 dt.Columns.Add("ID");
@@ -89,8 +90,9 @@ namespace Client.Forms
                     row[3] = item.SalarioMaximo.ToString("RD$ ###,###,###.##");
                     row[4] = item.Departamento.Nombre;
                     row[5] = item.Aspirantes.Count;
-                    row[6] = item.Estado.ToString();
-                    row[7] = item.IsAvailable ? "Disponible" : "No Disponible";
+                    row[6] = item.Competencias.Count;
+                    row[7] = item.Estado.ToString();
+                    row[8] = item.IsAvailable ? "Disponible" : "No Disponible";
                     row["ID"] = item.Id;
                     dt.Rows.Add(row);
                 }

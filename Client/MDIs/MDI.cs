@@ -22,6 +22,7 @@ namespace Client.MDIs
         {
             InitializeComponent();
             Context = new RRHHContext();
+            _emp = new EmpleadoDataModel();
         }
         public MDI_User(RRHHContext context, EmpleadoDataModel emp)
         {

@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmdCancelar = new System.Windows.Forms.Button();
+            this.cmdGuardar = new System.Windows.Forms.Button();
+            this.cmdEliminar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.nupSalMax = new System.Windows.Forms.NumericUpDown();
             this.nupSalMin = new System.Windows.Forms.NumericUpDown();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.cbxDepartamento = new System.Windows.Forms.ComboBox();
@@ -41,20 +46,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.nupSalMax = new System.Windows.Forms.NumericUpDown();
-            this.cmdCancelar = new System.Windows.Forms.Button();
-            this.cmdGuardar = new System.Windows.Forms.Button();
-            this.cmdEliminar = new System.Windows.Forms.Button();
+            this.cmdCompetencias = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupSalMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupSalMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupSalMin)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.cmdCompetencias);
             this.panel1.Controls.Add(this.cmdCancelar);
             this.panel1.Controls.Add(this.cmdGuardar);
             this.panel1.Controls.Add(this.cmdEliminar);
@@ -62,6 +66,49 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(549, 96);
             this.panel1.TabIndex = 0;
+            // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.BackgroundImage = global::Client.Properties.Resources.cancel_red;
+            this.cmdCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdCancelar.FlatAppearance.BorderSize = 0;
+            this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCancelar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancelar.Location = new System.Drawing.Point(424, 19);
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.Size = new System.Drawing.Size(60, 55);
+            this.cmdCancelar.TabIndex = 34;
+            this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
+            // 
+            // cmdGuardar
+            // 
+            this.cmdGuardar.BackgroundImage = global::Client.Properties.Resources.save;
+            this.cmdGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdGuardar.FlatAppearance.BorderSize = 0;
+            this.cmdGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdGuardar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdGuardar.Location = new System.Drawing.Point(23, 11);
+            this.cmdGuardar.Name = "cmdGuardar";
+            this.cmdGuardar.Size = new System.Drawing.Size(60, 70);
+            this.cmdGuardar.TabIndex = 32;
+            this.cmdGuardar.UseVisualStyleBackColor = true;
+            this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
+            // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.BackgroundImage = global::Client.Properties.Resources.trashCan;
+            this.cmdEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdEliminar.FlatAppearance.BorderSize = 0;
+            this.cmdEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdEliminar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdEliminar.Location = new System.Drawing.Point(166, 11);
+            this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.Size = new System.Drawing.Size(60, 70);
+            this.cmdEliminar.TabIndex = 33;
+            this.cmdEliminar.UseVisualStyleBackColor = true;
+            this.cmdEliminar.Click += new System.EventHandler(this.cmdEliminar_Click);
             // 
             // panel2
             // 
@@ -84,6 +131,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(548, 316);
             this.panel2.TabIndex = 35;
+            // 
+            // nupSalMax
+            // 
+            this.nupSalMax.DecimalPlaces = 2;
+            this.nupSalMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nupSalMax.Location = new System.Drawing.Point(291, 143);
+            this.nupSalMax.Name = "nupSalMax";
+            this.nupSalMax.Size = new System.Drawing.Size(193, 26);
+            this.nupSalMax.TabIndex = 27;
             // 
             // nupSalMin
             // 
@@ -205,57 +261,22 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Nombre";
             // 
-            // nupSalMax
+            // cmdCompetencias
             // 
-            this.nupSalMax.DecimalPlaces = 2;
-            this.nupSalMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nupSalMax.Location = new System.Drawing.Point(291, 143);
-            this.nupSalMax.Name = "nupSalMax";
-            this.nupSalMax.Size = new System.Drawing.Size(193, 26);
-            this.nupSalMax.TabIndex = 27;
+            this.cmdCompetencias.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.cmdCompetencias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdCompetencias.FlatAppearance.BorderSize = 0;
+            this.cmdCompetencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCompetencias.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCompetencias.Location = new System.Drawing.Point(297, 26);
+            this.cmdCompetencias.Name = "cmdCompetencias";
+            this.cmdCompetencias.Size = new System.Drawing.Size(60, 55);
+            this.cmdCompetencias.TabIndex = 35;
+            this.cmdCompetencias.UseVisualStyleBackColor = true;
             // 
-            // cmdCancelar
+            // toolTip1
             // 
-            this.cmdCancelar.BackgroundImage = global::Client.Properties.Resources.cancel_red;
-            this.cmdCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdCancelar.FlatAppearance.BorderSize = 0;
-            this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdCancelar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCancelar.Location = new System.Drawing.Point(424, 19);
-            this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(60, 55);
-            this.cmdCancelar.TabIndex = 34;
-            this.cmdCancelar.UseVisualStyleBackColor = true;
-            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
-            // 
-            // cmdGuardar
-            // 
-            this.cmdGuardar.BackgroundImage = global::Client.Properties.Resources.save;
-            this.cmdGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdGuardar.FlatAppearance.BorderSize = 0;
-            this.cmdGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdGuardar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGuardar.Location = new System.Drawing.Point(23, 11);
-            this.cmdGuardar.Name = "cmdGuardar";
-            this.cmdGuardar.Size = new System.Drawing.Size(60, 70);
-            this.cmdGuardar.TabIndex = 32;
-            this.cmdGuardar.UseVisualStyleBackColor = true;
-            this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
-            // 
-            // cmdEliminar
-            // 
-            this.cmdEliminar.BackgroundImage = global::Client.Properties.Resources.trashCan;
-            this.cmdEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdEliminar.FlatAppearance.BorderSize = 0;
-            this.cmdEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdEliminar.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdEliminar.Location = new System.Drawing.Point(221, 11);
-            this.cmdEliminar.Name = "cmdEliminar";
-            this.cmdEliminar.Size = new System.Drawing.Size(60, 70);
-            this.cmdEliminar.TabIndex = 33;
-            this.cmdEliminar.UseVisualStyleBackColor = true;
-            this.cmdEliminar.Click += new System.EventHandler(this.cmdEliminar_Click);
+            this.toolTip1.ToolTipTitle = "TT";
             // 
             // workPuesto
             // 
@@ -272,8 +293,8 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupSalMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupSalMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupSalMin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -297,5 +318,7 @@
         private System.Windows.Forms.ComboBox cbxRiesgo;
         private System.Windows.Forms.NumericUpDown nupSalMin;
         private System.Windows.Forms.NumericUpDown nupSalMax;
+        private System.Windows.Forms.Button cmdCompetencias;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
