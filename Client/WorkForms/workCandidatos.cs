@@ -49,10 +49,13 @@ namespace Client.WorkForms
             if (Editing)
             {
                 this.Text += ": Editar";
+                mtxtCedula.Text = Candidato.Cedula;
+                mtxtCedula.ReadOnly = true;
+
             }
             else
             {
-                Candidato = new CandidatoViewModel();
+                //Candidato = new CandidatoViewModel();
                 Candidato.RecomiendaId = MDIs.MDI_User.IdentificadorEmpleado;
                 Candidato.ExperienciaLaborales = new List<ExperienciaLaboralViewModel>();
                 Candidato.Idiomas = new List<IdiomaViewModel>();
@@ -172,7 +175,6 @@ namespace Client.WorkForms
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Descripcion");
                 dt.Columns.Add("Nivel");
-                dt.Columns.Add("Puesto");
                 dt.Columns.Add("Fecha de Inicio");
                 dt.Columns.Add("Fecha de Finalizacion");
                 dt.Columns.Add("Institucion");
@@ -186,8 +188,8 @@ namespace Client.WorkForms
                     var row = dt.NewRow();
                     row[0] = cap.Descripcion;
                     row[1] = cap.Nivel;
-                    row[2] = cap.FechaDesde;
-                    row[3] = cap.FechaDesde;
+                    row[2] = cap.FechaDesde.ToString("dd-MMM-yyyy");
+                    row[3] = cap.FechaHasta.ToString("dd-MMM-yyyy");
                     row[4] = cap.Institucion;
                     row["ID"] = item.Key;
                     dt.Rows.Add(row);
@@ -390,7 +392,7 @@ namespace Client.WorkForms
             {
                 //ContextCapacitaciones = Context,
                 Editing = false,
-                CedulaCandidato = Candidato.Cedula,
+                CedulaCandidato =mtxtCedula.Text,// Candidato.Cedula,
                 cap = cap
             };
             frm.ShowDialog();

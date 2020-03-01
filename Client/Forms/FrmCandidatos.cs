@@ -30,7 +30,7 @@ namespace Client.Forms
         private void DgvResultados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var row = dgvResultados.Rows[e.RowIndex];
-            var id = int.Parse(row.Cells["ID"].Value.ToString());
+            var id = int.Parse(row.Cells["Cedula"].Value.ToString());
             var frm = new WorkForms.workCandidatos()
             {
                 Context = context,
@@ -38,6 +38,7 @@ namespace Client.Forms
                 PuestosList = GetPuestos()
             };
             var c = context.Candidatos.Find(id);
+            if (c == null) return;
 
             var data = c.Adapt<CandidatoViewModel>();
             frm.Candidato = data;

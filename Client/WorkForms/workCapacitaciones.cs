@@ -38,8 +38,7 @@ namespace Client.WorkForms
 
             if (!Editing)
             {
-                cmdEliminar.Visible = false;
-                cap = new CapacitacionViewModel();
+                cmdEliminar.Visible = false;                
             }
             else
             {
