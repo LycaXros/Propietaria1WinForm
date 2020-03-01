@@ -30,8 +30,14 @@ namespace Client.Forms
         {
             var id = int.Parse(dgvCapacitaciones.Rows[e.RowIndex].Cells[0].Value.ToString());
             var c = Capacitaciones[id].Adapt<CapacitacionViewModel>();
-            var frm = new workCapacitaciones() { Editing = true, cap = c, context = context, CedulaCandidato =  Cedula};
-            frm.StartPosition = FormStartPosition.CenterScreen;            
+            var frm = new workCapacitaciones()
+            {
+                Editing = true,
+                cap = c,
+                //ContextCapacitaciones = context,
+                CedulaCandidato = Cedula
+            };
+            frm.StartPosition = FormStartPosition.CenterScreen;
             frm.ShowDialog();
 
         }
@@ -49,7 +55,7 @@ namespace Client.Forms
 
         private void RefreshData()
         {
-           // var l = context.Capacitaciones.ToList();
+            // var l = context.Capacitaciones.ToList();
 
 
 
@@ -59,10 +65,19 @@ namespace Client.Forms
 
         private void cmdADD_Click(object sender, EventArgs e)
         {
-            var frm = new workCapacitaciones() { context = context };
+
+            var frm = new workCapacitaciones()
+            {
+                //ContextCapacitaciones = context
+                
+            };
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Editing = false;
             frm.ShowDialog();
+            if (frm.SaveData)
+            {
+                Capacitaciones.Add(frm.cap.Adapt<Capacitaciones>());
+            }
         }
     }
 }

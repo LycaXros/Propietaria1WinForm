@@ -15,14 +15,18 @@ namespace Client.WorkForms
 {
     public partial class workCapacitaciones : Form
     {
+        public event EventHandler DeletingCapacitacionesEvent;
+        //public event EventHandler SavePuestoEvent;
+        public bool SaveData { get; private set; }
         public bool Editing { get; set; }
         public CapacitacionViewModel cap { get; set; }
         public string CedulaCandidato { get; internal set; }
-        public RRHHContext context { get; internal set; }
+        //public RRHHContext ContextCapacitaciones { get; internal set; }
 
         public workCapacitaciones()
         {
             InitializeComponent();
+            SaveData = false;
         }
 
         private void workCapacitaciones_Load(object sender, EventArgs e)
@@ -87,24 +91,31 @@ namespace Client.WorkForms
 
         private void Save()
         {
-            if (Editing)
+            try
             {
-                SaveEdit();
+
+                if (Editing)
+                {
+                    SaveEdit();
+                }
+                else
+                {
+                    cap.CandidatoCedula = CedulaCandidato;
+                    cap.Descripcion = txtDescipcion.Text;
+                    cap.FechaDesde = dtpInicio.Value;
+                    cap.FechaHasta = dtpFin.Value;
+                    cap.Institucion = txtInstitucion.Text;
+                    cap.Nivel = cbxNivel.SelectedItem.ToString();
+
+                    //ContextCapacitaciones.Capacitaciones.Add(cap.Adapt<Capacitaciones>());
+                    //ContextCapacitaciones.SaveChanges();
+                }
+                MessageBox.Show("Guardado Exitoso");
+                SaveData = true;
             }
-            else
+            catch (Exception)
             {
-                cap.CandidatoCedula = CedulaCandidato;
-                cap.Descripcion = txtDescipcion.Text;
-                cap.FechaDesde = dtpInicio.Value;
-                cap.FechaHasta = dtpFin.Value;
-                cap.Institucion = txtInstitucion.Text;
-                cap.Nivel = cbxNivel.SelectedItem.ToString();
-
-                context.Capacitaciones.Add(cap.Adapt<Capacitaciones>());
-                context.SaveChanges();
             }
-            MessageBox.Show("Guardado Exitoso");
-
         }
 
         private void SaveEdit()
@@ -117,13 +128,14 @@ namespace Client.WorkForms
                 cap.Institucion = txtInstitucion.Text;
                 cap.Nivel = cbxNivel.SelectedText;
                 var c = cap.Adapt<Capacitaciones>();
-                context.Entry(c).State = System.Data.Entity.EntityState.Modified;
-                context.SaveChanges();
+                //ContextCapacitaciones.Entry(c).State = System.Data.Entity.EntityState.Modified;
+                //ContextCapacitaciones.SaveChanges();
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, "Error") ;
+                throw ex;
             }
         }
 
@@ -131,9 +143,18 @@ namespace Client.WorkForms
         {
             if (MessageBox.Show("Estas seguro de eliminar este registro", "Eliminando?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("Elemento Eliminado");
+                //MessageBox.Show("Elemento Eliminado");
+                OnTrigerEvent(e, DeletingCapacitacionesEvent);
                 this.Close();
             }
         }
+
+
+        protected virtual void OnTrigerEvent(EventArgs e, EventHandler eventHandler)
+        {
+            EventHandler handler = eventHandler;
+            handler?.Invoke(this, e);
+        }
+
     }
 }
