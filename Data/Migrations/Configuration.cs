@@ -33,22 +33,35 @@
 
             if (context.Departamentos.Count() <= 0)
             {
-                IList<Puestos> pl = new List<Puestos>();
-                pl.Add(new Puestos() { Estado = EstadoPersistencia.Activo, Nombre = "Web ADMIN", Riesgo = "Alto", SalarioMinimo = 65000d, SalarioMaximo = 70000d, IsAvailable = false });
-                IList<Departamentos> dList = new List<Departamentos>();
-                dList.Add(new Departamentos() { Nombre = "Tecnologias de la Informacion", Estado = EstadoPersistencia.Activo, Puestos = pl });
-                dList.Add(new Departamentos() { Nombre = "Ventas", Estado = EstadoPersistencia.Activo });
-                dList.Add(new Departamentos() { Nombre = "Soporte Tecnico", Estado = EstadoPersistencia.Inactivo });
+                IList<Puestos> pl = new List<Puestos>
+                {
+                    new Puestos()
+                    {
+                        Estado = EstadoPersistencia.Activo,
+                        Nombre = "Web ADMIN",
+                        Riesgo = "Alto",
+                        SalarioMinimo = 65000d,
+                        SalarioMaximo = 70000d,
+                        IsAvailable = false,
+                    }
+                };
+                IList<Departamentos> dList = new List<Departamentos>
+                {
+                    new Departamentos() { Nombre = "Tecnologias de la Informacion", Estado = EstadoPersistencia.Activo, Puestos = pl },
+                    new Departamentos() { Nombre = "Ventas", Estado = EstadoPersistencia.Activo },
+                    new Departamentos() { Nombre = "Soporte Tecnico", Estado = EstadoPersistencia.Inactivo }
+                };
 
                 context.Departamentos.AddRange(dList);
-                
+
             }
             if(context.Empleados.Count() <= 0)
             {
+
                 Login ld = new Login()
                 {
                     UserName = "Admin",
-                    Password = "Unapec",
+                    Password = "+HmsaFAF9MUFuQIm6SDSrA==",
                     Estado = EstadoPersistencia.Activo
                 };
                 var emp = new Empleados()
@@ -58,13 +71,12 @@
                     Departamento = "Tecnologias de la Informacion",
                     FechaIngreso = DateTime.Now,
                     Estado = EstadoPersistencia.Activo,
-                    PuestoId = 1,
                     Salario = 68000d,
+                    PuestoId = null,
                     LoginData = ld
                 };
                 context.Empleados.Add(emp);
             }
-
             base.Seed(context);
 
         }

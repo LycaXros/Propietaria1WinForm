@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmdCompetencias = new System.Windows.Forms.Button();
             this.cmdCancelar = new System.Windows.Forms.Button();
             this.cmdGuardar = new System.Windows.Forms.Button();
             this.cmdEliminar = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmdCompetencias = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,6 +66,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(549, 96);
             this.panel1.TabIndex = 0;
+            // 
+            // cmdCompetencias
+            // 
+            this.cmdCompetencias.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.cmdCompetencias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdCompetencias.FlatAppearance.BorderSize = 0;
+            this.cmdCompetencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCompetencias.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCompetencias.Location = new System.Drawing.Point(297, 26);
+            this.cmdCompetencias.Name = "cmdCompetencias";
+            this.cmdCompetencias.Size = new System.Drawing.Size(60, 55);
+            this.cmdCompetencias.TabIndex = 35;
+            this.cmdCompetencias.UseVisualStyleBackColor = true;
+            this.cmdCompetencias.Click += new System.EventHandler(this.cmdCompetencias_Click);
             // 
             // cmdCancelar
             // 
@@ -260,19 +274,6 @@
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Nombre";
-            // 
-            // cmdCompetencias
-            // 
-            this.cmdCompetencias.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.cmdCompetencias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdCompetencias.FlatAppearance.BorderSize = 0;
-            this.cmdCompetencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdCompetencias.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCompetencias.Location = new System.Drawing.Point(297, 26);
-            this.cmdCompetencias.Name = "cmdCompetencias";
-            this.cmdCompetencias.Size = new System.Drawing.Size(60, 55);
-            this.cmdCompetencias.TabIndex = 35;
-            this.cmdCompetencias.UseVisualStyleBackColor = true;
             // 
             // toolTip1
             // 

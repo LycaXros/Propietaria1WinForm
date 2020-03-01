@@ -148,7 +148,8 @@ namespace Client.Forms
                 item.SalarioMaximo= workingPuestoDef.SalarioMaximo;
                 item.DepartamentoID = workingPuestoDef.DepartamentoID;
                 item.Estado = workingPuestoDef.Estado;
-                item.IsAvailable = true;
+                item.IsAvailable = workingPuestoDef.IsAvailable;
+                item.Competencias = workingPuestoDef.Competencias.Adapt<IList<Competencias>>();
             }
             else
             {

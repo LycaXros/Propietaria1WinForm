@@ -17,12 +17,13 @@ namespace Client.Forms
     public partial class frmCRUDCompetencias : Form
     {
         public List<CompetenciaViewModel> L_Competencias { get; set; }
-        
+        private Dictionary<int, CompetenciaViewModel> dC;
+        private int _last = 0;
         private int _itemId;
         public frmCRUDCompetencias()
         {
             InitializeComponent();
-        
+            dC = new Dictionary<int, CompetenciaViewModel>();
         }
 
 
@@ -30,16 +31,32 @@ namespace Client.Forms
         {
             _itemId = 0;
             dataGridView1.RowHeaderMouseDoubleClick += DataGridView1_RowHeaderMouseDoubleClick;
-            int c = 0;
-            foreach (var item in L_Competencias)
-            {
-                item.Id = ++c;
-            }
+            this.FormClosing += FrmCRUDCompetencias_FormClosing;
+
+            FillDictionary();
             fillDataGrid();
             // fillEstadoCBX();
             cmdEliminar.Visible = false;
 
 
+
+        }
+
+        private void FrmCRUDCompetencias_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            L_Competencias.Clear();
+            L_Competencias.AddRange(dC.Values);
+        }
+
+        private void FillDictionary()
+        {
+            if (dC.Count > 0) dC.Clear();
+            int c = 0;
+            foreach (var item in L_Competencias)
+            {
+                dC.Add(++c, item);
+            }
+            _last = c;
         }
 
         private void DataGridView1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -65,8 +82,23 @@ namespace Client.Forms
 
         private void fillDataGrid()
         {
-            dataGridView1.DataSource = L_Competencias;
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Descripcion");
+            dt.Columns.Add("Estado");
+            foreach (var item in dC)
+            {
+                var row = dt.NewRow();
+                row[0] = item.Key;
+                row[1] = item.Value.Descripcion;
+                row[2] = item.Value.Estado;
+                dt.Rows.Add(row);
+
+            }
+
+            dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
+            dataGridView1.Columns["ID"].Visible = false;
         }
 
         private void cmdClean_Click(object sender, EventArgs e)
@@ -94,7 +126,7 @@ namespace Client.Forms
 
             if (id > 0)
             {
-                cpt = L_Competencias.Find(x=> x.Id == id);
+                cpt = dC[id];
 
                 cpt.Descripcion = desc;
                 cpt.Estado = estado;
@@ -103,7 +135,7 @@ namespace Client.Forms
             {
                 cpt.Descripcion = desc;
                 cpt.Estado = estado;
-                L_Competencias.Add(cpt);
+                dC.Add(++_last, cpt);
             }
             cleanTxt();
             fillDataGrid();
@@ -119,9 +151,10 @@ namespace Client.Forms
             {
                 if (MessageUtils.BoxEliminar())
                 {
-                    var it = L_Competencias.Find(x=> x.Id== _itemId);
+                    var it = dC[_itemId];
                     if (it == null) return;
-                    L_Competencias.Remove(it);
+                    dC.Remove(_itemId);
+                    cleanTxt();
                     fillDataGrid();
                 }
             }

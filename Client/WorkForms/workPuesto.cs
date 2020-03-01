@@ -139,5 +139,13 @@ namespace Client.WorkForms
         {
             this.Close();
         }
+
+        private void cmdCompetencias_Click(object sender, EventArgs e)
+        {
+            var frm = new Forms.frmCRUDCompetencias() {
+                L_Competencias = PuestoD.Competencias
+            };
+            frm.ShowDialog();
+        }
     }
 }
