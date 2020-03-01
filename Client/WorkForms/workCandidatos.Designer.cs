@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnInfo = new System.Windows.Forms.Button();
             this.cbxPuesto = new System.Windows.Forms.ComboBox();
             this.puestosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtDepartamento = new System.Windows.Forms.TextBox();
@@ -53,6 +54,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.cmdGuardar = new System.Windows.Forms.Button();
             this.cmdEliminar = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.puestosBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -69,6 +71,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.btnInfo);
             this.panel1.Controls.Add(this.cbxPuesto);
             this.panel1.Controls.Add(this.txtDepartamento);
             this.panel1.Controls.Add(this.txtNombre);
@@ -82,6 +85,19 @@
             this.panel1.Size = new System.Drawing.Size(567, 181);
             this.panel1.TabIndex = 0;
             // 
+            // btnInfo
+            // 
+            this.btnInfo.BackgroundImage = global::Client.Properties.Resources.Search;
+            this.btnInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInfo.FlatAppearance.BorderSize = 0;
+            this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInfo.Location = new System.Drawing.Point(170, 119);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(54, 47);
+            this.btnInfo.TabIndex = 8;
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            // 
             // cbxPuesto
             // 
             this.cbxPuesto.DataSource = this.puestosBindingSource;
@@ -91,7 +107,7 @@
             this.cbxPuesto.FormattingEnabled = true;
             this.cbxPuesto.Location = new System.Drawing.Point(18, 128);
             this.cbxPuesto.Name = "cbxPuesto";
-            this.cbxPuesto.Size = new System.Drawing.Size(190, 28);
+            this.cbxPuesto.Size = new System.Drawing.Size(146, 28);
             this.cbxPuesto.TabIndex = 7;
             this.cbxPuesto.ValueMember = "Id";
             this.cbxPuesto.SelectedIndexChanged += new System.EventHandler(this.cbxPuesto_SelectedIndexChanged);
@@ -339,6 +355,10 @@
             this.cmdEliminar.TabIndex = 31;
             this.cmdEliminar.UseVisualStyleBackColor = true;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
             // workCandidatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,5 +413,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dgvIdiomas;
+        private System.Windows.Forms.Button btnInfo;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

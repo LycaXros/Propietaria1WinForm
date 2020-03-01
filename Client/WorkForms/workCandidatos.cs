@@ -30,6 +30,7 @@ namespace Client.WorkForms
         private void workCandidatos_Load(object sender, EventArgs e)
         {
             fillCbxPuestos();
+            toolTip1.SetToolTip(btnInfo, "Ver informacion del Puesto");
             panel1.BackColor = Color.FromArgb(153, 88, 61);
             panel3.BackColor = Color.FromArgb(232, 69, 67);
             this.BackColor = Color.FromArgb(181, 78, 34);
@@ -255,5 +256,31 @@ namespace Client.WorkForms
             Candidato.Cedula = mtxtCedula.Text;
         }
 
+        private void puestosBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            var frm = new DetailForm.PuestoDetail() { Puesto = GetPuesto()};
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+        }
+        private PuestoViewModel GetPuesto()
+        {
+            var simple = (SimpleModel)cbxPuesto.SelectedItem;
+            var p = Context.Puestos
+                .Include("Competencias")
+                .FirstOrDefault(x => x.Id == simple.Id);
+                //.Find(simple.Id);
+            if(p == null) { return null; }
+            return p.Adapt<PuestoViewModel>();
+        }
     }
 }

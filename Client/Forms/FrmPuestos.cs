@@ -75,6 +75,7 @@ namespace Client.Forms
                 var query = context.Puestos
                     .Include("Aspirantes")
                     .Include("Departamento")
+                    .Include("Competencias")
                     .AsQueryable();
 
                 string dato = txtNombre.Text.Trim().ToLower();

@@ -46,7 +46,7 @@
             this.button1.Location = new System.Drawing.Point(293, 329);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 40);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -80,7 +80,7 @@
             this.txtUsername.Location = new System.Drawing.Point(192, 108);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(177, 26);
-            this.txtUsername.TabIndex = 4;
+            this.txtUsername.TabIndex = 0;
             // 
             // txtPassword
             // 
@@ -89,7 +89,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(177, 26);
-            this.txtPassword.TabIndex = 5;
+            this.txtPassword.TabIndex = 1;
             // 
             // label1
             // 
@@ -98,7 +98,7 @@
             this.label1.Location = new System.Drawing.Point(40, 108);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 20);
-            this.label1.TabIndex = 6;
+            this.label1.TabIndex = 4;
             this.label1.Text = "Nombre de Usuario";
             // 
             // label2
@@ -108,7 +108,7 @@
             this.label2.Location = new System.Drawing.Point(40, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 20);
-            this.label2.TabIndex = 7;
+            this.label2.TabIndex = 5;
             this.label2.Text = "Contraseña";
             // 
             // Form1
