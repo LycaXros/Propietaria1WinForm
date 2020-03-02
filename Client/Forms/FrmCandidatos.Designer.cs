@@ -56,12 +56,15 @@
             // 
             // dgvResultados
             // 
+            this.dgvResultados.AllowUserToAddRows = false;
+            this.dgvResultados.AllowUserToDeleteRows = false;
             this.dgvResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResultados.Location = new System.Drawing.Point(12, 13);
             this.dgvResultados.Name = "dgvResultados";
+            this.dgvResultados.ReadOnly = true;
             this.dgvResultados.Size = new System.Drawing.Size(668, 268);
             this.dgvResultados.TabIndex = 0;
             // 

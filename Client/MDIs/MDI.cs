@@ -29,6 +29,7 @@ namespace Client.MDIs
             InitializeComponent();
             Context = context;
             _emp = emp;
+            MDI_User.IdentificadorEmpleado = emp.Id;
         }
 
         private void MDI_User_Load(object sender, EventArgs e)

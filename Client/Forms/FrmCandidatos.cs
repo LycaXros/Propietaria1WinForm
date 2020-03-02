@@ -30,7 +30,7 @@ namespace Client.Forms
         private void DgvResultados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var row = dgvResultados.Rows[e.RowIndex];
-            var id = int.Parse(row.Cells["Cedula"].Value.ToString());
+            var id = row.Cells["Cedula"].Value.ToString();
             var frm = new WorkForms.workCandidatos()
             {
                 Context = context,
@@ -77,7 +77,8 @@ namespace Client.Forms
                     switch (criterio)
                     {
                         case "C":
-                            query = query.Where(x => x.Cedula.Contains(dato));
+                            dato = dato.Replace("-", "");
+                            query = query.Where(x => x.Cedula.Replace("-","").Contains(dato));
                             break;
                         case "N":
                             query = query.Where(x => x.Nombre.Contains(dato));
@@ -100,9 +101,9 @@ namespace Client.Forms
                     row[1] = item.Nombre;
                     row[2] = item.PuestoAspira.Nombre;
                     row[3] = item.Departamento;
-                    row[5] = item.Capacitaciones.Count;
-                    row[6] = item.ExperienciaLaborales.Count;
-                    row[7] = $"{item.RecomendadoPor.Nombre} ({item.RecomendadoPor.Cedula})";
+                    row[4] = item.Capacitaciones.Count;
+                    row[5] = item.ExperienciaLaborales.Count;
+                    row[6] = $"{item.RecomendadoPor.Nombre} ({item.RecomendadoPor.Cedula})";
                     dt.Rows.Add(row);
                 }
                 dgvResultados.DataSource = dt;
@@ -117,7 +118,7 @@ namespace Client.Forms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            SearchData();
         }
 
         private void cmdADD_Click(object sender, EventArgs e)
@@ -131,6 +132,7 @@ namespace Client.Forms
                 Candidato = WorkingCandidato
             };
             frm.ShowDialog();
+            SearchData();
         }
 
         private List<SimpleModel> GetPuestos()

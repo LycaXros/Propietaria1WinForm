@@ -51,7 +51,9 @@ namespace Client.WorkForms
                 this.Text += ": Editar";
                 mtxtCedula.Text = Candidato.Cedula;
                 mtxtCedula.ReadOnly = true;
-
+                txtNombre.Text = Candidato.Nombre;
+                var i = PuestosList.Find(x => x.Id == Candidato.PuestoId);
+                if (i != null) cbxPuesto.SelectedIndex = cbxPuesto.Items.IndexOf(i);
             }
             else
             {
@@ -116,6 +118,7 @@ namespace Client.WorkForms
             }
 
             Candidato.Nombre = txtNombre.Text;
+            Candidato.Cedula = mtxtCedula.Text;
 
             return true;
 
@@ -310,7 +313,7 @@ namespace Client.WorkForms
                 Editing = true,
                 cap = c,
                 //ContextCapacitaciones = context,
-                CedulaCandidato = Candidato.Cedula
+                CedulaCandidato =mtxtCedula.Text
             };
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.DeletingCapacitacionesEvent += DeleteCapacitacion;
@@ -354,22 +357,56 @@ namespace Client.WorkForms
                 }
                 PrepareLists();
 
-                var c = Candidato.Adapt<Candidatos>();
+                //c.Capacitaciones.ToList().ForEach(x => x.CandidatoCedula = c.Cedula);
+                //c.ExperienciaLaborales.ToList().ForEach(x => x.CandidatoCedula = c.Cedula);
+
+
                 if (Editing)
                 {
-                    Context.Entry(c).State = System.Data.Entity.EntityState.Modified;
+                    var c = Context.Candidatos.Find(Candidato.Cedula);
+
+                    c.Nombre = Candidato.Nombre;
+                    c.PuestoId = Candidato.PuestoId;
+                    c.Departamento = Candidato.Departamento;
+
+                    //c = Candidato.Adapt<Candidatos>();
+
+                    var caps =Candidato.Capacitaciones.Select(x => x.Id);
+                    c.Capacitaciones = c.Capacitaciones.Where(x => caps.Contains(x.Id)).ToList();
+                    c.Capacitaciones.ToList().ForEach(x=> {
+                        var data = Candidato.Capacitaciones.First(cc => cc.Id == x.Id);
+                        x.Institucion = data.Institucion;
+                        x.Nivel = data.Nivel;
+                        x.FechaDesde = data.FechaDesde;
+                        x.FechaHasta = data.FechaHasta;
+                        x.Descripcion = data.Descripcion;
+                    });
+                    var exps = Candidato.ExperienciaLaborales.Select(x => x.Id);
+                    c.ExperienciaLaborales = c.ExperienciaLaborales.Where(x => exps.Contains(x.Id)).ToList();
+                    c.ExperienciaLaborales.ToList().ForEach(x=> {
+                        var data = Candidato.ExperienciaLaborales.First(cc => cc.Id == x.Id);
+                        x.Empresa = data.Empresa;
+                        x.FechaDesde = data.FechaDesde;
+                        x.FechaHasta = data.FechaHasta;
+                        x.PuestoOcupado = data.PuestoOcupado;
+                        x.Salario = data.Salario;
+                    });
+
+                    c.Idiomas = Candidato.Idiomas.Adapt<IList<Idiomas>>();
                 }
                 else
                 {
-                    //Context.Candidatos.Add(c);
+                    var c = Candidato.Adapt<Candidatos>();
+                    //c.RecomiendaId = MDIs.MDI_User.IdentificadorEmpleado;
+                    Context.Candidatos.Add(c);
                 }
                 Context.SaveChanges();
                 MessageBox.Show("Saved!!!!!!");
                 this.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al Guardar Candidato");
+                MessageBox.Show($"Error al Guardar Candidato: {ex.Message}");
             }
         }
 

@@ -99,7 +99,7 @@ namespace Client.WorkForms
                 }
                 else
                 {
-                    cap.CandidatoCedula = CedulaCandidato;
+                    //cap.CandidatoCedula = CedulaCandidato;
                     cap.Descripcion = txtDescipcion.Text;
                     cap.FechaDesde = dtpInicio.Value;
                     cap.FechaHasta = dtpFin.Value;
@@ -125,8 +125,8 @@ namespace Client.WorkForms
                 cap.FechaDesde = dtpInicio.Value;
                 cap.FechaHasta = dtpFin.Value;
                 cap.Institucion = txtInstitucion.Text;
-                cap.Nivel = cbxNivel.SelectedText;
-                var c = cap.Adapt<Capacitaciones>();
+                cap.Nivel = cbxNivel.SelectedItem.ToString();
+                //var c = cap.Adapt<Capacitaciones>();
                 //ContextCapacitaciones.Entry(c).State = System.Data.Entity.EntityState.Modified;
                 //ContextCapacitaciones.SaveChanges();
             }
