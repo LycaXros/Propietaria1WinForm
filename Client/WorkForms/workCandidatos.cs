@@ -230,8 +230,8 @@ namespace Client.WorkForms
                     var exp = item.Value;
                     row[0] = exp.Empresa;
                     row[1] = exp.PuestoOcupado;
-                    row[2] = exp.FechaDesde;
-                    row[3] = exp.FechaDesde;
+                    row[2] = exp.FechaDesde.ToString("dd-MMM-yyyy"); ;
+                    row[3] = exp.FechaHasta.ToString("dd-MMM-yyyy"); ;
                     row[4] = exp.Salario;
                     row["ID"] = item.Key;
                     dt.Rows.Add(row);
@@ -254,6 +254,7 @@ namespace Client.WorkForms
             cbxPuesto.DataSource = PuestosList;
             cbxPuesto.Refresh();
         }
+
         private void fillIdiomas()
         {
 
@@ -333,8 +334,19 @@ namespace Client.WorkForms
         private void DgvExpLaboral_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = int.Parse(dgvExpLaboral.Rows[e.RowIndex].Cells["ID"].Value.ToString());
-            var c = dictionaryExp[id].Adapt<ExperienciaLaboral>();
+            var c = dictionaryExp[id].Adapt<ExperienciaLaboralViewModel>();
             idCurrentExp = id;
+            var frm = new workExperiencia()
+            {
+                Editing = true,
+                CedulaCandidato = Candidato.Cedula,
+                ExperienciaLab = c
+            };
+            frm.DeletingExpEvent += DeleteExp;
+            frm.ShowDialog();
+            frm.DeletingExpEvent -= DeleteExp;
+            if (frm.SaveData) { dictionaryExp[id] = c; }
+            fillExperiencia();
         }
 
         #endregion
@@ -443,22 +455,21 @@ namespace Client.WorkForms
 
         private void btnAddExp_Click(object sender, EventArgs e)
         {
-            //var cap = new CapacitacionViewModel();
-            //var frm = new w()
-            //{
-            //    //ContextCapacitaciones = Context,
-            //    Editing = false,
-            //    CedulaCandidato = Candidato.Cedula,
-            //    cap = cap
-            //};
-            //frm.ShowDialog();
-            //if (frm.SaveData)
-            //{
-            //    //Candidato.Capacitaciones.Add(cap);
-            //    dictionaryCap.Add(dictionaryCap.Count + 1, cap);
-            //}
+            var cap = new ExperienciaLaboralViewModel();
+            var frm = new workExperiencia()
+            {
+                Editing = false,
+                CedulaCandidato = Candidato.Cedula,
+                ExperienciaLab = cap
+            };
+            frm.ShowDialog();
+            if (frm.SaveData)
+            {
+                dictionaryExp.Add(dictionaryExp.Count + 1, cap);
+            }
             fillExperiencia();
         }
+
         private void btnIdiomasAdd_Click(object sender, EventArgs e)
         {
 

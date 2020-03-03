@@ -181,6 +181,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkForms\workExperiencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkForms\workExperiencia.Designer.cs">
+      <DependentUpon>workExperiencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkForms\workPuesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     <EmbeddedResource Include="Reportes\Employees.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkForms\workExperiencia.resx">
+      <DependentUpon>workExperiencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkForms\workPuesto.resx">
       <DependentUpon>workPuesto.cs</DependentUpon>
