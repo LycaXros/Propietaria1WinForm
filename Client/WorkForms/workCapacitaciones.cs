@@ -38,7 +38,7 @@ namespace Client.WorkForms
 
             if (!Editing)
             {
-                cmdEliminar.Visible = false;                
+                cmdEliminar.Visible = false;
             }
             else
             {
@@ -90,52 +90,15 @@ namespace Client.WorkForms
 
         private void Save()
         {
-            try
-            {
+            cap.Descripcion = txtDescipcion.Text;
+            cap.FechaDesde = dtpInicio.Value;
+            cap.FechaHasta = dtpFin.Value;
+            cap.Institucion = txtInstitucion.Text;
+            cap.Nivel = cbxNivel.SelectedItem.ToString();
 
-                if (Editing)
-                {
-                    SaveEdit();
-                }
-                else
-                {
-                    //cap.CandidatoCedula = CedulaCandidato;
-                    cap.Descripcion = txtDescipcion.Text;
-                    cap.FechaDesde = dtpInicio.Value;
-                    cap.FechaHasta = dtpFin.Value;
-                    cap.Institucion = txtInstitucion.Text;
-                    cap.Nivel = cbxNivel.SelectedItem.ToString();
+         //   MessageBox.Show("Guardado Exitoso");
+            SaveData = true;
 
-                    //ContextCapacitaciones.Capacitaciones.Add(cap.Adapt<Capacitaciones>());
-                    //ContextCapacitaciones.SaveChanges();
-                }
-                MessageBox.Show("Guardado Exitoso");
-                SaveData = true;
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void SaveEdit()
-        {
-            try
-            {
-                cap.Descripcion = txtDescipcion.Text;
-                cap.FechaDesde = dtpInicio.Value;
-                cap.FechaHasta = dtpFin.Value;
-                cap.Institucion = txtInstitucion.Text;
-                cap.Nivel = cbxNivel.SelectedItem.ToString();
-                //var c = cap.Adapt<Capacitaciones>();
-                //ContextCapacitaciones.Entry(c).State = System.Data.Entity.EntityState.Modified;
-                //ContextCapacitaciones.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "Error") ;
-                throw ex;
-            }
         }
 
         private void cmdEliminar_Click(object sender, EventArgs e)

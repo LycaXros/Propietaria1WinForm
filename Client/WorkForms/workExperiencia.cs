@@ -27,8 +27,17 @@ namespace Client.WorkForms
             BackColor = Color.FromArgb(179, 125, 255);
             panel1.BackColor = Color.FromArgb(192, 102, 232);
             flowLayoutPanel1.BackColor = Color.FromArgb(121, 102, 232);
+            SaveData = false;
+            dtpInicio.ValueChanged += DtpInicio_ValueChanged;
         }
-        
+
+        private void DtpInicio_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpInicio.Value >= dtpFin.Value) dtpFin.Value = dtpInicio.Value.AddDays(1);
+
+            dtpFin.MinDate = dtpInicio.Value;
+        }
+
         #region Button Methods
 
         private void cmdCancelar_Click(object sender, EventArgs e)
@@ -38,7 +47,45 @@ namespace Client.WorkForms
 
         private void cmdGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                CheckData();
 
+                Save();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        private void Save()
+        {
+            ExperienciaLab.Empresa = txtEmpresa.Text;
+            ExperienciaLab.PuestoOcupado= txtPuesto.Text;
+            ExperienciaLab.Salario=Convert.ToDouble( nupSalario.Value);
+            ExperienciaLab.FechaDesde= dtpInicio.Value;
+            ExperienciaLab.FechaHasta= dtpFin.Value;
+            SaveData = true;
+        }
+
+        private void CheckData()
+        {
+            if (string.IsNullOrEmpty(txtEmpresa.Text))
+            {
+                txtEmpresa.Focus();
+                throw new NoNullAllowedException("Campo de [Empresa] Vacio, Favor de llenar;");
+            } else if (string.IsNullOrEmpty(txtPuesto.Text))
+            {
+                txtPuesto.Focus();
+                throw new NoNullAllowedException("Campo de [Puesto] Vacio, Favor de llenar;");
+            }
+            else if (nupSalario.Value <= 0)
+            {
+                nupSalario.Focus();
+                throw new NoNullAllowedException("Campo de [Salario] no puede ser cero, Favor de llenar;");
+            }
         }
 
         private void cmdEliminar_Click(object sender, EventArgs e)
@@ -63,8 +110,8 @@ namespace Client.WorkForms
                 txtEmpresa.Text = ExperienciaLab.Empresa;
                 txtPuesto.Text = ExperienciaLab.PuestoOcupado;
                 nupSalario.Value =(decimal)ExperienciaLab.Salario;
-                dtpInicio.Value = ExperienciaLab.FechaDesde;
                 dtpFin.Value = ExperienciaLab.FechaHasta;
+                dtpInicio.Value = ExperienciaLab.FechaDesde;
 
             }
             else
