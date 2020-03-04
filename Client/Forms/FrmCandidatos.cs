@@ -35,14 +35,14 @@ namespace Client.Forms
             {
                 Context = context,
                 Editing = true,
-                PuestosList = GetPuestos()
+                //PuestosList = GetPuestos()
             };
             var c = context.Candidatos.Find(id);
             if (c == null) return;
 
             var data = c.Adapt<CandidatoViewModel>();
             frm.Candidato = data;
-
+            frm.PuestosList = GetPuestos(data.PuestoId);
             frm.ShowDialog();
         }
 
@@ -78,7 +78,7 @@ namespace Client.Forms
                     {
                         case "C":
                             dato = dato.Replace("-", "");
-                            query = query.Where(x => x.Cedula.Replace("-","").Contains(dato));
+                            query = query.Where(x => x.Cedula.Replace("-", "").Contains(dato));
                             break;
                         case "N":
                             query = query.Where(x => x.Nombre.Contains(dato));
@@ -135,18 +135,36 @@ namespace Client.Forms
             SearchData();
         }
 
-        private List<SimpleModel> GetPuestos()
+        private List<SimpleModel> GetPuestos(int? currentId = null)
         {
             try
             {
-                var d = context.Puestos
-                    .Where(x => x.Estado == EstadoPersistencia.Activo)
+                var d = context.Puestos.AsQueryable();
+
+                List<SimpleModel> result;
+
+                if (currentId.HasValue)
+                {
+                    result = d
+                    .Where(x => (x.Id == currentId.Value || x.IsAvailable ) && x.Estado == EstadoPersistencia.Activo )
                     .Select(x => new SimpleModel
                     {
                         Id = x.Id,
                         Nombre = x.Nombre
                     }).ToList();
-                return d;
+                }
+                else
+                {
+                    result = d
+                    .Where(x => x.Estado == EstadoPersistencia.Activo && x.IsAvailable)
+                    .Select(x => new SimpleModel
+                    {
+                        Id = x.Id,
+                        Nombre = x.Nombre
+                    }).ToList();
+                }
+                return
+                    result;
             }
             catch (Exception)
             {

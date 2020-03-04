@@ -375,8 +375,11 @@ namespace Client.WorkForms
 
                 if (Editing)
                 {
-                    var c = Context.Candidatos.Find(Candidato.Cedula);
+                    var c = Context.Candidatos
+                        .Include("PuestoAspira")                        
+                        .FirstOrDefault(x=> x.Cedula == Candidato.Cedula);
 
+                    c.PuestoAspira.IsAvailable = true;
                     c.Nombre = Candidato.Nombre;
                     c.PuestoId = Candidato.PuestoId;
                     c.Departamento = Candidato.Departamento;
@@ -413,6 +416,7 @@ namespace Client.WorkForms
                     Context.Candidatos.Add(c);
                 }
                 Context.SaveChanges();
+                Context.Database.ExecuteSqlCommand($" update [RRHH_DATA].[dbo].[Puestos] set [IsAvailable] = 0 where [Id] = {Candidato.PuestoId} ");
                 MessageBox.Show("Saved!!!!!!");
                 this.Close();
             }
