@@ -132,6 +132,13 @@
     <Compile Include="Forms\FrmPuestos.Designer.cs">
       <DependentUpon>FrmPuestos.cs</DependentUpon>
     </Compile>
+    <Compile Include="MDIs\FrmContrata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIs\FrmContrata.Designer.cs">
+      <DependentUpon>FrmContrata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\NotFoundException.cs" />
     <Compile Include="Reportes\ReportViewDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -213,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmPuestos.resx">
       <DependentUpon>FrmPuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIs\FrmContrata.resx">
+      <DependentUpon>FrmContrata.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkForms\workCandidatos.resx">
       <DependentUpon>workCandidatos.cs</DependentUpon>

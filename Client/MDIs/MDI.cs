@@ -91,5 +91,10 @@ namespace Client.MDIs
         {
             ShowForm(new Forms.FrmDepartamento() { _context = Context });
         }
+
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new FrmContrata() { Context = Context });
+        }
     }
 }
