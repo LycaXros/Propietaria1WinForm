@@ -74,7 +74,7 @@ namespace Client.MDIs
 
         private void capacitacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //ShowForm(new Forms.frmCapacitaciones() { context = Context });
+            ShowForm(new Forms.FrmEmpleados() { Context = Context });
         }
 
         private void listadoToolStripMenuItem_Click(object sender, EventArgs e)

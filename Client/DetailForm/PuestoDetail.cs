@@ -41,5 +41,9 @@ namespace Client.DetailForm
             this.Close();
         }
 
+        private void lblNombre_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

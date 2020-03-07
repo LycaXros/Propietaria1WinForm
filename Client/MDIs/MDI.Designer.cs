@@ -37,7 +37,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.competenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.idiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.departamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,7 +108,6 @@
             // gestionToolStripMenuItem
             // 
             this.gestionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.competenciasToolStripMenuItem,
             this.idiomasToolStripMenuItem,
             this.toolStripSeparator2,
             this.departamentosToolStripMenuItem,
@@ -121,13 +119,6 @@
             this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
             this.gestionToolStripMenuItem.Size = new System.Drawing.Size(204, 34);
             this.gestionToolStripMenuItem.Text = "Catalogo Gestiones";
-            // 
-            // competenciasToolStripMenuItem
-            // 
-            this.competenciasToolStripMenuItem.Name = "competenciasToolStripMenuItem";
-            this.competenciasToolStripMenuItem.Size = new System.Drawing.Size(229, 34);
-            this.competenciasToolStripMenuItem.Text = "Competencias";
-            this.competenciasToolStripMenuItem.Click += new System.EventHandler(this.competenciasToolStripMenuItem_Click);
             // 
             // idiomasToolStripMenuItem
             // 
@@ -172,14 +163,14 @@
             // listadoToolStripMenuItem
             // 
             this.listadoToolStripMenuItem.Name = "listadoToolStripMenuItem";
-            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(180, 34);
+            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(173, 34);
             this.listadoToolStripMenuItem.Text = "Listado";
             this.listadoToolStripMenuItem.Click += new System.EventHandler(this.listadoToolStripMenuItem_Click);
             // 
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(180, 34);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(173, 34);
             this.verToolStripMenuItem.Text = "Contratar";
             this.verToolStripMenuItem.Click += new System.EventHandler(this.verToolStripMenuItem_Click);
             // 
@@ -187,7 +178,7 @@
             // 
             this.capacitacionesToolStripMenuItem.Name = "capacitacionesToolStripMenuItem";
             this.capacitacionesToolStripMenuItem.Size = new System.Drawing.Size(229, 34);
-            this.capacitacionesToolStripMenuItem.Text = "Capacitaciones";
+            this.capacitacionesToolStripMenuItem.Text = "Empleados";
             this.capacitacionesToolStripMenuItem.Click += new System.EventHandler(this.capacitacionesToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
@@ -238,7 +229,6 @@
         private System.Windows.Forms.ToolStripStatusLabel timerLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem competenciasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteNuevosEmpleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem idiomasToolStripMenuItem;

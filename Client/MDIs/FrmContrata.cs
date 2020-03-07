@@ -10,11 +10,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client.Utils;
 using Data.Models;
+using Mapster;
 
 namespace Client.MDIs
 {
     public partial class FrmContrata : Form
     {
+        public RRHHContext Context { get; internal set; }
         private double SalarioOptimo;
         private List<Candidatos> ListaCandidatos;
 
@@ -22,6 +24,7 @@ namespace Client.MDIs
         {
             InitializeComponent();
             panel1.BackColor = Color.AliceBlue;
+            SalarioOptimo = 0;
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
         }
 
@@ -32,22 +35,36 @@ namespace Client.MDIs
                 $"[Candidato: {row.Cells["Nombre"].Value.ToString()}] \n" +
                 $"[Puesto: {row.Cells["Puesto"].Value.ToString()}]";
 
-            if(MessageBox.Show($"Contratar a:\n{info}", "Alerta", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            var cedula = row.Cells["Cedula"].Value.ToString();
+            var puesto = ListaCandidatos.FirstOrDefault(x => x.Cedula == cedula).PuestoAspira;
+
+            if (puesto == null) return;
+
+            var frm = new DetailForm.FrmPopupContrata()
             {
-                Contrata(row.Cells["Cedula"].Value.ToString());
+                Info = info,
+                Puesto = puesto.Adapt<ViewModels.PuestoViewModel>()
+            };
+
+            frm.ShowDialog();
+            if (frm.Contratar)
+            {
+                SalarioOptimo = frm.Sueldo;
+                Contrata(cedula);
+
             }
         }
-
         private void Contrata(string cedula)
         {
             try
             {
-                var c = Context.Candidatos.Include("PuestoAspira").FirstOrDefault(x=> x.Cedula == cedula);
+                var c = Context.Candidatos.Include("PuestoAspira").FirstOrDefault(x => x.Cedula == cedula);
 
                 if (c == null) throw new NotFoundException("No se encontro Candidato");
 
                 c.PuestoAspira.Estado = EstadoPersistencia.Inactivo;
-                Context.Empleados.Add(new Empleados {
+                Context.Empleados.Add(new Empleados
+                {
                     Cedula = c.Cedula,
                     Departamento = c.Departamento,
                     Estado = EstadoPersistencia.Activo,
@@ -56,6 +73,7 @@ namespace Client.MDIs
                     PuestoId = c.PuestoId,
                     Salario = SalarioOptimo
                 });
+                Context.SaveChanges();
                 MessageBox.Show("Contratado");
                 FillCheckBoxList();
             }
@@ -65,7 +83,6 @@ namespace Client.MDIs
             }
         }
 
-        public RRHHContext Context { get; internal set; }
 
         private void FrmContrata_Load(object sender, EventArgs e)
         {
@@ -86,7 +103,7 @@ namespace Client.MDIs
             tb.Columns.Add("Puesto");
 
 
-            foreach (var item in l)
+            foreach (var item in ListaCandidatos)
             {
                 var row = tb.NewRow();
 
