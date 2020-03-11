@@ -19,7 +19,8 @@ namespace Data.Models
         public string Cedula { get; set; }
         public string Nombre { get; set; }
 
-               
+        public bool Contratado { get; set; }
+
         public int PuestoId { get; set; }
         public virtual Puestos PuestoAspira { get; set; }
 
@@ -33,5 +34,6 @@ namespace Data.Models
         public virtual Empleados RecomendadoPor { get; set; }
 
         public virtual ICollection<Idiomas> Idiomas { get; set; }
+        
     }
 }

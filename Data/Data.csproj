@@ -99,6 +99,10 @@
     <Compile Include="Migrations\202002241425187_PuestoCompetencias.designer.cs">
       <DependentUpon>202002241425187_PuestoCompetencias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003110410150_CandidatoContratadoColumn.cs" />
+    <Compile Include="Migrations\202003110410150_CandidatoContratadoColumn.designer.cs">
+      <DependentUpon>202003110410150_CandidatoContratadoColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidatos.cs" />
     <Compile Include="Models\Capacitaciones.cs" />
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002241425187_PuestoCompetencias.resx">
       <DependentUpon>202002241425187_PuestoCompetencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003110410150_CandidatoContratadoColumn.resx">
+      <DependentUpon>202003110410150_CandidatoContratadoColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

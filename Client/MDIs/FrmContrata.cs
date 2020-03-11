@@ -63,6 +63,7 @@ namespace Client.MDIs
                 if (c == null) throw new NotFoundException("No se encontro Candidato");
 
                 c.PuestoAspira.Estado = EstadoPersistencia.Inactivo;
+                c.Contratado = true;
                 Context.Empleados.Add(new Empleados
                 {
                     Cedula = c.Cedula,

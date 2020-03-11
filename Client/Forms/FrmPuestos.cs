@@ -20,7 +20,7 @@ namespace Client.Forms
         private bool editingPuesto;
 
         public RRHHContext context { get; set; }
-        
+
         public FrmPuestos()
         {
             InitializeComponent();
@@ -145,18 +145,33 @@ namespace Client.Forms
                 var item = context.Puestos.FirstOrDefault(x => x.Id == workingPuestoDef.Id);
                 item.Nombre = workingPuestoDef.Nombre;
                 item.Riesgo = workingPuestoDef.Riesgo;
-                item.SalarioMinimo= workingPuestoDef.SalarioMinimo;
-                item.SalarioMaximo= workingPuestoDef.SalarioMaximo;
+                item.SalarioMinimo = workingPuestoDef.SalarioMinimo;
+                item.SalarioMaximo = workingPuestoDef.SalarioMaximo;
                 item.DepartamentoID = workingPuestoDef.DepartamentoID;
                 item.Estado = workingPuestoDef.Estado;
                 item.IsAvailable = workingPuestoDef.IsAvailable;
-                item.Competencias = workingPuestoDef.Competencias.Adapt<IList<Competencias>>();
+
+                var select = workingPuestoDef.Competencias.Where(x => x.Id > 0).Select(x => x.Id);
+                //var toDelete = item.Competencias.Where(x => !select.Contains(x.Id)).ToList();
+                item.Competencias = item.Competencias.Where(x => select.Contains(x.Id)).ToList();
+                item.Competencias.ToList().ForEach(x => {
+                    var data = workingPuestoDef.Competencias.First(com => com.Id == x.Id);
+                    x.Descripcion = data.Descripcion;
+                    x.Estado = data.Estado;
+                });
+                workingPuestoDef.Competencias.Where(x => x.Id == 0).ToList()
+                    .ForEach(x =>
+                    {
+                        item.Competencias.Add(x.Adapt<Competencias>());
+                    });
+
+                //item.Competencias = workingPuestoDef.Competencias.Adapt<IList<Competencias>>();
             }
             else
             {
                 var item = workingPuestoDef.Adapt<Puestos>();
                 item.IsAvailable = true;
-                context.Puestos.Add(item);                
+                context.Puestos.Add(item);
             }
             context.SaveChanges();
             MessageBox.Show("SUCCESS!!!!");

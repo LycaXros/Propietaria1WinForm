@@ -68,6 +68,7 @@ namespace Client.Forms
                     .Include("Capacitaciones")
                     .Include("ExperienciaLaborales")
                     .Include("RecomendadoPor")
+                    .Where(x=> x.Contratado.Equals(false))
                     .AsQueryable();
 
                 if (!string.IsNullOrEmpty(cbxCriterio.SelectedText) && !string.IsNullOrEmpty(txtValorABuscar.Text))

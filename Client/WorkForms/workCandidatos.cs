@@ -386,7 +386,7 @@ namespace Client.WorkForms
 
                     //c = Candidato.Adapt<Candidatos>();
 
-                    var caps =Candidato.Capacitaciones.Select(x => x.Id);
+                    var caps =Candidato.Capacitaciones.Where(x=> x.Id != 0).Select(x => x.Id);
                     c.Capacitaciones = c.Capacitaciones.Where(x => caps.Contains(x.Id)).ToList();
                     c.Capacitaciones.ToList().ForEach(x=> {
                         var data = Candidato.Capacitaciones.First(cc => cc.Id == x.Id);
@@ -396,7 +396,13 @@ namespace Client.WorkForms
                         x.FechaHasta = data.FechaHasta;
                         x.Descripcion = data.Descripcion;
                     });
-                    var exps = Candidato.ExperienciaLaborales.Select(x => x.Id);
+                    Candidato.Capacitaciones.Where(x => x.Id == 0).ToList()
+                        .ForEach(x =>
+                        {
+                            c.Capacitaciones.Add(x.Adapt<Capacitaciones>());
+                        });
+
+                    var exps = Candidato.ExperienciaLaborales.Where(x => x.Id != 0).Select(x => x.Id);
                     c.ExperienciaLaborales = c.ExperienciaLaborales.Where(x => exps.Contains(x.Id)).ToList();
                     c.ExperienciaLaborales.ToList().ForEach(x=> {
                         var data = Candidato.ExperienciaLaborales.First(cc => cc.Id == x.Id);
@@ -407,6 +413,11 @@ namespace Client.WorkForms
                         x.Salario = data.Salario;
                     });
 
+                    Candidato.ExperienciaLaborales.Where(x => x.Id == 0).ToList()
+                        .ForEach(x =>
+                        {
+                            c.ExperienciaLaborales.Add(x.Adapt<ExperienciaLaboral>());
+                        });
                     c.Idiomas = Candidato.Idiomas.Adapt<IList<Idiomas>>();
                 }
                 else

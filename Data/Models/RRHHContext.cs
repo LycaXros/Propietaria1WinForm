@@ -96,6 +96,7 @@ namespace Data.Models
                 .WithMany(e => e.Empleados)
                 .HasForeignKey(e => e.PuestoId)
                 .WillCascadeOnDelete(false);
+
         }
     }
 }
