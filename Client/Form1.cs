@@ -71,7 +71,6 @@ namespace Client
                     fallos += 1;
                     return;
                 }
-                MessageBox.Show("Contraseña Correcta");
                 fallos = 0;
                 SimpleModels.EmpleadoDataModel userdata = new SimpleModels.EmpleadoDataModel()
                 {

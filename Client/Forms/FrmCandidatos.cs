@@ -18,10 +18,12 @@ namespace Client.Forms
     {
         public RRHHContext context { get; set; }
         public CandidatoViewModel WorkingCandidato { get; private set; }
+        private IEnumerable<IdiomaViewModel> _idiomas;
 
         public FrmCandidatos()
         {
             InitializeComponent();
+            _idiomas = null;
             this.BackColor = Color.FromArgb(255, 160, 71);
             this.panel1.BackColor = Color.FromArgb(153, 139, 104);
             dgvResultados.CellMouseDoubleClick += DgvResultados_CellMouseDoubleClick;
@@ -35,6 +37,7 @@ namespace Client.Forms
             {
                 Context = context,
                 Editing = true,
+                ListaIdiomas = GetIdiomas()
                 //PuestosList = GetPuestos()
             };
             var c = context.Candidatos.Find(id);
@@ -68,7 +71,7 @@ namespace Client.Forms
                     .Include("Capacitaciones")
                     .Include("ExperienciaLaborales")
                     .Include("RecomendadoPor")
-                    .Where(x=> x.Contratado.Equals(false))
+                    .Where(x => x.Contratado.Equals(false))
                     .AsQueryable();
 
                 if (!string.IsNullOrEmpty(cbxCriterio.SelectedText) && !string.IsNullOrEmpty(txtValorABuscar.Text))
@@ -130,10 +133,28 @@ namespace Client.Forms
                 Context = context,
                 Editing = false,
                 PuestosList = GetPuestos(),
-                Candidato = WorkingCandidato
+                Candidato = WorkingCandidato,
+                ListaIdiomas = GetIdiomas()
             };
             frm.ShowDialog();
             SearchData();
+        }
+
+        private List<IdiomaViewModel> GetIdiomas()
+        {
+            try
+            {
+                if (_idiomas == null)
+                {                
+                    _idiomas = context.Idiomas.AsEnumerable().Adapt<IEnumerable<IdiomaViewModel>>();
+                }
+
+                return _idiomas.ToList();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         private List<SimpleModel> GetPuestos(int? currentId = null)
@@ -147,7 +168,7 @@ namespace Client.Forms
                 if (currentId.HasValue)
                 {
                     result = d
-                    .Where(x => (x.Id == currentId.Value || x.IsAvailable ) && x.Estado == EstadoPersistencia.Activo )
+                    .Where(x => (x.Id == currentId.Value || x.IsAvailable) && x.Estado == EstadoPersistencia.Activo)
                     .Select(x => new SimpleModel
                     {
                         Id = x.Id,

@@ -131,7 +131,11 @@ namespace Client.WorkForms
                 nupSalMin.Value = (decimal)PuestoD.SalarioMinimo;
                 nupSalMax.Value = (decimal)PuestoD.SalarioMaximo;
                 cmdEliminar.Visible = true;
-                
+
+            }
+            else
+            {
+                PuestoD.Competencias = new List<CompetenciaViewModel>();
             }
         }
 
@@ -145,6 +149,7 @@ namespace Client.WorkForms
             var frm = new Forms.frmCRUDCompetencias() {
                 L_Competencias = PuestoD.Competencias
             };
+
             frm.ShowDialog();
         }
     }

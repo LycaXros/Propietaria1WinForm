@@ -96,6 +96,12 @@
     <Compile Include="DetailForm\FrmPopupContrata.Designer.cs">
       <DependentUpon>FrmPopupContrata.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailForm\IdiomaSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailForm\IdiomaSelectForm.Designer.cs">
+      <DependentUpon>IdiomaSelectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailForm\PuestoDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +220,9 @@
     </Compile>
     <EmbeddedResource Include="DetailForm\FrmPopupContrata.resx">
       <DependentUpon>FrmPopupContrata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailForm\IdiomaSelectForm.resx">
+      <DependentUpon>IdiomaSelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DetailForm\PuestoDetail.resx">
       <DependentUpon>PuestoDetail.cs</DependentUpon>

@@ -12,6 +12,7 @@ using Client.Utils;
 using Client.ViewModels;
 using Mapster;
 using Client.SimpleModels;
+using Client.DetailForm;
 
 namespace Client.WorkForms
 {
@@ -25,6 +26,7 @@ namespace Client.WorkForms
         private int idCurrentExp = 0;
 
         public List<SimpleModel> PuestosList { get; set; }
+        public List<IdiomaViewModel> ListaIdiomas { get; set; }
         public CandidatoViewModel Candidato { get; internal set; }
         public RRHHContext Context { get; internal set; }
         public bool Editing { get; set; }
@@ -487,7 +489,21 @@ namespace Client.WorkForms
 
         private void btnIdiomasAdd_Click(object sender, EventArgs e)
         {
+            var currentItems = dictionaryIdioma.Values.Select(x=> x.Id).ToList();
+            var list = ListaIdiomas.ToList();
+            if(currentItems.Count() > 0)
+            {
+                list = list.Where(x => !currentItems.Contains(x.Id)).ToList();
+            }
 
+            var cp = new IdiomaViewModel();
+            var frm = new IdiomaSelectForm()
+            {
+                Idioma = cp,
+                Idiomas = list
+            };
+
+            frm.ShowDialog();
         }
 
 
