@@ -30,18 +30,19 @@ namespace Client.Forms
         private void DgvResultados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var row = dgvResultados.Rows[e.RowIndex];
-            var id = int.Parse(row.Cells["ID"].Value.ToString());
+            var id = row.Cells["Cedula"].Value.ToString();
             var frm = new WorkForms.workCandidatos()
             {
                 Context = context,
                 Editing = true,
-                PuestosList = GetPuestos()
+                //PuestosList = GetPuestos()
             };
             var c = context.Candidatos.Find(id);
+            if (c == null) return;
 
             var data = c.Adapt<CandidatoViewModel>();
             frm.Candidato = data;
-
+            frm.PuestosList = GetPuestos(data.PuestoId);
             frm.ShowDialog();
         }
 
@@ -59,16 +60,15 @@ namespace Client.Forms
                 dt.Columns.Add("Nombre");
                 dt.Columns.Add("Puesto");
                 dt.Columns.Add("Departamento");
-                dt.Columns.Add("Cantidad Competencias");
                 dt.Columns.Add("Cantidad Capacitaciones");
                 dt.Columns.Add("Cantidad Experiencias");
                 dt.Columns.Add("Recomendado Por");
 
                 var query = context.Candidatos
-                    .Include("Competencias")
                     .Include("Capacitaciones")
                     .Include("ExperienciaLaborales")
                     .Include("RecomendadoPor")
+                    .Where(x=> x.Contratado.Equals(false))
                     .AsQueryable();
 
                 if (!string.IsNullOrEmpty(cbxCriterio.SelectedText) && !string.IsNullOrEmpty(txtValorABuscar.Text))
@@ -78,7 +78,8 @@ namespace Client.Forms
                     switch (criterio)
                     {
                         case "C":
-                            query = query.Where(x => x.Cedula.Contains(dato));
+                            dato = dato.Replace("-", "");
+                            query = query.Where(x => x.Cedula.Replace("-", "").Contains(dato));
                             break;
                         case "N":
                             query = query.Where(x => x.Nombre.Contains(dato));
@@ -101,10 +102,9 @@ namespace Client.Forms
                     row[1] = item.Nombre;
                     row[2] = item.PuestoAspira.Nombre;
                     row[3] = item.Departamento;
-                    row[4] = item.Competencias.Count;
-                    row[5] = item.Capacitaciones.Count;
-                    row[6] = item.ExperienciaLaborales.Count;
-                    row[7] = $"{item.RecomendadoPor.Nombre} ({item.RecomendadoPor.Cedula})";
+                    row[4] = item.Capacitaciones.Count;
+                    row[5] = item.ExperienciaLaborales.Count;
+                    row[6] = $"{item.RecomendadoPor.Nombre} ({item.RecomendadoPor.Cedula})";
                     dt.Rows.Add(row);
                 }
                 dgvResultados.DataSource = dt;
@@ -119,7 +119,7 @@ namespace Client.Forms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            SearchData();
         }
 
         private void cmdADD_Click(object sender, EventArgs e)
@@ -133,20 +133,39 @@ namespace Client.Forms
                 Candidato = WorkingCandidato
             };
             frm.ShowDialog();
+            SearchData();
         }
 
-        private List<SimpleModel> GetPuestos()
+        private List<SimpleModel> GetPuestos(int? currentId = null)
         {
             try
             {
-                var d = context.Puestos
-                    .Where(x => x.Estado == EstadoPersistencia.Activo)
+                var d = context.Puestos.AsQueryable();
+
+                List<SimpleModel> result;
+
+                if (currentId.HasValue)
+                {
+                    result = d
+                    .Where(x => (x.Id == currentId.Value || x.IsAvailable ) && x.Estado == EstadoPersistencia.Activo )
                     .Select(x => new SimpleModel
                     {
                         Id = x.Id,
                         Nombre = x.Nombre
                     }).ToList();
-                return d;
+                }
+                else
+                {
+                    result = d
+                    .Where(x => x.Estado == EstadoPersistencia.Activo && x.IsAvailable)
+                    .Select(x => new SimpleModel
+                    {
+                        Id = x.Id,
+                        Nombre = x.Nombre
+                    }).ToList();
+                }
+                return
+                    result;
             }
             catch (Exception)
             {

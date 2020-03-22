@@ -16,8 +16,8 @@ namespace Client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
-            Application.Run(new MDIs.MDI_User());
+            Application.Run(new Form1());
+            //Application.Run(new MDIs.MDI_User());
         }
     }
 }

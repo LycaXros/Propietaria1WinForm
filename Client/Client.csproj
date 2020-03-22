@@ -90,6 +90,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DetailForm\FrmPopupContrata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailForm\FrmPopupContrata.Designer.cs">
+      <DependentUpon>FrmPopupContrata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailForm\PuestoDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailForm\PuestoDetail.Designer.cs">
+      <DependentUpon>PuestoDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmCandidatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +126,12 @@
     <Compile Include="Forms\FrmDepartamento.Designer.cs">
       <DependentUpon>FrmDepartamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmEmpleados.Designer.cs">
+      <DependentUpon>FrmEmpleados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmIdiomas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,13 +144,22 @@
     <Compile Include="Forms\FrmPuestos.Designer.cs">
       <DependentUpon>FrmPuestos.cs</DependentUpon>
     </Compile>
+    <Compile Include="MDIs\FrmContrata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIs\FrmContrata.Designer.cs">
+      <DependentUpon>FrmContrata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\NotFoundException.cs" />
     <Compile Include="Reportes\ReportViewDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportViewDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SimpleModels\EmpleadoDataModel.cs" />
     <Compile Include="SimpleModels\SimpleModel.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Utils\CryptoServices.cs" />
     <Compile Include="Utils\TextboxUtils.cs" />
     <Compile Include="ViewModels\CandidatoViewModel.cs" />
     <Compile Include="ViewModels\CapacitacionViewModel.cs" />
@@ -173,12 +200,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkForms\workExperiencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkForms\workExperiencia.Designer.cs">
+      <DependentUpon>workExperiencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkForms\workPuesto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WorkForms\workPuesto.Designer.cs">
       <DependentUpon>workPuesto.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DetailForm\FrmPopupContrata.resx">
+      <DependentUpon>FrmPopupContrata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailForm\PuestoDetail.resx">
+      <DependentUpon>PuestoDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmCandidatos.resx">
       <DependentUpon>FrmCandidatos.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,11 +230,17 @@
     <EmbeddedResource Include="Forms\FrmDepartamento.resx">
       <DependentUpon>FrmDepartamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmEmpleados.resx">
+      <DependentUpon>FrmEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIdiomas.resx">
       <DependentUpon>frmIdiomas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmPuestos.resx">
       <DependentUpon>FrmPuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIs\FrmContrata.resx">
+      <DependentUpon>FrmContrata.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkForms\workCandidatos.resx">
       <DependentUpon>workCandidatos.cs</DependentUpon>
@@ -225,6 +270,9 @@
     <EmbeddedResource Include="Reportes\Employees.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkForms\workExperiencia.resx">
+      <DependentUpon>workExperiencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkForms\workPuesto.resx">
       <DependentUpon>workPuesto.cs</DependentUpon>
@@ -268,6 +316,8 @@
       <DependentUpon>ReportViewDS.xsd</DependentUpon>
     </None>
     <None Include="Resources\refresh-512.png" />
+    <None Include="Resources\Logo unapec.png" />
+    <None Include="Resources\icon-azul5.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -309,6 +359,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -55,7 +55,7 @@
                 "dbo.Empleados",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         Cedula = c.String(),
                         Nombre = c.String(),
                         FechaIngreso = c.DateTime(nullable: false),

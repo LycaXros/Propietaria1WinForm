@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnInfo = new System.Windows.Forms.Button();
             this.cbxPuesto = new System.Windows.Forms.ComboBox();
             this.puestosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtDepartamento = new System.Windows.Forms.TextBox();
@@ -40,27 +41,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cmdADD_Competencias = new System.Windows.Forms.Button();
-            this.dgvCompetencias = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cmdADD_Capacitaciones = new System.Windows.Forms.Button();
             this.dgvCapacitaciones = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddExp = new System.Windows.Forms.Button();
             this.dgvExpLaboral = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnIdiomasAdd = new System.Windows.Forms.Button();
             this.dgvIdiomas = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cmdGuardar = new System.Windows.Forms.Button();
             this.cmdEliminar = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.puestosBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCompetencias)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCapacitaciones)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -74,6 +71,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.btnInfo);
             this.panel1.Controls.Add(this.cbxPuesto);
             this.panel1.Controls.Add(this.txtDepartamento);
             this.panel1.Controls.Add(this.txtNombre);
@@ -87,6 +85,19 @@
             this.panel1.Size = new System.Drawing.Size(567, 181);
             this.panel1.TabIndex = 0;
             // 
+            // btnInfo
+            // 
+            this.btnInfo.BackgroundImage = global::Client.Properties.Resources.Search;
+            this.btnInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInfo.FlatAppearance.BorderSize = 0;
+            this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInfo.Location = new System.Drawing.Point(170, 119);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(54, 47);
+            this.btnInfo.TabIndex = 8;
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            // 
             // cbxPuesto
             // 
             this.cbxPuesto.DataSource = this.puestosBindingSource;
@@ -96,7 +107,7 @@
             this.cbxPuesto.FormattingEnabled = true;
             this.cbxPuesto.Location = new System.Drawing.Point(18, 128);
             this.cbxPuesto.Name = "cbxPuesto";
-            this.cbxPuesto.Size = new System.Drawing.Size(190, 28);
+            this.cbxPuesto.Size = new System.Drawing.Size(146, 28);
             this.cbxPuesto.TabIndex = 7;
             this.cbxPuesto.ValueMember = "Id";
             this.cbxPuesto.SelectedIndexChanged += new System.EventHandler(this.cbxPuesto_SelectedIndexChanged);
@@ -130,7 +141,6 @@
             this.mtxtCedula.Name = "mtxtCedula";
             this.mtxtCedula.Size = new System.Drawing.Size(126, 26);
             this.mtxtCedula.TabIndex = 4;
-            this.mtxtCedula.TextChanged += new System.EventHandler(this.mtxtCedula_TextChanged);
             // 
             // label4
             // 
@@ -181,7 +191,6 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -190,42 +199,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(670, 246);
             this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.cmdADD_Competencias);
-            this.tabPage1.Controls.Add(this.dgvCompetencias);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(662, 220);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Competencias";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // cmdADD_Competencias
-            // 
-            this.cmdADD_Competencias.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.cmdADD_Competencias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdADD_Competencias.FlatAppearance.BorderSize = 0;
-            this.cmdADD_Competencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdADD_Competencias.Location = new System.Drawing.Point(537, 49);
-            this.cmdADD_Competencias.Name = "cmdADD_Competencias";
-            this.cmdADD_Competencias.Size = new System.Drawing.Size(75, 64);
-            this.cmdADD_Competencias.TabIndex = 22;
-            this.cmdADD_Competencias.UseVisualStyleBackColor = true;
-            this.cmdADD_Competencias.Click += new System.EventHandler(this.cmdADD_Competencias_Click);
-            // 
-            // dgvCompetencias
-            // 
-            this.dgvCompetencias.AllowUserToAddRows = false;
-            this.dgvCompetencias.AllowUserToDeleteRows = false;
-            this.dgvCompetencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCompetencias.Location = new System.Drawing.Point(6, 22);
-            this.dgvCompetencias.Name = "dgvCompetencias";
-            this.dgvCompetencias.ReadOnly = true;
-            this.dgvCompetencias.Size = new System.Drawing.Size(428, 181);
-            this.dgvCompetencias.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -265,7 +238,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.btnAddExp);
             this.tabPage3.Controls.Add(this.dgvExpLaboral);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -274,17 +247,18 @@
             this.tabPage3.Text = "Experiencia Laboral";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnAddExp
             // 
-            this.button1.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(554, 72);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 64);
-            this.button1.TabIndex = 23;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddExp.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.btnAddExp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddExp.FlatAppearance.BorderSize = 0;
+            this.btnAddExp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddExp.Location = new System.Drawing.Point(554, 72);
+            this.btnAddExp.Name = "btnAddExp";
+            this.btnAddExp.Size = new System.Drawing.Size(75, 64);
+            this.btnAddExp.TabIndex = 23;
+            this.btnAddExp.UseVisualStyleBackColor = true;
+            this.btnAddExp.Click += new System.EventHandler(this.btnAddExp_Click);
             // 
             // dgvExpLaboral
             // 
@@ -299,7 +273,7 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.btnIdiomasAdd);
             this.tabPage4.Controls.Add(this.dgvIdiomas);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -309,17 +283,18 @@
             this.tabPage4.Text = "Idiomas";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnIdiomasAdd
             // 
-            this.button2.BackgroundImage = global::Client.Properties.Resources.add_circle;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(550, 72);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 64);
-            this.button2.TabIndex = 25;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnIdiomasAdd.BackgroundImage = global::Client.Properties.Resources.add_circle;
+            this.btnIdiomasAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnIdiomasAdd.FlatAppearance.BorderSize = 0;
+            this.btnIdiomasAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIdiomasAdd.Location = new System.Drawing.Point(550, 72);
+            this.btnIdiomasAdd.Name = "btnIdiomasAdd";
+            this.btnIdiomasAdd.Size = new System.Drawing.Size(75, 64);
+            this.btnIdiomasAdd.TabIndex = 25;
+            this.btnIdiomasAdd.UseVisualStyleBackColor = true;
+            this.btnIdiomasAdd.Click += new System.EventHandler(this.btnIdiomasAdd_Click);
             // 
             // dgvIdiomas
             // 
@@ -397,8 +372,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.puestosBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCompetencias)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCapacitaciones)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -415,11 +388,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dgvCompetencias;
         private System.Windows.Forms.DataGridView dgvCapacitaciones;
         private System.Windows.Forms.DataGridView dgvExpLaboral;
         private System.Windows.Forms.Label label1;
@@ -435,10 +406,11 @@
         private System.Windows.Forms.Button cmdEliminar;
         private System.Windows.Forms.BindingSource puestosBindingSource;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button cmdADD_Competencias;
         private System.Windows.Forms.Button cmdADD_Capacitaciones;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddExp;
+        private System.Windows.Forms.Button btnIdiomasAdd;
         private System.Windows.Forms.DataGridView dgvIdiomas;
+        private System.Windows.Forms.Button btnInfo;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

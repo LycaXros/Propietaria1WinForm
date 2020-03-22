@@ -9,10 +9,6 @@ namespace Data.Models
 {
     public class Competencias
     {
-        public Competencias()
-        {
-            Candidatos = new HashSet<Candidatos>();
-        }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -21,6 +17,8 @@ namespace Data.Models
         public string Descripcion { get; set; }
 
         public EstadoPersistencia Estado { get; set; }
-        public virtual ICollection<Candidatos> Candidatos { get;  set; }
+
+        public int PuestoId { get; set; }
+        public virtual Puestos Puesto { get; set; }
     }
 }

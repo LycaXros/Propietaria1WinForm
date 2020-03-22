@@ -1,4 +1,5 @@
-﻿using Data.Models;
+﻿using Client.SimpleModels;
+using Data.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,15 +15,26 @@ namespace Client.MDIs
     public partial class MDI_User : Form
     {
         public static int IdentificadorEmpleado { get; internal set; }
-        private RRHHContext _context;
+        private RRHHContext Context;
+        private readonly EmpleadoDataModel _emp;
+
         public MDI_User()
         {
             InitializeComponent();
-            _context = new RRHHContext();
+            Context = new RRHHContext();
+            _emp = new EmpleadoDataModel();
+        }
+        public MDI_User(RRHHContext context, EmpleadoDataModel emp)
+        {
+            InitializeComponent();
+            Context = context;
+            _emp = emp;
+            MDI_User.IdentificadorEmpleado = emp.Id;
         }
 
         private void MDI_User_Load(object sender, EventArgs e)
         {
+            userData.Text = _emp.ProfileInfo;
             timer1.Enabled = true;
             timer1.Start();
         }
@@ -47,7 +59,7 @@ namespace Client.MDIs
 
         private void reporteNuevosEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new VerReporte() {_db = _context });
+            ShowForm(new VerReporte() {_db = Context });
         }
 
         private void competenciasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,27 +69,32 @@ namespace Client.MDIs
 
         private void idiomasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new Forms.frmIdiomas() { _context = _context});
+            ShowForm(new Forms.frmIdiomas() { _context = Context});
         }
 
         private void capacitacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new Forms.frmCapacitaciones() { context = _context });
+            ShowForm(new Forms.FrmEmpleados() { Context = Context });
         }
 
         private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new Forms.FrmCandidatos() { context = _context });
+            ShowForm(new Forms.FrmCandidatos() { context = Context });
         }
 
         private void puestosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new Forms.FrmPuestos() { context = _context });
+            ShowForm(new Forms.FrmPuestos() { context = Context });
         }
 
         private void departamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowForm(new Forms.FrmDepartamento() { _context = _context });
+            ShowForm(new Forms.FrmDepartamento() { _context = Context });
+        }
+
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(new FrmContrata() { Context = Context });
         }
     }
 }

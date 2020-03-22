@@ -104,6 +104,7 @@
             // 
             // fechaHasta
             // 
+            this.fechaHasta.CustomFormat = "dd-MMM-yyyy";
             this.fechaHasta.Location = new System.Drawing.Point(493, 32);
             this.fechaHasta.MaxDate = new System.DateTime(2020, 1, 23, 0, 0, 0, 0);
             this.fechaHasta.Name = "fechaHasta";
@@ -113,6 +114,7 @@
             // 
             // fechaDesde
             // 
+            this.fechaDesde.CustomFormat = "dd-MMM-yyyy";
             this.fechaDesde.Location = new System.Drawing.Point(151, 32);
             this.fechaDesde.Name = "fechaDesde";
             this.fechaDesde.Size = new System.Drawing.Size(192, 20);

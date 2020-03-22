@@ -17,6 +17,13 @@ namespace Client.WorkForms
 {
     public partial class workCandidatos : Form
     {
+        private Dictionary<int, CapacitacionViewModel> dictionaryCap;
+        private Dictionary<int, IdiomaViewModel> dictionaryIdioma;
+        private Dictionary<int, ExperienciaLaboralViewModel> dictionaryExp;
+        private int idCurrentCap = 0;
+        private int idCurrentIdio = 0;
+        private int idCurrentExp = 0;
+
         public List<SimpleModel> PuestosList { get; set; }
         public CandidatoViewModel Candidato { get; internal set; }
         public RRHHContext Context { get; internal set; }
@@ -24,69 +31,80 @@ namespace Client.WorkForms
         public workCandidatos()
         {
             InitializeComponent();
-
+            dictionaryCap = new Dictionary<int, CapacitacionViewModel>();
+            dictionaryExp = new Dictionary<int, ExperienciaLaboralViewModel>();
+            dictionaryIdioma = new Dictionary<int, IdiomaViewModel>();
+            dgvCapacitaciones.CellDoubleClick += DgvCapacitaciones_CellDoubleClick;
+            dgvExpLaboral.CellDoubleClick += DgvExpLaboral_CellDoubleClick;
+            dgvIdiomas.CellDoubleClick += DgvIdiomas_CellDoubleClick;
         }
 
         private void workCandidatos_Load(object sender, EventArgs e)
         {
             fillCbxPuestos();
+            toolTip1.SetToolTip(btnInfo, "Ver informacion del Puesto");
             panel1.BackColor = Color.FromArgb(153, 88, 61);
             panel3.BackColor = Color.FromArgb(232, 69, 67);
             this.BackColor = Color.FromArgb(181, 78, 34);
             if (Editing)
             {
                 this.Text += ": Editar";
+                mtxtCedula.Text = Candidato.Cedula;
+                mtxtCedula.ReadOnly = true;
+                txtNombre.Text = Candidato.Nombre;
+                var i = PuestosList.Find(x => x.Id == Candidato.PuestoId);
+                if (i != null) cbxPuesto.SelectedIndex = cbxPuesto.Items.IndexOf(i);
             }
             else
             {
-                Candidato = new CandidatoViewModel();
+                //Candidato = new CandidatoViewModel();
                 Candidato.RecomiendaId = MDIs.MDI_User.IdentificadorEmpleado;
-                Candidato.Competencias = new List<CompetenciaViewModel>();
                 Candidato.ExperienciaLaborales = new List<ExperienciaLaboralViewModel>();
                 Candidato.Idiomas = new List<IdiomaViewModel>();
                 Candidato.Capacitaciones = new List<CapacitacionViewModel>();
                 this.Text += ": Nuevo";
             }
-
+            FillDictionary();
             this.fillCapacitaciones();
-            this.fillCompetencias();
             this.fillExperiencia();
             this.fillIdiomas();
         }
 
-
-        private void cmdCancelar_Click(object sender, EventArgs e)
+        private void FillDictionary()
         {
-            MessageBox.Show("Hola");
+            //Capacitaciones
+            if (dictionaryCap.Count > 0) dictionaryCap.Clear();
+            int c = 0;
+            foreach (var item in Candidato.Capacitaciones)
+            {
+                dictionaryCap.Add(++c, item);
+            }
+            //Experiencia
+            if (dictionaryExp.Count > 0) dictionaryExp.Clear();
+            c = 0;
+            foreach (var item in Candidato.ExperienciaLaborales)
+            {
+                dictionaryExp.Add(++c, item);
+            }
+            //Idiomas
+            if (dictionaryIdioma.Count > 0) dictionaryIdioma.Clear();
+            c = 0;
+            foreach (var item in Candidato.Idiomas)
+            {
+                dictionaryIdioma.Add(++c, item);
+            }
         }
 
-        private void cmdGuardar_Click(object sender, EventArgs e)
-        {
-            try
-            {
 
-                if (!CheckData())
-                {
-                    MessageBox.Show("Complete los campos faltantes");
-                    return;
-                }
-                var c = Candidato.Adapt<Candidatos>();
-                if (Editing)
-                {
-                    Context.Entry(c).State = System.Data.Entity.EntityState.Modified;
-                }
-                else
-                {
-                    Context.Candidatos.Add(c);
-                }
-                Context.SaveChanges();
-                MessageBox.Show("Saved!!!!!!");
-                this.Close();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error al Guardar Candidato");
-            }
+        private void PrepareLists()
+        {
+            Candidato.Capacitaciones.Clear();
+            Candidato.Idiomas.Clear();
+            Candidato.ExperienciaLaborales.Clear();
+
+            Candidato.Capacitaciones.AddRange(dictionaryCap.Values);
+            Candidato.Idiomas.AddRange(dictionaryIdioma.Values);
+            Candidato.ExperienciaLaborales.AddRange(dictionaryExp.Values);
         }
 
         private bool CheckData()
@@ -100,6 +118,7 @@ namespace Client.WorkForms
             }
 
             Candidato.Nombre = txtNombre.Text;
+            Candidato.Cedula = mtxtCedula.Text;
 
             return true;
 
@@ -118,26 +137,38 @@ namespace Client.WorkForms
             }
         }
 
-        private void cmdADD_Capacitaciones_Click(object sender, EventArgs e)
-        {
-            if (!mtxtCedula.ValidateMaskedTextbox())
-            {
-                MessageBox.Show("Complete campo Cedula");
-                return;
-            }
-            var cap = new CapacitacionViewModel();
-            var frm = new workCapacitaciones()
-            {
-                context = Context,
-                Editing = false,
-                CedulaCandidato = Candidato.Cedula,
-                cap = cap
-            };
+        #region Delete Events
 
-            frm.ShowDialog();
-            Candidato.Capacitaciones.Add(cap);
-            fillCapacitaciones();
+        private void DeleteCapacitacion(object sender, EventArgs e)
+        {
+            if (idCurrentCap > 0)
+            {
+                dictionaryCap.Remove(idCurrentCap);
+                MessageBox.Show("Eliminado");
+                idCurrentCap = 0;
+            }
         }
+        private void DeleteExp(object sender, EventArgs e)
+        {
+            if (idCurrentExp > 0)
+            {
+                dictionaryExp.Remove(idCurrentExp);
+                MessageBox.Show("Eliminado");
+                idCurrentExp = 0;
+            }
+        }
+        private void DeleteIdioma(object sender, EventArgs e)
+        {
+            if (idCurrentIdio > 0)
+            {
+                dictionaryIdioma.Remove(idCurrentIdio);
+                MessageBox.Show("Eliminado");
+                idCurrentIdio = 0;
+            }
+        }
+        #endregion
+
+        #region Fill Methods
 
         private void fillCapacitaciones()
         {
@@ -147,26 +178,28 @@ namespace Client.WorkForms
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Descripcion");
                 dt.Columns.Add("Nivel");
-                dt.Columns.Add("Puesto");
                 dt.Columns.Add("Fecha de Inicio");
                 dt.Columns.Add("Fecha de Finalizacion");
                 dt.Columns.Add("Institucion");
+                dt.Columns.Add("ID");
 
                 //var query = ca.Capacitaciones.Where(x => x.CandidatoCedula == Candidato.Cedula);
 
-                var data = Candidato.Capacitaciones;
-                foreach (var item in data)
+                foreach (var item in dictionaryCap)
                 {
+                    var cap = item.Value;
                     var row = dt.NewRow();
-                    row[0] = item.Descripcion;
-                    row[1] = item.Nivel;
-                    row[2] = item.FechaDesde;
-                    row[3] = item.FechaDesde;
-                    row[4] = item.Institucion;
+                    row[0] = cap.Descripcion;
+                    row[1] = cap.Nivel;
+                    row[2] = cap.FechaDesde.ToString("dd-MMM-yyyy");
+                    row[3] = cap.FechaHasta.ToString("dd-MMM-yyyy");
+                    row[4] = cap.Institucion;
+                    row["ID"] = item.Key;
                     dt.Rows.Add(row);
                 }
                 dgvCapacitaciones.DataSource = dt;
                 dgvCapacitaciones.Refresh();
+                dgvCapacitaciones.Columns["ID"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -175,37 +208,6 @@ namespace Client.WorkForms
             }
         }
 
-        private void fillCompetencias()
-        {
-
-            try
-            {
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Descripcion");
-                dt.Columns.Add("ID");
-
-                //var query = Context.Candidatos
-                //    .Include("Competencias")
-                //    .First(x => x.Cedula == Candidato.Cedula).Competencias;
-
-                var data = Candidato.Competencias;
-                foreach (var item in data)
-                {
-                    var row = dt.NewRow();
-                    row[0] = item.Descripcion;
-                    row["ID"] = item.Id;
-                    dt.Rows.Add(row);
-                }
-                dgvCompetencias.DataSource = dt;
-                dgvCompetencias.Refresh();
-                dgvCompetencias.Columns["ID"].Visible = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-                //throw ex;
-            }
-        }
 
         private void fillExperiencia()
         {
@@ -221,16 +223,17 @@ namespace Client.WorkForms
                 dt.Columns.Add("ID");
                 //var query = Context.ExpLaborales.Where(x => x.CandidatoCedula == Candidato.Cedula);
 
-                var data = Candidato.ExperienciaLaborales;
-                foreach (var item in data)
+                //var data = Candidato.ExperienciaLaborales;
+                foreach (var item in dictionaryExp)
                 {
                     var row = dt.NewRow();
-                    row[0] = item.Empresa;
-                    row[1] = item.PuestoOcupado;
-                    row[2] = item.FechaDesde;
-                    row[3] = item.FechaDesde;
-                    row[4] = item.Salario;
-                    row["ID"] = item.Id;
+                    var exp = item.Value;
+                    row[0] = exp.Empresa;
+                    row[1] = exp.PuestoOcupado;
+                    row[2] = exp.FechaDesde.ToString("dd-MMM-yyyy"); ;
+                    row[3] = exp.FechaHasta.ToString("dd-MMM-yyyy"); ;
+                    row[4] = exp.Salario;
+                    row["ID"] = item.Key;
                     dt.Rows.Add(row);
                 }
                 dgvExpLaboral.DataSource = dt;
@@ -251,6 +254,7 @@ namespace Client.WorkForms
             cbxPuesto.DataSource = PuestosList;
             cbxPuesto.Refresh();
         }
+
         private void fillIdiomas()
         {
 
@@ -263,13 +267,14 @@ namespace Client.WorkForms
 
                 //var query = Context.ExpLaborales.Where(x => x.CandidatoCedula == Candidato.Cedula);
 
-                var data = Candidato.Idiomas;
-                foreach (var item in data)
+                //var data = Candidato.Idiomas;
+                foreach (var item in dictionaryIdioma)
                 {
                     var row = dt.NewRow();
-                    row[0] = item.Id;
-                    row[1] = item.Nombre;
-                    row[2] = item.Grado;
+                    var idioma = item.Value;
+                    row[0] = item.Key;
+                    row[1] = idioma.Nombre;
+                    row[2] = idioma.Grado;
                     dt.Rows.Add(row);
                 }
                 dgvIdiomas.DataSource = dt;
@@ -283,20 +288,210 @@ namespace Client.WorkForms
             }
         }
 
-        private void mtxtCedula_TextChanged(object sender, EventArgs e)
+        #endregion
+
+
+        private PuestoViewModel GetPuesto()
         {
-            Candidato.Cedula = mtxtCedula.Text;
+            var simple = (SimpleModel)cbxPuesto.SelectedItem;
+            var p = Context.Puestos
+                .Include("Competencias")
+                .FirstOrDefault(x => x.Id == simple.Id);
+            //.Find(simple.Id);
+            if (p == null) { return null; }
+            return p.Adapt<PuestoViewModel>();
         }
 
-        private void cmdADD_Competencias_Click(object sender, EventArgs e)
-        {
-            var fm = new Forms.frmCRUDCompetencias();
-            fm.L_Competencias = Candidato.Competencias;
+        #region DataGridView CellClickMethods
 
-            fm.ShowDialog();
-            Candidato.Competencias.ForEach(x => x.Id = 0);
-            this.fillCompetencias();
+        private void DgvCapacitaciones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var id = int.Parse(dgvCapacitaciones.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+            var c = dictionaryCap[id].Adapt<CapacitacionViewModel>();
+            idCurrentCap = id;
+            var frm = new workCapacitaciones()
+            {
+                Editing = true,
+                cap = c,
+                //ContextCapacitaciones = context,
+                CedulaCandidato =mtxtCedula.Text
+            };
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.DeletingCapacitacionesEvent += DeleteCapacitacion;
+            frm.ShowDialog();
+            frm.DeletingCapacitacionesEvent -= DeleteCapacitacion;
+            if (frm.SaveData) { dictionaryCap[id] = c; }
+            fillCapacitaciones();
+        }
+
+        private void DgvIdiomas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var id = int.Parse(dgvIdiomas.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+            var c = dictionaryIdioma[id].Adapt<IdiomaViewModel>();
+            idCurrentIdio = id;
+        }
+
+        private void DgvExpLaboral_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var id = int.Parse(dgvExpLaboral.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+            var c = dictionaryExp[id].Adapt<ExperienciaLaboralViewModel>();
+            idCurrentExp = id;
+            var frm = new workExperiencia()
+            {
+                Editing = true,
+                CedulaCandidato = Candidato.Cedula,
+                ExperienciaLab = c
+            };
+            frm.DeletingExpEvent += DeleteExp;
+            frm.ShowDialog();
+            frm.DeletingExpEvent -= DeleteExp;
+            if (frm.SaveData) { dictionaryExp[id] = c; }
+            fillExperiencia();
+        }
+
+        #endregion
+
+        #region Button Clicks
+        private void cmdCancelar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hola");
+        }
+
+        private void cmdGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!CheckData())
+                {
+                    MessageBox.Show("Complete los campos faltantes");
+                    return;
+                }
+                PrepareLists();
+
+                //c.Capacitaciones.ToList().ForEach(x => x.CandidatoCedula = c.Cedula);
+                //c.ExperienciaLaborales.ToList().ForEach(x => x.CandidatoCedula = c.Cedula);
+
+
+                if (Editing)
+                {
+                    var c = Context.Candidatos
+                        .Include("PuestoAspira")                        
+                        .FirstOrDefault(x=> x.Cedula == Candidato.Cedula);
+
+                    c.PuestoAspira.IsAvailable = true;
+                    c.Nombre = Candidato.Nombre;
+                    c.PuestoId = Candidato.PuestoId;
+                    c.Departamento = Candidato.Departamento;
+
+                    //c = Candidato.Adapt<Candidatos>();
+
+                    var caps =Candidato.Capacitaciones.Where(x=> x.Id != 0).Select(x => x.Id);
+                    c.Capacitaciones = c.Capacitaciones.Where(x => caps.Contains(x.Id)).ToList();
+                    c.Capacitaciones.ToList().ForEach(x=> {
+                        var data = Candidato.Capacitaciones.First(cc => cc.Id == x.Id);
+                        x.Institucion = data.Institucion;
+                        x.Nivel = data.Nivel;
+                        x.FechaDesde = data.FechaDesde;
+                        x.FechaHasta = data.FechaHasta;
+                        x.Descripcion = data.Descripcion;
+                    });
+                    Candidato.Capacitaciones.Where(x => x.Id == 0).ToList()
+                        .ForEach(x =>
+                        {
+                            c.Capacitaciones.Add(x.Adapt<Capacitaciones>());
+                        });
+
+                    var exps = Candidato.ExperienciaLaborales.Where(x => x.Id != 0).Select(x => x.Id);
+                    c.ExperienciaLaborales = c.ExperienciaLaborales.Where(x => exps.Contains(x.Id)).ToList();
+                    c.ExperienciaLaborales.ToList().ForEach(x=> {
+                        var data = Candidato.ExperienciaLaborales.First(cc => cc.Id == x.Id);
+                        x.Empresa = data.Empresa;
+                        x.FechaDesde = data.FechaDesde;
+                        x.FechaHasta = data.FechaHasta;
+                        x.PuestoOcupado = data.PuestoOcupado;
+                        x.Salario = data.Salario;
+                    });
+
+                    Candidato.ExperienciaLaborales.Where(x => x.Id == 0).ToList()
+                        .ForEach(x =>
+                        {
+                            c.ExperienciaLaborales.Add(x.Adapt<ExperienciaLaboral>());
+                        });
+                    c.Idiomas = Candidato.Idiomas.Adapt<IList<Idiomas>>();
+                }
+                else
+                {
+                    var c = Candidato.Adapt<Candidatos>();
+                    //c.RecomiendaId = MDIs.MDI_User.IdentificadorEmpleado;
+                    Context.Candidatos.Add(c);
+                }
+                Context.SaveChanges();
+                Context.Database.ExecuteSqlCommand($" update [RRHH_DATA].[dbo].[Puestos] set [IsAvailable] = 0 where [Id] = {Candidato.PuestoId} ");
+                MessageBox.Show("Saved!!!!!!");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al Guardar Candidato: {ex.Message}");
+            }
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            var frm = new DetailForm.PuestoDetail() { Puesto = GetPuesto() };
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+        }
+
+        private void cmdADD_Capacitaciones_Click(object sender, EventArgs e)
+        {
+            if (!mtxtCedula.ValidateMaskedTextbox())
+            {
+                MessageBox.Show("Complete campo Cedula");
+                return;
+            }
+            var cap = new CapacitacionViewModel();
+            var frm = new workCapacitaciones()
+            {
+                //ContextCapacitaciones = Context,
+                Editing = false,
+                CedulaCandidato =mtxtCedula.Text,// Candidato.Cedula,
+                cap = cap
+            };
+            frm.ShowDialog();
+            if (frm.SaveData)
+            {
+                //Candidato.Capacitaciones.Add(cap);
+                dictionaryCap.Add(dictionaryCap.Count + 1, cap);
+            }
+            fillCapacitaciones();
+        }
+
+        private void btnAddExp_Click(object sender, EventArgs e)
+        {
+            var cap = new ExperienciaLaboralViewModel();
+            var frm = new workExperiencia()
+            {
+                Editing = false,
+                CedulaCandidato = Candidato.Cedula,
+                ExperienciaLab = cap
+            };
+            frm.ShowDialog();
+            if (frm.SaveData)
+            {
+                dictionaryExp.Add(dictionaryExp.Count + 1, cap);
+            }
+            fillExperiencia();
+        }
+
+        private void btnIdiomasAdd_Click(object sender, EventArgs e)
+        {
 
         }
+
+
+        #endregion
+
     }
 }
