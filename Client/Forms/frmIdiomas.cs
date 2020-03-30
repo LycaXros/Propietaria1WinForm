@@ -34,6 +34,14 @@ namespace Client.Forms
             {
                 return;
             }
+            else if (cbxEstado.SelectedItem == null)
+            {
+                return;
+            }
+            else if (cbxGrado.SelectedItem == null)
+            {
+                return;
+            }
             int id = int.Parse(txtId.Text);
             string nom = txtNombre.Text;
             string selected = cbxEstado.SelectedItem.ToString();
@@ -127,7 +135,9 @@ namespace Client.Forms
                 var it = _context.Idiomas.Find(_itemId);
                 if (it == null) return;
                 _context.Idiomas.Remove(it);
+                _context.SaveChanges();
                 RefreshData();
+                cleanTxt();
             }
         }
     }

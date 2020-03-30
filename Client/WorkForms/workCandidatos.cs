@@ -24,6 +24,9 @@ namespace Client.WorkForms
         private int idCurrentCap = 0;
         private int idCurrentIdio = 0;
         private int idCurrentExp = 0;
+        private int lastIdioma = 0;
+        private int lastCapacitaciones = 0;
+        private int lastExperiencia = 0;
 
         public List<SimpleModel> PuestosList { get; set; }
         public List<IdiomaViewModel> ListaIdiomas { get; set; }
@@ -523,7 +526,7 @@ namespace Client.WorkForms
             if (frm.SaveData)
             {
                 //Candidato.Capacitaciones.Add(cap);
-                dictionaryCap.Add(dictionaryCap.Count + 1, cap);
+                dictionaryCap.Add(++lastCapacitaciones, cap);
             }
             fillCapacitaciones();
         }
@@ -540,7 +543,7 @@ namespace Client.WorkForms
             frm.ShowDialog();
             if (frm.SaveData)
             {
-                dictionaryExp.Add(dictionaryExp.Count + 1, cap);
+                dictionaryExp.Add(++lastExperiencia, cap);
             }
             fillExperiencia();
         }
@@ -565,7 +568,8 @@ namespace Client.WorkForms
             frm.ShowDialog();
             if (frm.SaveData)
             {
-                dictionaryIdioma.Add(dictionaryIdioma.Count + 1, frm.Idioma);
+                
+                dictionaryIdioma.Add(++lastIdioma, frm.Idioma);
                 MessageBox.Show("Guardando");
                 fillIdiomas();
             }

@@ -31,22 +31,29 @@ namespace Client.Forms
 
         private void DgvResultados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var row = dgvResultados.Rows[e.RowIndex];
-            var id = row.Cells["Cedula"].Value.ToString();
-            var frm = new WorkForms.workCandidatos()
+            try
             {
-                Context = context,
-                Editing = true,
-                ListaIdiomas = GetIdiomas()
-                //PuestosList = GetPuestos()
-            };
-            var c = context.Candidatos.Find(id);
-            if (c == null) return;
+                var row = dgvResultados.Rows[e.RowIndex];
+                var id = row.Cells["Cedula"].Value.ToString();
+                var frm = new WorkForms.workCandidatos()
+                {
+                    Context = context,
+                    Editing = true,
+                    ListaIdiomas = GetIdiomas()
+                    //PuestosList = GetPuestos()
+                };
+                var c = context.Candidatos.Find(id);
+                if (c == null) return;
 
-            var data = c.Adapt<CandidatoViewModel>();
-            frm.Candidato = data;
-            frm.PuestosList = GetPuestos(data.PuestoId);
-            frm.ShowDialog();
+                var data = c.Adapt<CandidatoViewModel>();
+                frm.Candidato = data;
+                frm.PuestosList = GetPuestos(data.PuestoId);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void FrmCandidatos_Load(object sender, EventArgs e)
