@@ -39,6 +39,11 @@ namespace Client.WorkForms
             dgvCapacitaciones.CellDoubleClick += DgvCapacitaciones_CellDoubleClick;
             dgvExpLaboral.CellDoubleClick += DgvExpLaboral_CellDoubleClick;
             dgvIdiomas.CellDoubleClick += DgvIdiomas_CellDoubleClick;
+
+            dgvIdiomas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvExpLaboral.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCapacitaciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         private void workCandidatos_Load(object sender, EventArgs e)
@@ -308,52 +313,84 @@ namespace Client.WorkForms
 
         private void DgvCapacitaciones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var id = int.Parse(dgvCapacitaciones.Rows[e.RowIndex].Cells["ID"].Value.ToString());
-            var c = dictionaryCap[id].Adapt<CapacitacionViewModel>();
-            idCurrentCap = id;
-            var frm = new workCapacitaciones()
+            try
             {
-                Editing = true,
-                cap = c,
-                //ContextCapacitaciones = context,
-                CedulaCandidato =mtxtCedula.Text
-            };
-            frm.StartPosition = FormStartPosition.CenterScreen;
-            frm.DeletingCapacitacionesEvent += DeleteCapacitacion;
-            frm.ShowDialog();
-            frm.DeletingCapacitacionesEvent -= DeleteCapacitacion;
-            if (frm.SaveData) { dictionaryCap[id] = c; }
-            fillCapacitaciones();
+                var id = int.Parse(dgvCapacitaciones.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                var c = dictionaryCap[id].Adapt<CapacitacionViewModel>();
+                idCurrentCap = id;
+                var frm = new workCapacitaciones()
+                {
+                    Editing = true,
+                    cap = c,
+                    //ContextCapacitaciones = context,
+                    CedulaCandidato = mtxtCedula.Text
+                };
+                frm.StartPosition = FormStartPosition.CenterScreen;
+                frm.DeletingCapacitacionesEvent += DeleteCapacitacion;
+                frm.ShowDialog();
+                frm.DeletingCapacitacionesEvent -= DeleteCapacitacion;
+                if (frm.SaveData) { dictionaryCap[id] = c; }
+                fillCapacitaciones();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void DgvIdiomas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var id = int.Parse(dgvIdiomas.Rows[e.RowIndex].Cells["ID"].Value.ToString());
-            var c = dictionaryIdioma[id].Adapt<IdiomaViewModel>();
-            idCurrentIdio = id;
+            try
+            {
+
+                var id = int.Parse(dgvIdiomas.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                var c = dictionaryIdioma[id].Adapt<IdiomaViewModel>();
+                //idCurrentIdio = id;
+                if (
+                    MessageBox.Show("Desea Eliminar este Idioma de la Lista? \n"
+                    + $"{c.ToString()}", "Remover Idioma", buttons: MessageBoxButtons.YesNo
+                    ) == DialogResult.Yes
+                    )
+                {
+                    dictionaryIdioma.Remove(id);
+                    fillIdiomas();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void DgvExpLaboral_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var id = int.Parse(dgvExpLaboral.Rows[e.RowIndex].Cells["ID"].Value.ToString());
-            var c = dictionaryExp[id].Adapt<ExperienciaLaboralViewModel>();
-            idCurrentExp = id;
-            var frm = new workExperiencia()
+            try
             {
-                Editing = true,
-                CedulaCandidato = Candidato.Cedula,
-                ExperienciaLab = c
-            };
-            frm.DeletingExpEvent += DeleteExp;
-            frm.ShowDialog();
-            frm.DeletingExpEvent -= DeleteExp;
-            if (frm.SaveData) { dictionaryExp[id] = c; }
-            fillExperiencia();
+                var id = int.Parse(dgvExpLaboral.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                var c = dictionaryExp[id].Adapt<ExperienciaLaboralViewModel>();
+                idCurrentExp = id;
+                var frm = new workExperiencia()
+                {
+                    Editing = true,
+                    CedulaCandidato = Candidato.Cedula,
+                    ExperienciaLab = c
+                };
+                frm.DeletingExpEvent += DeleteExp;
+                frm.ShowDialog();
+                frm.DeletingExpEvent -= DeleteExp;
+                if (frm.SaveData) { dictionaryExp[id] = c; }
+                fillExperiencia();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         #endregion
 
         #region Button Clicks
+
         private void cmdCancelar_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hola");
@@ -389,6 +426,10 @@ namespace Client.WorkForms
                     //c = Candidato.Adapt<Candidatos>();
 
                     var caps =Candidato.Capacitaciones.Where(x=> x.Id != 0).Select(x => x.Id);
+
+                    //paraEliminar
+                    var capToDelete = c.Capacitaciones.Where(x => !caps.Contains(x.Id)).ToList();
+
                     c.Capacitaciones = c.Capacitaciones.Where(x => caps.Contains(x.Id)).ToList();
                     c.Capacitaciones.ToList().ForEach(x=> {
                         var data = Candidato.Capacitaciones.First(cc => cc.Id == x.Id);
@@ -405,6 +446,12 @@ namespace Client.WorkForms
                         });
 
                     var exps = Candidato.ExperienciaLaborales.Where(x => x.Id != 0).Select(x => x.Id);
+
+                    //Para Eliminar
+                    IEnumerable<ExperienciaLaboral> expToDelete = c.ExperienciaLaborales
+                            .Where(x => !exps.Contains(x.Id))
+                            .ToList();
+
                     c.ExperienciaLaborales = c.ExperienciaLaborales.Where(x => exps.Contains(x.Id)).ToList();
                     c.ExperienciaLaborales.ToList().ForEach(x=> {
                         var data = Candidato.ExperienciaLaborales.First(cc => cc.Id == x.Id);
@@ -420,11 +467,22 @@ namespace Client.WorkForms
                         {
                             c.ExperienciaLaborales.Add(x.Adapt<ExperienciaLaboral>());
                         });
-                    c.Idiomas = Candidato.Idiomas.Adapt<IList<Idiomas>>();
+
+
+                    var idiomasSelect = Candidato.Idiomas.Select(x => x.Id).ToList();
+                    var idiomasAgregar = Context.Idiomas.Where(x => idiomasSelect.Contains(x.Id)).ToList();
+                    c.Idiomas = idiomasAgregar;
+                    //   c.Idiomas = Candidato.Idiomas.Adapt<IList<Idiomas>>();
+
+                    Context.Capacitaciones.RemoveRange(capToDelete);
+                    Context.ExpLaborales.RemoveRange(expToDelete);
                 }
                 else
                 {
                     var c = Candidato.Adapt<Candidatos>();
+                    var idiomasSelect =Candidato.Idiomas.Select(x => x.Id).ToList();
+                    var idiomasAgregar = Context.Idiomas.Where(x => idiomasSelect.Contains(x.Id)).ToList();
+                    c.Idiomas = idiomasAgregar;
                     //c.RecomiendaId = MDIs.MDI_User.IdentificadorEmpleado;
                     Context.Candidatos.Add(c);
                 }
@@ -499,11 +557,18 @@ namespace Client.WorkForms
             var cp = new IdiomaViewModel();
             var frm = new IdiomaSelectForm()
             {
+                SaveData=false,
                 Idioma = cp,
                 Idiomas = list
             };
 
             frm.ShowDialog();
+            if (frm.SaveData)
+            {
+                dictionaryIdioma.Add(dictionaryIdioma.Count + 1, frm.Idioma);
+                MessageBox.Show("Guardando");
+                fillIdiomas();
+            }
         }
 
 

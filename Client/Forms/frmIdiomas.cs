@@ -30,7 +30,10 @@ namespace Client.Forms
 
         private void cmdGuardar_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                return;
+            }
             int id = int.Parse(txtId.Text);
             string nom = txtNombre.Text;
             string selected = cbxEstado.SelectedItem.ToString();

@@ -65,6 +65,7 @@ namespace Client.Forms
                 dt.Columns.Add("Departamento");
                 dt.Columns.Add("Cantidad Capacitaciones");
                 dt.Columns.Add("Cantidad Experiencias");
+                dt.Columns.Add("Cantidad Idiomas");
                 dt.Columns.Add("Recomendado Por");
 
                 var query = context.Candidatos
@@ -107,7 +108,8 @@ namespace Client.Forms
                     row[3] = item.Departamento;
                     row[4] = item.Capacitaciones.Count;
                     row[5] = item.ExperienciaLaborales.Count;
-                    row[6] = $"{item.RecomendadoPor.Nombre} ({item.RecomendadoPor.Cedula})";
+                    row[6] = item.Idiomas.Count;
+                    row[7] = $"{item.RecomendadoPor.Nombre} ({item.RecomendadoPor.Cedula})";
                     dt.Rows.Add(row);
                 }
                 dgvResultados.DataSource = dt;

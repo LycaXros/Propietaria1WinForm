@@ -9,5 +9,10 @@ namespace Client.ViewModels
         public string Grado { get; set; }
         //Opciones [Bajo,Medio,Alto]
         public EstadoPersistencia Estado { get; set; }
+
+        public override string ToString()
+        {
+            return $"Nombre: {Nombre} \tGrado: {Grado}\tEstado: {Estado}";
+        }
     }
 }
